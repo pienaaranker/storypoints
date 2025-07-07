@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 1rem;
+  padding: 3rem 1rem 2rem;
   animation: fadeIn 0.5s ease-in-out;
 }
 
@@ -69,6 +69,6 @@ button:disabled {
 /* Responsive design */
 @media (max-width: 768px) {
   .main-content {
-    padding: 1rem 0.5rem;
+    padding: 2rem 0.5rem 1rem;
   }
 }

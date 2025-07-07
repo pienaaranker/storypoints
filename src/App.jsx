@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import './App.css'
 
-// Import components (will create these next)
-import Header from './components/Header'
+// Import components
+import Home from './components/Home'
 import Exercise1 from './components/Exercise1'
 import Exercise2 from './components/Exercise2'
 import Exercise3 from './components/Exercise3'
 import Navigation from './components/Navigation'
 
 function App() {
-  const [currentExercise, setCurrentExercise] = useState(1)
+  const [currentView, setCurrentView] = useState('home') // 'home' or exercise number
   const [exerciseProgress, setExerciseProgress] = useState({
     1: { completed: false, started: false },
     2: { completed: false, started: false },
@@ -24,11 +24,14 @@ function App() {
 
     // Auto-advance to next exercise if not the last one
     if (exerciseNumber < 3) {
-      setCurrentExercise(exerciseNumber + 1)
+      setCurrentView(exerciseNumber + 1)
       setExerciseProgress(prev => ({
         ...prev,
         [exerciseNumber + 1]: { ...prev[exerciseNumber + 1], started: true }
       }))
+    } else {
+      // After completing the last exercise, return to home
+      setCurrentView('home')
     }
   }
 
@@ -40,11 +43,35 @@ function App() {
   }
 
   const navigateToExercise = (exerciseNumber) => {
-    setCurrentExercise(exerciseNumber)
+    setCurrentView(exerciseNumber)
   }
 
-  const renderCurrentExercise = () => {
-    switch (currentExercise) {
+  const navigateToHome = () => {
+    setCurrentView('home')
+  }
+
+  const startFresh = () => {
+    setExerciseProgress({
+      1: { completed: false, started: false },
+      2: { completed: false, started: false },
+      3: { completed: false, started: false }
+    })
+    setCurrentView('home')
+  }
+
+  const renderCurrentView = () => {
+    if (currentView === 'home') {
+      return (
+        <Home
+          exerciseProgress={exerciseProgress}
+          onNavigate={navigateToExercise}
+          onStartFresh={startFresh}
+        />
+      )
+    }
+
+    // Render exercise based on currentView number
+    switch (currentView) {
       case 1:
         return (
           <Exercise1
@@ -76,15 +103,17 @@ function App() {
 
   return (
     <div className="app">
-      <Header />
       <main className="main-content">
-        {renderCurrentExercise()}
+        {renderCurrentView()}
       </main>
-      <Navigation
-        currentExercise={currentExercise}
-        exerciseProgress={exerciseProgress}
-        onNavigate={navigateToExercise}
-      />
+      {currentView !== 'home' && (
+        <Navigation
+          currentExercise={currentView}
+          exerciseProgress={exerciseProgress}
+          onNavigate={navigateToExercise}
+          onNavigateHome={navigateToHome}
+        />
+      )}
     </div>
   )
 }

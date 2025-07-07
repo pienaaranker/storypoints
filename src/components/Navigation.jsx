@@ -1,6 +1,6 @@
 import './Navigation.css'
 
-function Navigation({ currentExercise, exerciseProgress, onNavigate }) {
+function Navigation({ currentExercise, exerciseProgress, onNavigate, onNavigateHome }) {
   const exercises = [
     { number: 1, title: 'Abstract Comparisons', description: 'Learn relative sizing with abstract items' },
     { number: 2, title: 'User Stories', description: 'Apply sizing to real user stories' },
@@ -36,7 +36,12 @@ function Navigation({ currentExercise, exerciseProgress, onNavigate }) {
     <nav className="navigation">
       <div className="nav-content">
         <div className="nav-header">
-          <h3 className="nav-title">Your Progress</h3>
+          <div className="nav-title-row">
+            <h3 className="nav-title">Your Progress</h3>
+            <button className="home-button" onClick={onNavigateHome}>
+              ← Return to Home
+            </button>
+          </div>
           <div className="progress-summary">
             <div className="progress-stats">
               <span className="completed-count">{getCompletedCount()}</span>

@@ -1,0 +1,330 @@
+.home {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.home-header {
+  margin-bottom: 3rem;
+}
+
+.home-title {
+  font-size: 3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.home-subtitle {
+  font-size: 1.2rem;
+  color: #6c757d;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.progress-overview {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.progress-header h3 {
+  margin: 0;
+  color: #495057;
+  font-size: 1.3rem;
+}
+
+.progress-stats {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+}
+
+.completed-count {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #28a745;
+}
+
+.total-count {
+  font-size: 1.3rem;
+  color: #6c757d;
+}
+
+.progress-label {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-left: 10px;
+}
+
+.progress-bar-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 12px;
+  background: #e9ecef;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  transition: width 0.3s ease;
+}
+
+.progress-percentage {
+  font-weight: 600;
+  color: #495057;
+  min-width: 40px;
+}
+
+.completion-message {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  border: 1px solid #c3e6cb;
+  border-radius: 8px;
+  color: #155724;
+  font-weight: 600;
+}
+
+.exercises-overview h3 {
+  font-size: 1.5rem;
+  color: #495057;
+  margin-bottom: 2rem;
+}
+
+.exercise-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.exercise-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 2px solid #e9ecef;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.exercise-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.exercise-card.completed {
+  border-color: #28a745;
+  background: linear-gradient(135deg, #f8fff9 0%, #f1f8f2 100%);
+}
+
+.exercise-card.started {
+  border-color: #ffc107;
+  background: linear-gradient(135deg, #fffdf5 0%, #fefcf0 100%);
+}
+
+.exercise-card.locked {
+  opacity: 0.6;
+  background: #f8f9fa;
+}
+
+.exercise-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.exercise-number {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  background: #e9ecef;
+  color: #495057;
+}
+
+.exercise-card.completed .exercise-number {
+  background: #28a745;
+  color: white;
+}
+
+.exercise-card.started .exercise-number {
+  background: #ffc107;
+  color: #212529;
+}
+
+.exercise-status-badge .status {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status.completed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.status.started {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.status.available {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.status.locked {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.exercise-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #212529;
+  margin-bottom: 0.5rem;
+}
+
+.exercise-description {
+  color: #6c757d;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+
+.exercise-details {
+  color: #868e96;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+}
+
+.exercise-card-actions {
+  margin-top: auto;
+}
+
+.exercise-button {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1rem;
+}
+
+.exercise-button.available,
+.exercise-button.started {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.exercise-button.completed {
+  background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+  color: white;
+}
+
+.exercise-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.locked-message {
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.home-actions,
+.welcome-actions {
+  margin-top: 2rem;
+}
+
+.start-fresh-button,
+.get-started-button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 1rem;
+}
+
+.get-started-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.start-fresh-button {
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+  color: white;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.get-started-button:hover,
+.start-fresh-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.start-fresh-note,
+.welcome-note {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .home {
+    padding: 1rem;
+  }
+  
+  .home-title {
+    font-size: 2.2rem;
+  }
+  
+  .progress-header {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  
+  .exercise-cards {
+    grid-template-columns: 1fr;
+  }
+}
