@@ -22,9 +22,9 @@ function Home({ exerciseProgress, onNavigate, onStartFresh }) {
 
         const exerciseList = exerciseConfigs.map((config, index) => ({
           number: index + 1,
-          title: config?.metadata?.title || `Exercise ${index + 1}`,
-          description: config?.metadata?.description || 'Exercise description',
-          details: config?.metadata?.details || 'Exercise details'
+          title: config?.title || `Exercise ${index + 1}`,
+          description: config?.description || 'Exercise description',
+          details: config?.details || 'Exercise details'
         }))
 
         setExercises(exerciseList)

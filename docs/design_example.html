@@ -1,0 +1,150 @@
+<div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 text-white overflow-hidden relative">
+      {/* Animated background stars */}
+      {stars.map(star => (
+        <div
+          key={star.id}
+          className="absolute animate-pulse"
+          style={{
+            left: `${star.x}%`,
+            top: `${star.y}%`,
+            width: `${star.size}px`,
+            height: `${star.size}px`,
+            backgroundColor: 'white',
+            borderRadius: '50%',
+            opacity: star.opacity,
+            animationDelay: `${star.animationDelay}s`
+          }}
+        />
+      ))}
+
+      {/* Header */}
+      <header className="p-6 flex justify-between items-center relative z-10">
+        <div className="flex items-center space-x-3">
+          <div className="bg-gradient-to-r from-yellow-400 to-orange-500 p-3 rounded-full shadow-lg">
+            <Rocket className="w-8 h-8 text-white" />
+          </div>
+          <h1 className="text-3xl font-bold bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+            Space Math Explorer
+          </h1>
+        </div>
+        
+        <button
+          onClick={resetGame}
+          className="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded-lg transition-colors flex items-center space-x-2"
+        >
+          <RotateCcw className="w-4 h-4" />
+          <span>Reset</span>
+        </button>
+      </header>
+
+      {/* Stats Bar */}
+      <div className="px-6 mb-8">
+        <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-xl">
+          <div className="grid grid-cols-4 gap-6 text-center">
+            <div className="flex flex-col items-center">
+              <Trophy className="w-6 h-6 text-yellow-400 mb-2" />
+              <span className="text-2xl font-bold">{score}</span>
+              <span className="text-sm text-gray-300">Score</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <Zap className="w-6 h-6 text-orange-400 mb-2" />
+              <span className="text-2xl font-bold">{streak}</span>
+              <span className="text-sm text-gray-300">Streak</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <Target className="w-6 h-6 text-blue-400 mb-2" />
+              <span className="text-2xl font-bold">{level}</span>
+              <span className="text-sm text-gray-300">Level</span>
+            </div>
+            <div className="flex flex-col items-center">
+              <Star className="w-6 h-6 text-purple-400 mb-2" />
+              <div className="w-16 h-2 bg-gray-700 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-300"
+                  style={{ width: `${(rocketPosition % 100)}%` }}
+                />
+              </div>
+              <span className="text-sm text-gray-300">Progress</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="flex-1 flex items-center justify-center px-6">
+        <div className="bg-white/15 backdrop-blur-lg rounded-3xl p-8 shadow-2xl max-w-md w-full relative">
+          {/* Problem Display */}
+          {currentProblem && (
+            <div className="text-center mb-8">
+              <div className="text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                {currentProblem.num1} {currentProblem.operation} {currentProblem.num2}
+              </div>
+              <div className="text-4xl font-bold text-white mb-6">=</div>
+              
+              <div className="relative">
+                <input
+                  type="number"
+                  value={userAnswer}
+                  onChange={(e) => setUserAnswer(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  className="w-full text-4xl font-bold text-center bg-white/20 border-2 border-white/30 rounded-xl px-4 py-3 text-white placeholder-gray-300 focus:outline-none focus:border-cyan-400 transition-colors"
+                  placeholder="?"
+                  disabled={showFeedback}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Feedback */}
+          {showFeedback && (
+            <div className={`text-center mb-6 transition-all duration-300 ${
+              isCorrect ? 'animate-bounce' : 'animate-pulse'
+            }`}>
+              {isCorrect ? (
+                <div className="flex items-center justify-center space-x-2 text-green-400">
+                  <CheckCircle className="w-8 h-8" />
+                  <span className="text-xl font-bold">Correct!</span>
+                </div>
+              ) : (
+                <div className="flex items-center justify-center space-x-2 text-red-400">
+                  <XCircle className="w-8 h-8" />
+                  <span className="text-xl font-bold">Try again! Answer: {currentProblem?.answer}</span>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Submit Button */}
+          <button
+            onClick={checkAnswer}
+            disabled={!userAnswer || showFeedback}
+            className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 disabled:from-gray-600 disabled:to-gray-700 text-white font-bold py-4 px-8 rounded-xl transition-all duration-300 transform hover:scale-105 disabled:scale-100 shadow-lg"
+          >
+            {showFeedback ? 'Next Problem...' : 'Submit Answer'}
+          </button>
+        </div>
+      </div>
+
+      {/* Achievement Notifications */}
+      {streak > 0 && streak % 5 === 0 && showFeedback && isCorrect && (
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
+          <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-8 py-4 rounded-2xl shadow-2xl animate-bounce">
+            <div className="text-center">
+              <Trophy className="w-12 h-12 mx-auto mb-2" />
+              <div className="text-xl font-bold">Level Up!</div>
+              <div className="text-sm">You reached Level {level + 1}!</div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Floating rocket */}
+      <div 
+        className="absolute bottom-10 transition-all duration-1000 ease-out"
+        style={{ left: `${5 + (rocketPosition % 90)}%` }}
+      >
+        <div className="animate-bounce">
+          <Rocket className="w-12 h-12 text-yellow-400 transform rotate-45" />
+        </div>
+      </div>
+    </div>

@@ -7,12 +7,12 @@
   },
   "items": [
     {
-      "id": "grain-of-sand",
-      "name": "A grain of sand",
-      "description": "Tiny, lightweight, easily moved",
-      "correctOrder": 1,
-      "correctPoints": 1,
-      "explanation": "Minimal effort required - can be moved with a gentle breath or touch."
+      "id": "mountain",
+      "name": "A mountain",
+      "description": "Massive geological formation",
+      "correctOrder": 4,
+      "correctPoints": 13,
+      "explanation": "Practically impossible to move - would require extraordinary resources and geological-scale intervention."
     },
     {
       "id": "pebble",
@@ -23,20 +23,20 @@
       "explanation": "Requires deliberate action but minimal physical effort - easily picked up and moved by hand."
     },
     {
+      "id": "grain-of-sand",
+      "name": "A grain of sand",
+      "description": "Tiny, lightweight, easily moved",
+      "correctOrder": 1,
+      "correctPoints": 1,
+      "explanation": "Minimal effort required - can be moved with a gentle breath or touch."
+    },
+    {
       "id": "boulder",
       "name": "A boulder",
       "description": "Large rock, requires significant effort",
       "correctOrder": 3,
       "correctPoints": 5,
       "explanation": "Substantial effort required - needs tools, multiple people, or machinery to move effectively."
-    },
-    {
-      "id": "mountain",
-      "name": "A mountain",
-      "description": "Massive geological formation",
-      "correctOrder": 4,
-      "correctPoints": 13,
-      "explanation": "Practically impossible to move - would require extraordinary resources and geological-scale intervention."
     }
   ]
 }
