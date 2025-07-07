@@ -1,26 +1,64 @@
+import { useState, useEffect } from 'react'
 import './Home.css'
+import { getExerciseConfig } from '../utils/dataLoader'
 
 function Home({ exerciseProgress, onNavigate, onStartFresh }) {
-  const exercises = [
-    { 
-      number: 1, 
-      title: 'Abstract Comparisons', 
-      description: 'Learn relative sizing with abstract items',
-      details: 'Start with simple abstract concepts to understand relative effort without real-world bias.'
-    },
-    { 
-      number: 2, 
-      title: 'User Stories', 
-      description: 'Apply sizing to real user stories',
-      details: 'Practice with realistic user stories from a typical web application development scenario.'
-    },
-    { 
-      number: 3, 
-      title: 'Core Principles', 
-      description: 'Review and reinforce key concepts',
-      details: 'Test your knowledge with an interactive quiz covering fundamental story point principles.'
+  const [exercises, setExercises] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+
+  // Load exercise metadata on component mount
+  useEffect(() => {
+    const loadExercises = async () => {
+      try {
+        setLoading(true)
+        setError(null)
+
+        const exerciseConfigs = await Promise.all([
+          getExerciseConfig(1),
+          getExerciseConfig(2),
+          getExerciseConfig(3)
+        ])
+
+        const exerciseList = exerciseConfigs.map((config, index) => ({
+          number: index + 1,
+          title: config?.metadata?.title || `Exercise ${index + 1}`,
+          description: config?.metadata?.description || 'Exercise description',
+          details: config?.metadata?.details || 'Exercise details'
+        }))
+
+        setExercises(exerciseList)
+      } catch (err) {
+        console.error('Failed to load exercise metadata:', err)
+        setError(err.message)
+        // Fallback to hardcoded data
+        setExercises([
+          {
+            number: 1,
+            title: 'Abstract Comparisons',
+            description: 'Learn relative sizing with abstract items',
+            details: 'Start with simple abstract concepts to understand relative effort without real-world bias.'
+          },
+          {
+            number: 2,
+            title: 'User Stories',
+            description: 'Apply sizing to real user stories',
+            details: 'Practice with realistic user stories from a typical web application development scenario.'
+          },
+          {
+            number: 3,
+            title: 'Core Principles',
+            description: 'Review and reinforce key concepts',
+            details: 'Test your knowledge with an interactive quiz covering fundamental story point principles.'
+          }
+        ])
+      } finally {
+        setLoading(false)
+      }
     }
-  ]
+
+    loadExercises()
+  }, [])
 
   const getExerciseStatus = (exerciseNumber) => {
     const progress = exerciseProgress[exerciseNumber]
@@ -44,6 +82,29 @@ function Home({ exerciseProgress, onNavigate, onStartFresh }) {
 
   const hasAnyProgress = () => {
     return Object.values(exerciseProgress).some(progress => progress.started || progress.completed)
+  }
+
+  if (loading) {
+    return (
+      <div className="home">
+        <div className="home-header">
+          <h1 className="home-title">Story Point Master</h1>
+          <p className="home-subtitle">Loading exercises...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="home">
+        <div className="home-header">
+          <h1 className="home-title">Story Point Master</h1>
+          <p className="home-subtitle">Error loading exercises: {error}</p>
+          <button onClick={() => window.location.reload()}>Retry</button>
+        </div>
+      </div>
+    )
   }
 
   return (

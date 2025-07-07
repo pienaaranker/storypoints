@@ -1,9 +1,9 @@
 import React from 'react'
 import './PointSelector.css'
 
-const POINT_VALUES = [1, 2, 3, 5, 8, 13]
+const DEFAULT_POINT_VALUES = [1, 2, 3, 5, 8, 13]
 
-function PointSelector({ value, onChange, label = "Points:" }) {
+function PointSelector({ value, onChange, label = "Points:", pointScale = DEFAULT_POINT_VALUES }) {
   const handleCardClick = (pointValue) => {
     // Toggle behavior: if clicking the same value, deselect it
     if (value === pointValue) {
@@ -24,7 +24,7 @@ function PointSelector({ value, onChange, label = "Points:" }) {
     <div className="point-selector">
       <label className="point-selector-label">{label}</label>
       <div className="point-cards" role="radiogroup" aria-label="Story point values">
-        {POINT_VALUES.map((pointValue) => (
+        {pointScale.map((pointValue) => (
           <button
             key={pointValue}
             type="button"

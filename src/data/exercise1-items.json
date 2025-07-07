@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "exerciseId": 1,
+    "type": "abstract_items",
+    "version": "1.0.0",
+    "description": "Abstract items for relative effort comparison exercise"
+  },
+  "items": [
+    {
+      "id": "grain-of-sand",
+      "name": "A grain of sand",
+      "description": "Tiny, lightweight, easily moved",
+      "correctOrder": 1,
+      "correctPoints": 1,
+      "explanation": "Minimal effort required - can be moved with a gentle breath or touch."
+    },
+    {
+      "id": "pebble",
+      "name": "A pebble",
+      "description": "Small stone, fits in your palm",
+      "correctOrder": 2,
+      "correctPoints": 2,
+      "explanation": "Requires deliberate action but minimal physical effort - easily picked up and moved by hand."
+    },
+    {
+      "id": "boulder",
+      "name": "A boulder",
+      "description": "Large rock, requires significant effort",
+      "correctOrder": 3,
+      "correctPoints": 5,
+      "explanation": "Substantial effort required - needs tools, multiple people, or machinery to move effectively."
+    },
+    {
+      "id": "mountain",
+      "name": "A mountain",
+      "description": "Massive geological formation",
+      "correctOrder": 4,
+      "correctPoints": 13,
+      "explanation": "Practically impossible to move - would require extraordinary resources and geological-scale intervention."
+    }
+  ]
+}

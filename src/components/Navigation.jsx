@@ -1,11 +1,39 @@
+import { useState, useEffect } from 'react'
 import './Navigation.css'
+import { getExerciseConfig } from '../utils/dataLoader'
 
 function Navigation({ currentExercise, exerciseProgress, onNavigate, onNavigateHome }) {
-  const exercises = [
+  const [exercises, setExercises] = useState([
     { number: 1, title: 'Abstract Comparisons', description: 'Learn relative sizing with abstract items' },
     { number: 2, title: 'User Stories', description: 'Apply sizing to real user stories' },
     { number: 3, title: 'Core Principles', description: 'Review and reinforce key concepts' }
-  ]
+  ])
+
+  // Load exercise metadata on component mount
+  useEffect(() => {
+    const loadExercises = async () => {
+      try {
+        const exerciseConfigs = await Promise.all([
+          getExerciseConfig(1),
+          getExerciseConfig(2),
+          getExerciseConfig(3)
+        ])
+
+        const exerciseList = exerciseConfigs.map((config, index) => ({
+          number: index + 1,
+          title: config?.metadata?.title || `Exercise ${index + 1}`,
+          description: config?.metadata?.description || 'Exercise description'
+        }))
+
+        setExercises(exerciseList)
+      } catch (err) {
+        console.error('Failed to load exercise metadata:', err)
+        // Keep fallback data if loading fails
+      }
+    }
+
+    loadExercises()
+  }, [])
 
   const getExerciseStatus = (exerciseNumber) => {
     const progress = exerciseProgress[exerciseNumber]

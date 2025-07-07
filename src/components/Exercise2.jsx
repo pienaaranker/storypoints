@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   DndContext,
   closestCenter,
@@ -22,100 +22,40 @@ import './Exercise.css'
 import './Exercise2.css'
 import UserStoryItem from './UserStoryItem'
 import PointSelector from './PointSelector'
-
-const USER_STORIES = [
-  {
-    id: 'view-profile',
-    title: 'View User Profile',
-    description: 'As a user, I want to view my profile information so that I can see my current details.',
-    acceptanceCriteria: [
-      'Display user name, email, and profile picture',
-      'Show account creation date',
-      'Display in a clean, readable format'
-    ],
-    correctOrder: 1,
-    correctPoints: 2,
-    complexity: 'Low',
-    effort: 'Low',
-    uncertainty: 'Low',
-    explanation: 'Simple read operation with basic UI display. Minimal business logic and well-understood requirements.'
-  },
-  {
-    id: 'change-password',
-    title: 'Change Password',
-    description: 'As a user, I want to change my password so that I can maintain account security.',
-    acceptanceCriteria: [
-      'Require current password verification',
-      'Validate new password strength',
-      'Send confirmation email',
-      'Update password in database securely'
-    ],
-    correctOrder: 2,
-    correctPoints: 3,
-    complexity: 'Medium',
-    effort: 'Medium',
-    uncertainty: 'Low',
-    explanation: 'Involves security considerations, validation logic, and email integration. More complex than simple display but well-understood pattern.'
-  },
-  {
-    id: 'upload-profile-picture',
-    title: 'Upload Profile Picture',
-    description: 'As a user, I want to upload a profile picture so that I can personalize my account.',
-    acceptanceCriteria: [
-      'Support common image formats (JPG, PNG)',
-      'Resize and optimize images automatically',
-      'Validate file size and dimensions',
-      'Update profile display immediately'
-    ],
-    correctOrder: 3,
-    correctPoints: 5,
-    complexity: 'Medium-High',
-    effort: 'Medium-High',
-    uncertainty: 'Medium',
-    explanation: 'File upload handling, image processing, storage management, and real-time UI updates. Multiple integration points and edge cases.'
-  },
-  {
-    id: 'two-factor-auth',
-    title: 'Enable Two-Factor Authentication',
-    description: 'As a user, I want to enable 2FA so that I can secure my account with an additional layer of protection.',
-    acceptanceCriteria: [
-      'Generate and display QR code for authenticator apps',
-      'Verify setup with test code',
-      'Provide backup recovery codes',
-      'Integrate with login flow',
-      'Handle various authenticator apps'
-    ],
-    correctOrder: 4,
-    correctPoints: 8,
-    complexity: 'High',
-    effort: 'High',
-    uncertainty: 'Medium-High',
-    explanation: 'Complex security feature requiring integration with external authenticator systems, backup mechanisms, and modification of core authentication flow.'
-  },
-  {
-    id: 'social-login',
-    title: 'Social Media Login Integration',
-    description: 'As a user, I want to log in using my social media accounts so that I can access the app more conveniently.',
-    acceptanceCriteria: [
-      'Support Google, Facebook, and Twitter login',
-      'Handle account linking and creation',
-      'Manage OAuth flows and tokens',
-      'Sync profile data appropriately',
-      'Handle edge cases (existing accounts, etc.)'
-    ],
-    correctOrder: 5,
-    correctPoints: 13,
-    complexity: 'Very High',
-    effort: 'Very High',
-    uncertainty: 'High',
-    explanation: 'Multiple OAuth integrations, complex account management logic, data synchronization, and numerous edge cases. High uncertainty due to external API dependencies.'
-  }
-]
+import { loadUserStories, getExerciseConfig } from '../utils/dataLoader'
 
 function Exercise2({ onComplete, onStart, isStarted }) {
-  const [stories, setStories] = useState(USER_STORIES)
+  const [stories, setStories] = useState([])
+  const [exerciseConfig, setExerciseConfig] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const [currentStep, setCurrentStep] = useState('ordering') // 'ordering', 'pointing', 'feedback'
   const [userPoints, setUserPoints] = useState({})
+
+  // Load exercise data on component mount
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        setLoading(true)
+        setError(null)
+
+        const [userStories, config] = await Promise.all([
+          loadUserStories(),
+          getExerciseConfig(2)
+        ])
+
+        setStories(userStories)
+        setExerciseConfig(config)
+      } catch (err) {
+        console.error('Failed to load exercise data:', err)
+        setError(err.message)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadData()
+  }, [])
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -127,7 +67,7 @@ function Exercise2({ onComplete, onStart, isStarted }) {
   const handleStart = () => {
     onStart()
     // Shuffle stories initially to avoid bias
-    const shuffled = [...USER_STORIES].sort(() => Math.random() - 0.5)
+    const shuffled = [...stories].sort(() => Math.random() - 0.5)
     setStories(shuffled)
   }
 
@@ -203,7 +143,7 @@ function Exercise2({ onComplete, onStart, isStarted }) {
       <h3>Step 2: Assign Story Points</h3>
       <div className="step-question">
         <h4 className="question-prompt">🎯 Your Task:</h4>
-        <p className="question-text">How many story points should each user story receive based on its complexity, effort, and uncertainty? Select from the Fibonacci sequence: <strong>1, 2, 3, 5, 8, 13</strong></p>
+        <p className="question-text">How many story points should each user story receive based on its complexity, effort, and uncertainty? Select from the Fibonacci sequence: <strong>{exerciseConfig?.config?.pointScale?.join(', ') || '1, 2, 3, 5, 8, 13'}</strong></p>
       </div>
 
       <div className="pointing-list">
@@ -227,6 +167,7 @@ function Exercise2({ onComplete, onStart, isStarted }) {
             <PointSelector
               value={userPoints[story.id] || null}
               onChange={(points) => handlePointAssignment(story.id, points)}
+              pointScale={exerciseConfig?.config?.pointScale || [1, 2, 3, 5, 8, 13]}
             />
           </div>
         ))}
@@ -243,7 +184,7 @@ function Exercise2({ onComplete, onStart, isStarted }) {
   )
 
   const renderFeedbackStep = () => {
-    const correctOrder = [...USER_STORIES].sort((a, b) => a.correctOrder - b.correctOrder)
+    const correctOrder = [...stories].sort((a, b) => a.correctOrder - b.correctOrder)
 
     return (
       <div className="feedback-step">
@@ -260,9 +201,9 @@ function Exercise2({ onComplete, onStart, isStarted }) {
                     <strong>{story.title}</strong> - <span className="points">{story.correctPoints} points</span>
                   </div>
                   <div className="complexity-breakdown">
-                    <span className="complexity-item">Complexity: <strong>{story.complexity}</strong></span>
-                    <span className="complexity-item">Effort: <strong>{story.effort}</strong></span>
-                    <span className="complexity-item">Uncertainty: <strong>{story.uncertainty}</strong></span>
+                    <span className="complexity-item">Complexity: <strong>{story.factors?.complexity || story.complexity}</strong></span>
+                    <span className="complexity-item">Effort: <strong>{story.factors?.effort || story.effort}</strong></span>
+                    <span className="complexity-item">Uncertainty: <strong>{story.factors?.uncertainty || story.uncertainty}</strong></span>
                   </div>
                   <p className="explanation">{story.explanation}</p>
                 </div>
@@ -299,15 +240,23 @@ function Exercise2({ onComplete, onStart, isStarted }) {
       </div>
 
       <div className="exercise-content">
-        {!isStarted ? (
+        {loading ? (
+          <div className="loading-screen">
+            <p>Loading exercise data...</p>
+          </div>
+        ) : error ? (
+          <div className="error-screen">
+            <p>Error loading exercise: {error}</p>
+            <button onClick={() => window.location.reload()}>Retry</button>
+          </div>
+        ) : !isStarted ? (
           <div className="start-screen">
             <p>
-              You'll work with realistic user stories from a typical web application.
-              First arrange them by relative complexity, then assign story points (1, 2, 3, 5, 8, 13)
-              based on complexity, effort, and uncertainty.
+              {exerciseConfig?.ui?.startScreen?.instructions ||
+               "You'll work with realistic user stories from a typical web application. First arrange them by relative complexity, then assign story points (1, 2, 3, 5, 8, 13) based on complexity, effort, and uncertainty."}
             </p>
-            <button className="start-button" onClick={handleStart}>
-              Start Exercise
+            <button className="start-button" onClick={handleStart} disabled={stories.length === 0}>
+              {exerciseConfig?.ui?.startScreen?.buttonText || "Start Exercise"}
             </button>
           </div>
         ) : (
@@ -319,12 +268,14 @@ function Exercise2({ onComplete, onStart, isStarted }) {
         )}
       </div>
 
-      <div className="mindset-reminder">
-        <p>
-          <strong>Remember:</strong> Notice how a small change in requirements can significantly
-          increase complexity. Story points help us account for these nuances.
-        </p>
-      </div>
+      {exerciseConfig?.config?.showMindsetReminder && (
+        <div className="mindset-reminder">
+          <p>
+            <strong>Remember:</strong> Notice how a small change in requirements can significantly
+            increase complexity. Story points help us account for these nuances.
+          </p>
+        </div>
+      )}
     </div>
   )
 }

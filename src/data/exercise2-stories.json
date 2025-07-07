@@ -1,0 +1,107 @@
+{
+  "metadata": {
+    "exerciseId": 2,
+    "type": "user_stories",
+    "version": "1.0.0",
+    "description": "User stories for web application development estimation exercise"
+  },
+  "stories": [
+    {
+      "id": "view-profile",
+      "title": "View User Profile",
+      "description": "As a user, I want to view my profile information so that I can see my current details.",
+      "acceptanceCriteria": [
+        "Display user name, email, and profile picture",
+        "Show account creation date",
+        "Display in a clean, readable format"
+      ],
+      "correctOrder": 1,
+      "correctPoints": 2,
+      "factors": {
+        "complexity": "Low",
+        "effort": "Low",
+        "uncertainty": "Low"
+      },
+      "explanation": "Simple read operation with basic UI display. Minimal business logic and well-understood requirements."
+    },
+    {
+      "id": "update-profile",
+      "title": "Update Profile Information",
+      "description": "As a user, I want to edit my profile information so that I can keep my details current.",
+      "acceptanceCriteria": [
+        "Edit name, email, and profile picture",
+        "Validate email format and uniqueness",
+        "Show success/error messages",
+        "Handle image upload and resizing"
+      ],
+      "correctOrder": 2,
+      "correctPoints": 3,
+      "factors": {
+        "complexity": "Medium",
+        "effort": "Medium",
+        "uncertainty": "Low-Medium"
+      },
+      "explanation": "Involves form handling, validation, file upload, and error handling. More complex than viewing but still straightforward."
+    },
+    {
+      "id": "password-reset",
+      "title": "Password Reset Functionality",
+      "description": "As a user, I want to reset my password when I forget it so that I can regain access to my account.",
+      "acceptanceCriteria": [
+        "Send reset email with secure token",
+        "Validate token and expiration",
+        "Allow new password entry",
+        "Update password securely",
+        "Handle edge cases (expired tokens, etc.)"
+      ],
+      "correctOrder": 3,
+      "correctPoints": 5,
+      "factors": {
+        "complexity": "Medium-High",
+        "effort": "Medium-High",
+        "uncertainty": "Medium"
+      },
+      "explanation": "Security-sensitive feature requiring email integration, token management, and careful handling of edge cases."
+    },
+    {
+      "id": "two-factor-auth",
+      "title": "Enable Two-Factor Authentication",
+      "description": "As a user, I want to enable 2FA so that I can secure my account with an additional layer of protection.",
+      "acceptanceCriteria": [
+        "Generate and display QR code for authenticator apps",
+        "Verify setup with test code",
+        "Provide backup recovery codes",
+        "Integrate with login flow",
+        "Handle various authenticator apps"
+      ],
+      "correctOrder": 4,
+      "correctPoints": 8,
+      "factors": {
+        "complexity": "High",
+        "effort": "High",
+        "uncertainty": "Medium-High"
+      },
+      "explanation": "Complex security feature requiring integration with external authenticator systems, backup mechanisms, and modification of core authentication flow."
+    },
+    {
+      "id": "social-login",
+      "title": "Social Media Login Integration",
+      "description": "As a user, I want to log in using my social media accounts so that I can access the app more conveniently.",
+      "acceptanceCriteria": [
+        "Support Google, Facebook, and Twitter login",
+        "Handle account linking and creation",
+        "Manage OAuth flows and tokens",
+        "Sync profile data appropriately",
+        "Handle edge cases (existing accounts, etc.)"
+      ],
+      "correctOrder": 5,
+      "correctPoints": 13,
+      "factors": {
+        "complexity": "Very High",
+        "effort": "Very High",
+        "uncertainty": "High"
+      },
+      "explanation": "Multiple OAuth integrations, complex account management logic, data synchronization, and numerous edge cases. High uncertainty due to external API dependencies."
+    }
+  ]
+}

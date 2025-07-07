@@ -1,71 +1,42 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './Exercise.css'
 import './Exercise3.css'
-
-const QUIZ_QUESTIONS = [
-  {
-    id: 'relative-sizing',
-    question: 'Story points are about relative sizing, not absolute time estimation.',
-    answer: true,
-    explanation: 'Correct! Story points compare the relative effort/complexity between stories, not predict exact time. This makes them more reliable than time estimates.',
-    category: 'Core Concept'
-  },
-  {
-    id: 'fibonacci-sequence',
-    question: 'The Fibonacci sequence (1, 2, 3, 5, 8, 13...) is used because it reflects the increasing uncertainty in larger estimates.',
-    answer: true,
-    explanation: 'Exactly! As stories get larger, our uncertainty grows exponentially. Fibonacci gaps reflect this natural uncertainty progression.',
-    category: 'Estimation Scale'
-  },
-  {
-    id: 'time-conversion',
-    question: 'You should convert story points directly to hours or days for project planning.',
-    answer: false,
-    explanation: 'Incorrect. Converting story points to time defeats their purpose. Use velocity (points completed per sprint) for planning instead.',
-    category: 'Common Mistake'
-  },
-  {
-    id: 'complexity-factors',
-    question: 'Story points should only consider the amount of code to write, not technical complexity or uncertainty.',
-    answer: false,
-    explanation: 'Wrong! Story points consider three factors: complexity (technical difficulty), effort (amount of work), and uncertainty (unknowns and risks).',
-    category: 'Sizing Factors'
-  },
-  {
-    id: 'team-consistency',
-    question: 'Different teams will assign the same story points to identical stories.',
-    answer: false,
-    explanation: 'Not necessarily. Each team develops their own baseline and context. A 5-point story for one team might be 3 or 8 for another, and that\'s okay.',
-    category: 'Team Context'
-  },
-  {
-    id: 'baseline-importance',
-    question: 'Having a consistent baseline story helps maintain relative sizing accuracy.',
-    answer: true,
-    explanation: 'Absolutely! A reference story (like "changing a password = 3 points") helps the team maintain consistent relative sizing over time.',
-    category: 'Best Practice'
-  },
-  {
-    id: 'velocity-planning',
-    question: 'Velocity (story points completed per sprint) is more reliable for planning than individual time estimates.',
-    answer: true,
-    explanation: 'Correct! Velocity smooths out individual estimation errors and provides a reliable team-based planning metric.',
-    category: 'Planning'
-  },
-  {
-    id: 'story-splitting',
-    question: 'If a story is estimated at 13+ points, it should usually be split into smaller stories.',
-    answer: true,
-    explanation: 'Yes! Large stories have high uncertainty and risk. Splitting them into smaller, more predictable pieces improves delivery reliability.',
-    category: 'Story Management'
-  }
-]
+import { loadQuizQuestions, getExerciseConfig } from '../utils/dataLoader'
 
 function Exercise3({ onComplete, onStart, isStarted }) {
+  const [questions, setQuestions] = useState([])
+  const [exerciseConfig, setExerciseConfig] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [userAnswers, setUserAnswers] = useState({})
   const [showQuestionFeedback, setShowQuestionFeedback] = useState(false)
   const [currentStep, setCurrentStep] = useState('quiz') // 'quiz', 'results', 'summary'
+
+  // Load exercise data on component mount
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        setLoading(true)
+        setError(null)
+
+        const [quizQuestions, config] = await Promise.all([
+          loadQuizQuestions(),
+          getExerciseConfig(3)
+        ])
+
+        setQuestions(quizQuestions)
+        setExerciseConfig(config)
+      } catch (err) {
+        console.error('Failed to load exercise data:', err)
+        setError(err.message)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadData()
+  }, [])
 
   const handleStart = () => {
     onStart()
@@ -76,7 +47,7 @@ function Exercise3({ onComplete, onStart, isStarted }) {
   }
 
   const handleAnswer = (answer) => {
-    const currentQuestion = QUIZ_QUESTIONS[currentQuestionIndex]
+    const currentQuestion = questions[currentQuestionIndex]
     setUserAnswers(prev => ({
       ...prev,
       [currentQuestion.id]: answer
@@ -85,7 +56,7 @@ function Exercise3({ onComplete, onStart, isStarted }) {
   }
 
   const handleNextQuestion = () => {
-    if (currentQuestionIndex < QUIZ_QUESTIONS.length - 1) {
+    if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(prev => prev + 1)
       setShowQuestionFeedback(false)
     } else {
@@ -102,22 +73,24 @@ function Exercise3({ onComplete, onStart, isStarted }) {
   }
 
   const calculateScore = () => {
-    const correctAnswers = QUIZ_QUESTIONS.filter(q => userAnswers[q.id] === q.answer).length
-    return Math.round((correctAnswers / QUIZ_QUESTIONS.length) * 100)
+    const correctAnswers = questions.filter(q => userAnswers[q.id] === q.answer).length
+    return Math.round((correctAnswers / questions.length) * 100)
   }
 
   const renderQuiz = () => {
-    const currentQuestion = QUIZ_QUESTIONS[currentQuestionIndex]
+    const currentQuestion = questions[currentQuestionIndex]
+    if (!currentQuestion) return null
+
     const isCorrect = userAnswers[currentQuestion.id] === currentQuestion.answer
 
     return (
       <div className="quiz-container">
         <div className="quiz-progress">
-          <span>Question {currentQuestionIndex + 1} of {QUIZ_QUESTIONS.length}</span>
+          <span>Question {currentQuestionIndex + 1} of {questions.length}</span>
           <div className="progress-bar">
             <div
               className="progress-fill"
-              style={{ width: `${((currentQuestionIndex + 1) / QUIZ_QUESTIONS.length) * 100}%` }}
+              style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
             />
           </div>
         </div>
@@ -155,7 +128,7 @@ function Exercise3({ onComplete, onStart, isStarted }) {
               </div>
               <p className="feedback-explanation">{currentQuestion.explanation}</p>
               <button className="next-button" onClick={handleNextQuestion}>
-                {currentQuestionIndex < QUIZ_QUESTIONS.length - 1 ? 'Next Question' : 'View Results'}
+                {currentQuestionIndex < questions.length - 1 ? 'Next Question' : 'View Results'}
               </button>
             </div>
           )}
@@ -166,7 +139,7 @@ function Exercise3({ onComplete, onStart, isStarted }) {
 
   const renderResults = () => {
     const score = calculateScore()
-    const correctAnswers = QUIZ_QUESTIONS.filter(q => userAnswers[q.id] === q.answer).length
+    const correctAnswers = questions.filter(q => userAnswers[q.id] === q.answer).length
 
     return (
       <div className="results-container">
@@ -174,13 +147,13 @@ function Exercise3({ onComplete, onStart, isStarted }) {
           <h3>Quiz Complete!</h3>
           <div className="score-display">
             <span className="score-number">{score}%</span>
-            <span className="score-details">({correctAnswers} out of {QUIZ_QUESTIONS.length} correct)</span>
+            <span className="score-details">({correctAnswers} out of {questions.length} correct)</span>
           </div>
         </div>
 
         <div className="results-breakdown">
           <h4>Question Review</h4>
-          {QUIZ_QUESTIONS.map((question, index) => {
+          {questions.map((question, index) => {
             const userAnswer = userAnswers[question.id]
             const isCorrect = userAnswer === question.answer
 
@@ -330,11 +303,20 @@ function Exercise3({ onComplete, onStart, isStarted }) {
       </div>
 
       <div className="exercise-content">
-        {!isStarted ? (
+        {loading ? (
+          <div className="loading-screen">
+            <p>Loading quiz questions...</p>
+          </div>
+        ) : error ? (
+          <div className="error-screen">
+            <p>Error loading quiz: {error}</p>
+            <button onClick={() => window.location.reload()}>Retry</button>
+          </div>
+        ) : !isStarted ? (
           <div className="start-screen">
             <p>
-              Complete an interactive quiz covering the fundamental principles of story point estimation,
-              then review a comprehensive summary of everything you've learned.
+              {exerciseConfig?.ui?.startScreen?.instructions ||
+               "Complete an interactive quiz covering the fundamental principles of story point estimation, then review a comprehensive summary of everything you've learned."}
             </p>
             <div className="quiz-preview">
               <h4>What You'll Cover:</h4>
@@ -346,8 +328,8 @@ function Exercise3({ onComplete, onStart, isStarted }) {
                 <li>✓ Common mistakes to avoid</li>
               </ul>
             </div>
-            <button className="start-button" onClick={handleStart}>
-              Start Final Quiz
+            <button className="start-button" onClick={handleStart} disabled={questions.length === 0}>
+              {exerciseConfig?.ui?.startScreen?.buttonText || "Start Final Quiz"}
             </button>
           </div>
         ) : (
@@ -359,7 +341,7 @@ function Exercise3({ onComplete, onStart, isStarted }) {
         )}
       </div>
 
-      {!isStarted && (
+      {!isStarted && exerciseConfig?.config?.showMindsetReminder && (
         <div className="mindset-reminder">
           <p>
             <strong>Remember:</strong> Story points are about relative sizing, not time estimation.

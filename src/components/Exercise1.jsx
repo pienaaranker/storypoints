@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   DndContext,
   closestCenter,
@@ -22,47 +22,40 @@ import './Exercise.css'
 import './Exercise1.css'
 import SortableItem from './SortableItem'
 import PointSelector from './PointSelector'
-
-const ABSTRACT_ITEMS = [
-  {
-    id: 'grain-of-sand',
-    name: 'A grain of sand',
-    description: 'Tiny, lightweight, easily moved',
-    correctOrder: 1,
-    correctPoints: 1,
-    explanation: 'Minimal effort required - can be moved with a gentle breath or touch.'
-  },
-  {
-    id: 'pebble',
-    name: 'A pebble',
-    description: 'Small stone, fits in your palm',
-    correctOrder: 2,
-    correctPoints: 2,
-    explanation: 'Requires deliberate action but minimal physical effort - easily picked up and moved by hand.'
-  },
-  {
-    id: 'boulder',
-    name: 'A boulder',
-    description: 'Large rock, requires significant effort',
-    correctOrder: 3,
-    correctPoints: 5,
-    explanation: 'Substantial effort required - needs tools, multiple people, or machinery to move effectively.'
-  },
-  {
-    id: 'mountain',
-    name: 'A mountain',
-    description: 'Massive geological formation',
-    correctOrder: 4,
-    correctPoints: 13,
-    explanation: 'Enormous complexity and effort - would require massive engineering projects, years of work, and enormous resources.'
-  }
-]
+import { loadAbstractItems, getExerciseConfig } from '../utils/dataLoader'
 
 function Exercise1({ onComplete, onStart, isStarted }) {
-  const [items, setItems] = useState(ABSTRACT_ITEMS)
+  const [items, setItems] = useState([])
+  const [exerciseConfig, setExerciseConfig] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
   const [currentStep, setCurrentStep] = useState('ordering') // 'ordering', 'pointing', 'feedback'
   const [userPoints, setUserPoints] = useState({})
-  const [showFeedback, setShowFeedback] = useState(false)
+
+  // Load exercise data on component mount
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        setLoading(true)
+        setError(null)
+
+        const [abstractItems, config] = await Promise.all([
+          loadAbstractItems(),
+          getExerciseConfig(1)
+        ])
+
+        setItems(abstractItems)
+        setExerciseConfig(config)
+      } catch (err) {
+        console.error('Failed to load exercise data:', err)
+        setError(err.message)
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    loadData()
+  }, [])
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -74,7 +67,7 @@ function Exercise1({ onComplete, onStart, isStarted }) {
   const handleStart = () => {
     onStart()
     // Shuffle items initially to avoid bias
-    const shuffled = [...ABSTRACT_ITEMS].sort(() => Math.random() - 0.5)
+    const shuffled = [...items].sort(() => Math.random() - 0.5)
     setItems(shuffled)
   }
 
@@ -151,7 +144,7 @@ function Exercise1({ onComplete, onStart, isStarted }) {
       <h3>Step 2: Assign Story Points</h3>
       <div className="step-question">
         <h4 className="question-prompt">🎯 Your Task:</h4>
-        <p className="question-text">How many story points should each item receive based on the relative effort to move it? Select from: <strong>1, 2, 3, 5, 8, 13</strong></p>
+        <p className="question-text">How many story points should each item receive based on the relative effort to move it? Select from: <strong>{exerciseConfig?.config?.pointScale?.join(', ') || '1, 2, 3, 5, 8, 13'}</strong></p>
       </div>
 
       <div className="guidance-section">
@@ -193,6 +186,7 @@ function Exercise1({ onComplete, onStart, isStarted }) {
             <PointSelector
               value={userPoints[item.id] || null}
               onChange={(points) => handlePointAssignment(item.id, points)}
+              pointScale={exerciseConfig?.config?.pointScale || [1, 2, 3, 5, 8, 13]}
             />
           </div>
         ))}
@@ -209,7 +203,7 @@ function Exercise1({ onComplete, onStart, isStarted }) {
   )
 
   const renderFeedbackStep = () => {
-    const correctOrder = [...ABSTRACT_ITEMS].sort((a, b) => a.correctOrder - b.correctOrder)
+    const correctOrder = [...items].sort((a, b) => a.correctOrder - b.correctOrder)
 
     return (
       <div className="feedback-step">
@@ -235,7 +229,7 @@ function Exercise1({ onComplete, onStart, isStarted }) {
           <p>
             Notice the exponential difference in effort between items. A mountain isn't just "4 times"
             harder than a grain of sand - it's exponentially more complex. This is why we use
-            Fibonacci-like sequences (1, 2, 3, 5, 8, 13) rather than linear scales.
+            Fibonacci-like sequences ({exerciseConfig?.config?.pointScale?.join(', ') || '1, 2, 3, 5, 8, 13'}) rather than linear scales.
           </p>
         </div>
 
@@ -257,15 +251,23 @@ function Exercise1({ onComplete, onStart, isStarted }) {
       </div>
 
       <div className="exercise-content">
-        {!isStarted ? (
+        {loading ? (
+          <div className="loading-screen">
+            <p>Loading exercise data...</p>
+          </div>
+        ) : error ? (
+          <div className="error-screen">
+            <p>Error loading exercise: {error}</p>
+            <button onClick={() => window.location.reload()}>Retry</button>
+          </div>
+        ) : !isStarted ? (
           <div className="start-screen">
             <p>
-              You'll be presented with abstract items like "a grain of sand," "a pebble,"
-              "a boulder," and "a mountain." Your task is to arrange them by relative effort
-              to move, then assign story points.
+              {exerciseConfig?.ui?.startScreen?.instructions ||
+               "You'll be presented with abstract items like \"a grain of sand,\" \"a pebble,\" \"a boulder,\" and \"a mountain.\" Your task is to arrange them by relative effort to move, then assign story points."}
             </p>
-            <button className="start-button" onClick={handleStart}>
-              Start Exercise
+            <button className="start-button" onClick={handleStart} disabled={items.length === 0}>
+              {exerciseConfig?.ui?.startScreen?.buttonText || "Start Exercise"}
             </button>
           </div>
         ) : (
@@ -277,12 +279,14 @@ function Exercise1({ onComplete, onStart, isStarted }) {
         )}
       </div>
 
-      <div className="mindset-reminder">
-        <p>
-          <strong>Remember:</strong> Story points are about <em>relative effort</em>, not absolute time.
-          A '3' is roughly three times the effort of a '1'.
-        </p>
-      </div>
+      {exerciseConfig?.config?.showMindsetReminder && (
+        <div className="mindset-reminder">
+          <p>
+            <strong>Remember:</strong> {exerciseConfig?.ui?.mindsetReminder ||
+             "Story points are about relative effort, not absolute time. A '3' is roughly three times the effort of a '1'."}
+          </p>
+        </div>
+      )}
     </div>
   )
 }
