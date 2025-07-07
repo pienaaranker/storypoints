@@ -172,7 +172,10 @@ function Exercise2({ onComplete, onStart, isStarted }) {
   const renderOrderingStep = () => (
     <div className="ordering-step">
       <h3>Step 1: Order User Stories by Complexity</h3>
-      <p>Drag and drop these user stories to arrange them from <strong>least complex</strong> to <strong>most complex</strong>:</p>
+      <div className="step-question">
+        <h4 className="question-prompt">🎯 Your Task:</h4>
+        <p className="question-text">Which user story is the simplest to implement? Arrange all stories from <strong>least complex to most complex</strong> by considering development effort, technical challenges, and requirements.</p>
+      </div>
 
       <DndContext
         sensors={sensors}
@@ -198,7 +201,10 @@ function Exercise2({ onComplete, onStart, isStarted }) {
   const renderPointingStep = () => (
     <div className="pointing-step">
       <h3>Step 2: Assign Story Points</h3>
-      <p>Now assign story points to each user story. Use the Fibonacci sequence: <strong>1, 2, 3, 5, 8, 13</strong></p>
+      <div className="step-question">
+        <h4 className="question-prompt">🎯 Your Task:</h4>
+        <p className="question-text">How many story points should each user story receive based on its complexity, effort, and uncertainty? Select from the Fibonacci sequence: <strong>1, 2, 3, 5, 8, 13</strong></p>
+      </div>
 
       <div className="pointing-list">
         {stories.map((story, index) => (

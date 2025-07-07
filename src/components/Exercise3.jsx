@@ -126,6 +126,12 @@ function Exercise3({ onComplete, onStart, isStarted }) {
           <div className="question-category">{currentQuestion.category}</div>
           <h3 className="question-text">{currentQuestion.question}</h3>
 
+          {!showQuestionFeedback && (
+            <div className="question-instruction">
+              <p className="instruction-text">Select your answer:</p>
+            </div>
+          )}
+
           {!showQuestionFeedback ? (
             <div className="answer-buttons">
               <button

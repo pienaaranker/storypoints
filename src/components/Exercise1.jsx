@@ -120,7 +120,10 @@ function Exercise1({ onComplete, onStart, isStarted }) {
   const renderOrderingStep = () => (
     <div className="ordering-step">
       <h3>Step 1: Arrange by Relative Effort</h3>
-      <p>Drag and drop these items to arrange them from <strong>least effort</strong> to <strong>most effort</strong> to move:</p>
+      <div className="step-question">
+        <h4 className="question-prompt">🎯 Your Task:</h4>
+        <p className="question-text">Which item requires the least effort to move? Arrange all items from <strong>easiest to hardest</strong> to move by dragging and dropping them.</p>
+      </div>
 
       <DndContext
         sensors={sensors}
@@ -146,7 +149,36 @@ function Exercise1({ onComplete, onStart, isStarted }) {
   const renderPointingStep = () => (
     <div className="pointing-step">
       <h3>Step 2: Assign Story Points</h3>
-      <p>Now assign relative story points to each item. Use these values: <strong>1, 2, 3, 5, 8, 13</strong></p>
+      <div className="step-question">
+        <h4 className="question-prompt">🎯 Your Task:</h4>
+        <p className="question-text">How many story points should each item receive based on the relative effort to move it? Select from: <strong>1, 2, 3, 5, 8, 13</strong></p>
+      </div>
+
+      <div className="guidance-section">
+        <div className="guidance-header">
+          <h4>💡 Sizing Mindset Guide</h4>
+        </div>
+        <div className="guidance-content">
+          <div className="guidance-column">
+            <h5>Consider These Factors:</h5>
+            <ul>
+              <li><strong>Physical effort</strong> - How much strength is needed?</li>
+              <li><strong>Tools required</strong> - Can you use just your hands?</li>
+              <li><strong>Coordination</strong> - Do you need help from others?</li>
+              <li><strong>Complexity</strong> - How many steps are involved?</li>
+            </ul>
+          </div>
+          <div className="guidance-column">
+            <h5>Remember:</h5>
+            <ul>
+              <li><strong>Think relatively</strong> - Compare items to each other</li>
+              <li><strong>Not about time</strong> - Focus on effort and complexity</li>
+              <li><strong>Exponential differences</strong> - A 5 isn't just "5 times" a 1</li>
+              <li><strong>Use your experience</strong> - What would it really take?</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
       <div className="pointing-list">
         {items.map((item, index) => (
