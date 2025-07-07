@@ -116,35 +116,7 @@
   line-height: 1.3;
 }
 
-.point-selector {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  min-width: 100px;
-}
-
-.point-selector label {
-  font-weight: 600;
-  color: #495057;
-  font-size: 0.9rem;
-}
-
-.point-selector select {
-  padding: 0.5rem;
-  border: 2px solid #e9ecef;
-  border-radius: 4px;
-  font-size: 1rem;
-  background: white;
-  cursor: pointer;
-  min-width: 80px;
-  text-align: center;
-}
-
-.point-selector select:focus {
-  outline: none;
-  border-color: #667eea;
-}
+/* Point selector styles are now in PointSelector.css */
 
 /* Feedback Step Styles */
 .feedback-section {

@@ -91,31 +91,7 @@
   margin: 0;
 }
 
-.point-selector {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.point-selector label {
-  font-weight: 600;
-  color: #495057;
-}
-
-.point-selector select {
-  padding: 0.5rem;
-  border: 2px solid #e9ecef;
-  border-radius: 4px;
-  font-size: 1rem;
-  background: white;
-  cursor: pointer;
-  min-width: 80px;
-}
-
-.point-selector select:focus {
-  outline: none;
-  border-color: #667eea;
-}
+/* Point selector styles are now in PointSelector.css */
 
 /* Feedback Step Styles */
 .feedback-section {
@@ -192,16 +168,12 @@
     align-items: flex-start;
     gap: 1rem;
   }
-  
-  .point-selector {
-    align-self: flex-end;
-  }
-  
+
   .feedback-item {
     flex-direction: column;
     gap: 0.5rem;
   }
-  
+
   .item-rank {
     align-self: flex-start;
   }

@@ -21,6 +21,7 @@ import {
 import './Exercise.css'
 import './Exercise1.css'
 import SortableItem from './SortableItem'
+import PointSelector from './PointSelector'
 
 const ABSTRACT_ITEMS = [
   {
@@ -94,10 +95,17 @@ function Exercise1({ onComplete, onStart, isStarted }) {
   }
 
   const handlePointAssignment = (itemId, points) => {
-    setUserPoints(prev => ({
-      ...prev,
-      [itemId]: points
-    }))
+    setUserPoints(prev => {
+      if (points === null) {
+        // Remove the item from userPoints when deselected
+        const { [itemId]: removed, ...rest } = prev
+        return rest
+      }
+      return {
+        ...prev,
+        [itemId]: points
+      }
+    })
   }
 
   const handlePointingComplete = () => {
@@ -150,21 +158,10 @@ function Exercise1({ onComplete, onStart, isStarted }) {
                 <p>{item.description}</p>
               </div>
             </div>
-            <div className="point-selector">
-              <label>Points:</label>
-              <select
-                value={userPoints[item.id] || ''}
-                onChange={(e) => handlePointAssignment(item.id, parseInt(e.target.value))}
-              >
-                <option value="">Select...</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="5">5</option>
-                <option value="8">8</option>
-                <option value="13">13</option>
-              </select>
-            </div>
+            <PointSelector
+              value={userPoints[item.id] || null}
+              onChange={(points) => handlePointAssignment(item.id, points)}
+            />
           </div>
         ))}
       </div>

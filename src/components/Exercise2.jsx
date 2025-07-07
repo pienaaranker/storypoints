@@ -21,6 +21,7 @@ import {
 import './Exercise.css'
 import './Exercise2.css'
 import UserStoryItem from './UserStoryItem'
+import PointSelector from './PointSelector'
 
 const USER_STORIES = [
   {
@@ -147,10 +148,17 @@ function Exercise2({ onComplete, onStart, isStarted }) {
   }
 
   const handlePointAssignment = (storyId, points) => {
-    setUserPoints(prev => ({
-      ...prev,
-      [storyId]: points
-    }))
+    setUserPoints(prev => {
+      if (points === null) {
+        // Remove the story from userPoints when deselected
+        const { [storyId]: removed, ...rest } = prev
+        return rest
+      }
+      return {
+        ...prev,
+        [storyId]: points
+      }
+    })
   }
 
   const handlePointingComplete = () => {
@@ -210,21 +218,10 @@ function Exercise2({ onComplete, onStart, isStarted }) {
                 </div>
               </div>
             </div>
-            <div className="point-selector">
-              <label>Points:</label>
-              <select
-                value={userPoints[story.id] || ''}
-                onChange={(e) => handlePointAssignment(story.id, parseInt(e.target.value))}
-              >
-                <option value="">Select...</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="5">5</option>
-                <option value="8">8</option>
-                <option value="13">13</option>
-              </select>
-            </div>
+            <PointSelector
+              value={userPoints[story.id] || null}
+              onChange={(points) => handlePointAssignment(story.id, points)}
+            />
           </div>
         ))}
       </div>
