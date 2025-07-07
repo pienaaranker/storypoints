@@ -1,0 +1,62 @@
+.sortable-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  cursor: grab;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.sortable-item:hover {
+  border-color: #667eea;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+}
+
+.sortable-item.dragging {
+  cursor: grabbing;
+  transform: rotate(5deg);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.drag-handle {
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+}
+
+.sortable-item:hover .drag-handle {
+  color: #667eea;
+}
+
+.item-position {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #667eea;
+  min-width: 2rem;
+  text-align: center;
+}
+
+.item-content {
+  flex: 1;
+}
+
+.item-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #212529;
+  margin-bottom: 0.25rem;
+}
+
+.item-description {
+  font-size: 0.9rem;
+  color: #6c757d;
+  line-height: 1.3;
+}

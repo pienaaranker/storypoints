@@ -1,0 +1,130 @@
+.exercise {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.exercise-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.exercise-header h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #212529;
+  margin: 0 0 1rem 0;
+}
+
+.exercise-intro {
+  font-size: 1.1rem;
+  color: #6c757d;
+  line-height: 1.6;
+  margin: 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.exercise-content {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-screen {
+  text-align: center;
+  max-width: 500px;
+}
+
+.start-screen p {
+  font-size: 1rem;
+  color: #495057;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.start-button, .complete-button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.start-button:hover, .complete-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.start-button:active, .complete-button:active {
+  transform: translateY(0);
+}
+
+.exercise-placeholder {
+  text-align: center;
+  color: #6c757d;
+}
+
+.exercise-placeholder p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.mindset-reminder {
+  background: linear-gradient(135deg, #f8f9ff 0%, #fff5f5 100%);
+  border-left: 4px solid #667eea;
+  padding: 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.mindset-reminder p {
+  margin: 0;
+  color: #495057;
+}
+
+.mindset-reminder strong {
+  color: #212529;
+}
+
+.mindset-reminder em {
+  color: #667eea;
+  font-style: normal;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .exercise {
+    padding: 1rem;
+  }
+  
+  .exercise-header h2 {
+    font-size: 1.5rem;
+  }
+  
+  .exercise-intro {
+    font-size: 1rem;
+  }
+  
+  .exercise-content {
+    padding: 1.5rem;
+    min-height: 250px;
+  }
+  
+  .start-button, .complete-button {
+    padding: 0.875rem 1.5rem;
+    font-size: 1rem;
+  }
+}
