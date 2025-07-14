@@ -5,15 +5,15 @@
 
 // Dynamic imports for modules
 const moduleConfigs = {
-  'story-points': () => import('../data/modules/story-points/module-config.json', { with: { type: 'json' } }),
-  'story-hierarchy': () => import('../data/modules/story-hierarchy/module-config.json', { with: { type: 'json' } })
+  'story-points': () => import('../data/modules/story-points/module-config.json'),
+  'story-hierarchy': () => import('../data/modules/story-hierarchy/module-config.json')
 }
 
 const exerciseDataLoaders = {
   'story-points': {
-    1: () => import('../data/modules/story-points/exercise1-items.json', { with: { type: 'json' } }),
-    2: () => import('../data/modules/story-points/exercise2-stories.json', { with: { type: 'json' } }),
-    3: () => import('../data/modules/story-points/exercise3-questions.json', { with: { type: 'json' } })
+    1: () => import('../data/modules/story-points/exercise1-items.json'),
+    2: () => import('../data/modules/story-points/exercise2-stories.json'),
+    3: () => import('../data/modules/story-points/exercise3-questions.json')
   }
   // Future modules will be added here
 }
@@ -25,7 +25,7 @@ const exerciseDataLoaders = {
  */
 export async function loadPlatformConfig() {
   try {
-    const config = await import('../data/platform-config.json', { with: { type: 'json' } })
+    const config = await import('../data/platform-config.json')
     return config.default
   } catch (error) {
     console.error('Failed to load platform config:', error)
