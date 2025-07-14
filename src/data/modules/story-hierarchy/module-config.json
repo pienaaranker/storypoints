@@ -1,0 +1,58 @@
+{
+  "metadata": {
+    "moduleId": "story-hierarchy",
+    "version": "1.0.0",
+    "lastUpdated": "2025-01-14",
+    "description": "Story Hierarchy & Breakdown Module Configuration"
+  },
+  "module": {
+    "title": "Story Hierarchy & Breakdown",
+    "description": "Learn to structure and decompose user stories effectively",
+    "learningObjectives": [
+      "Distinguish between Epics, Features, and Stories",
+      "Master story decomposition techniques",
+      "Identify appropriate granularity levels",
+      "Apply user story best practices"
+    ],
+    "exercises": [
+      {
+        "id": 1,
+        "title": "Epic vs Feature vs Story",
+        "description": "Learn the hierarchy and distinctions",
+        "details": "Practice categorizing requirements into the appropriate level: Epic, Feature, or Story. Understand the characteristics and scope of each level.",
+        "type": "categorization",
+        "dataFile": "hierarchy-examples.json",
+        "config": {
+          "allowRetry": true,
+          "showHints": true,
+          "categories": ["epic", "feature", "story"]
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "You'll be presented with various requirements and need to categorize them as Epics, Features, or Stories. Learn to identify the appropriate granularity level for each requirement.",
+            "buttonText": "Start Categorization"
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Story Decomposition",
+        "description": "Break down large stories effectively",
+        "details": "Practice breaking down large user stories into smaller, more manageable pieces. Learn effective decomposition techniques and patterns.",
+        "type": "decomposition",
+        "dataFile": "decomposition-scenarios.json",
+        "config": {
+          "allowRetry": true,
+          "showSuggestions": true,
+          "maxStoriesPerScenario": 8
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "You'll work through scenarios where large user stories need to be broken down into smaller, more manageable pieces. Practice effective decomposition techniques.",
+            "buttonText": "Start Decomposition"
+          }
+        }
+      }
+    ]
+  }
+}

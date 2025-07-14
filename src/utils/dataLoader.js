@@ -1,13 +1,11 @@
 /**
  * Data loading utilities for exercise system
  * Handles loading and validation of exercise data from JSON files
+ * Includes backward compatibility with new module system
  */
 
-// Import JSON files
-import exercisesData from '../data/exercises.json'
-import exercise1Data from '../data/exercise1-items.json'
-import exercise2Data from '../data/exercise2-stories.json'
-import exercise3Data from '../data/exercise3-questions.json'
+// Import new module system utilities
+import { loadModuleConfig, loadExerciseData } from './moduleLoader.js'
 
 /**
  * Validates that required properties exist on an object
@@ -87,20 +85,27 @@ function validateQuizQuestion(question) {
 }
 
 /**
- * Loads and validates exercise metadata
- * @returns {Object} Exercise metadata
+ * Loads and validates exercise metadata from module configuration
+ * @param {string} moduleId - Module identifier (default: 'story-points')
+ * @returns {Promise<Object>} Exercise metadata
  * @throws {Error} If loading or validation fails
  */
-export function loadExerciseMetadata() {
+export async function loadExerciseMetadata(moduleId = 'story-points') {
   try {
-    if (!exercisesData || !exercisesData.exercises) {
-      throw new Error('Invalid exercises data structure')
+    const moduleConfig = await loadModuleConfig(moduleId)
+
+    if (!moduleConfig || !moduleConfig.module || !moduleConfig.module.exercises) {
+      throw new Error('Invalid module configuration structure')
     }
 
     // Validate each exercise
-    exercisesData.exercises.forEach(validateExercise)
+    moduleConfig.module.exercises.forEach(validateExercise)
 
-    return exercisesData
+    return {
+      exercises: moduleConfig.module.exercises,
+      metadata: moduleConfig.metadata,
+      module: moduleConfig.module
+    }
   } catch (error) {
     console.error('Failed to load exercise metadata:', error)
     throw new Error(`Exercise metadata loading failed: ${error.message}`)
@@ -109,19 +114,22 @@ export function loadExerciseMetadata() {
 
 /**
  * Loads and validates abstract items for Exercise 1
- * @returns {Array} Array of abstract items
+ * @param {string} moduleId - Module identifier (default: 'story-points')
+ * @returns {Promise<Array>} Array of abstract items
  * @throws {Error} If loading or validation fails
  */
-export function loadAbstractItems() {
+export async function loadAbstractItems(moduleId = 'story-points') {
   try {
-    if (!exercise1Data || !exercise1Data.items) {
+    const exerciseData = await loadExerciseData(moduleId, 1)
+
+    if (!exerciseData || !exerciseData.items) {
       throw new Error('Invalid exercise 1 data structure')
     }
 
     // Validate each item
-    exercise1Data.items.forEach(validateAbstractItem)
+    exerciseData.items.forEach(validateAbstractItem)
 
-    return exercise1Data.items
+    return exerciseData.items
   } catch (error) {
     console.error('Failed to load abstract items:', error)
     throw new Error(`Abstract items loading failed: ${error.message}`)
@@ -130,19 +138,22 @@ export function loadAbstractItems() {
 
 /**
  * Loads and validates user stories for Exercise 2
- * @returns {Array} Array of user stories
+ * @param {string} moduleId - Module identifier (default: 'story-points')
+ * @returns {Promise<Array>} Array of user stories
  * @throws {Error} If loading or validation fails
  */
-export function loadUserStories() {
+export async function loadUserStories(moduleId = 'story-points') {
   try {
-    if (!exercise2Data || !exercise2Data.stories) {
+    const exerciseData = await loadExerciseData(moduleId, 2)
+
+    if (!exerciseData || !exerciseData.stories) {
       throw new Error('Invalid exercise 2 data structure')
     }
 
     // Validate each story
-    exercise2Data.stories.forEach(validateUserStory)
+    exerciseData.stories.forEach(validateUserStory)
 
-    return exercise2Data.stories
+    return exerciseData.stories
   } catch (error) {
     console.error('Failed to load user stories:', error)
     throw new Error(`User stories loading failed: ${error.message}`)
@@ -151,19 +162,22 @@ export function loadUserStories() {
 
 /**
  * Loads and validates quiz questions for Exercise 3
- * @returns {Array} Array of quiz questions
+ * @param {string} moduleId - Module identifier (default: 'story-points')
+ * @returns {Promise<Array>} Array of quiz questions
  * @throws {Error} If loading or validation fails
  */
-export function loadQuizQuestions() {
+export async function loadQuizQuestions(moduleId = 'story-points') {
   try {
-    if (!exercise3Data || !exercise3Data.questions) {
+    const exerciseData = await loadExerciseData(moduleId, 3)
+
+    if (!exerciseData || !exerciseData.questions) {
       throw new Error('Invalid exercise 3 data structure')
     }
 
     // Validate each question
-    exercise3Data.questions.forEach(validateQuizQuestion)
+    exerciseData.questions.forEach(validateQuizQuestion)
 
-    return exercise3Data.questions
+    return exerciseData.questions
   } catch (error) {
     console.error('Failed to load quiz questions:', error)
     throw new Error(`Quiz questions loading failed: ${error.message}`)
@@ -171,20 +185,79 @@ export function loadQuizQuestions() {
 }
 
 /**
- * Gets exercise configuration by ID
+ * Gets exercise configuration by ID using new module system
  * @param {number} exerciseId - Exercise ID
- * @returns {Object} Exercise configuration
+ * @param {string} moduleId - Module ID (default: 'story-points')
+ * @returns {Promise<Object>} Exercise configuration
  * @throws {Error} If exercise not found
  */
-export function getExerciseConfig(exerciseId) {
-  const metadata = loadExerciseMetadata()
-  const exercise = metadata.exercises.find(ex => ex.id === exerciseId)
-  
-  if (!exercise) {
-    throw new Error(`Exercise ${exerciseId} not found`)
+export async function getExerciseConfig(exerciseId, moduleId = 'story-points') {
+  try {
+    const moduleConfig = await loadModuleConfig(moduleId)
+    const exercise = moduleConfig.module.exercises.find(ex => ex.id === exerciseId)
+
+    if (!exercise) {
+      throw new Error(`Exercise ${exerciseId} not found in module ${moduleId}`)
+    }
+
+    return exercise
+  } catch (error) {
+    console.error(`Failed to load exercise config for ${moduleId}/exercise/${exerciseId}:`, error)
+    throw new Error(`Exercise configuration loading failed: ${error.message}`)
   }
-  
-  return exercise
+}
+
+/**
+ * Gets exercise configuration by ID using new module system (async)
+ * @param {number} exerciseId - Exercise ID
+ * @param {string} moduleId - Module ID (default: 'story-points')
+ * @returns {Promise<Object>} Exercise configuration
+ * @throws {Error} If exercise not found
+ */
+export async function getExerciseConfigAsync(exerciseId, moduleId = 'story-points') {
+  try {
+    // Try new module-based loading first
+    return await getModuleExerciseConfig(moduleId, exerciseId)
+  } catch (error) {
+    console.warn('Falling back to legacy exercise loading:', error.message)
+
+    // Fall back to legacy loading
+    const metadata = loadExerciseMetadata()
+    const exercise = metadata.exercises.find(ex => ex.id === exerciseId)
+
+    if (!exercise) {
+      throw new Error(`Exercise ${exerciseId} not found`)
+    }
+
+    return exercise
+  }
+}
+
+/**
+ * Enhanced data loading with module support and backward compatibility
+ * @param {string} moduleId - Module ID (default: 'story-points')
+ * @param {number} exerciseId - Exercise ID
+ * @returns {Promise<Object>} Exercise data
+ */
+export async function loadEnhancedExerciseData(moduleId = 'story-points', exerciseId) {
+  try {
+    // Try new module-based loading first
+    return await loadExerciseData(moduleId, exerciseId)
+  } catch (error) {
+    console.warn(`Falling back to legacy data loading for exercise ${exerciseId}:`, error.message)
+
+    // Fall back to legacy loading based on exercise ID
+    switch (exerciseId) {
+      case 1:
+        return { items: loadAbstractItems() }
+      case 2:
+        return { stories: loadUserStories() }
+      case 3:
+        return { questions: loadQuizQuestions() }
+      default:
+        throw new Error(`No fallback data available for exercise ${exerciseId}`)
+    }
+  }
 }
 
 /**

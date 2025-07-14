@@ -1,0 +1,283 @@
+.module-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.module-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.module-card.available {
+  cursor: pointer;
+}
+
+.module-card.available:hover {
+  border-color: #007bff;
+}
+
+.module-card.available:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.module-card.coming-soon {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.module-card.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.module-card.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.module-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.module-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.module-status {
+  flex-shrink: 0;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-badge.available {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.status-badge.coming-soon {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.status-badge.locked {
+  background-color: #fafafa;
+  color: #757575;
+}
+
+.module-content {
+  flex: 1;
+}
+
+.module-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 8px 0;
+  line-height: 1.3;
+}
+
+.module-description {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0 0 16px 0;
+}
+
+.module-meta {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+}
+
+.meta-label {
+  color: #666;
+  font-weight: 500;
+}
+
+.difficulty {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.difficulty.beginner {
+  background-color: #e8f5e8;
+  color: #2e7d32;
+}
+
+.difficulty.intermediate {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.difficulty.advanced {
+  background-color: #ffebee;
+  color: #d32f2f;
+}
+
+.time {
+  color: #333;
+  font-weight: 500;
+}
+
+.prerequisites {
+  margin-bottom: 16px;
+  padding: 12px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+}
+
+.prerequisites-label {
+  font-weight: 500;
+  color: #333;
+  font-size: 0.875rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.prerequisites-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.prerequisite-item {
+  font-size: 0.875rem;
+  color: #666;
+  padding: 2px 0;
+}
+
+.prerequisite-item:before {
+  content: "→ ";
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.module-progress {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.progress-label {
+  font-weight: 500;
+  color: #333;
+  font-size: 0.875rem;
+}
+
+.progress-percentage {
+  font-weight: 600;
+  color: #007bff;
+  font-size: 0.875rem;
+}
+
+.progress-bar {
+  height: 6px;
+  background-color: #e9ecef;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.completion-badge {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background-color: #d4edda;
+  color: #155724;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.module-card-footer {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+}
+
+.action-hint {
+  text-align: center;
+  color: #666;
+  font-size: 0.875rem;
+  font-style: italic;
+}
+
+.module-card.available .action-hint {
+  color: #007bff;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .module-card {
+    padding: 20px;
+  }
+  
+  .module-meta {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .module-title {
+    font-size: 1.25rem;
+  }
+  
+  .module-icon {
+    font-size: 2rem;
+  }
+}
+
+/* Animation for progress changes */
+@keyframes progressUpdate {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+.progress-fill {
+  animation: progressUpdate 0.6s ease-out;
+  transform-origin: left;
+}

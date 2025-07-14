@@ -20,9 +20,9 @@ import {
 
 import './Exercise.css'
 import './Exercise2.css'
-import UserStoryItem from './UserStoryItem'
-import PointSelector from './PointSelector'
-import { loadUserStories, getExerciseConfig } from '../utils/dataLoader'
+import UserStoryItem from '../../UserStoryItem'
+import PointSelector from '../../PointSelector'
+import { loadUserStories, getExerciseConfig } from '../../../utils/dataLoader'
 
 function Exercise2({ onComplete, onStart, isStarted }) {
   const [stories, setStories] = useState([])

@@ -1,0 +1,33 @@
+{
+  "metadata": {
+    "version": "2.0.0",
+    "lastUpdated": "2025-01-14",
+    "description": "Agile Learning Platform Configuration"
+  },
+  "platform": {
+    "name": "Agile Mastery Hub",
+    "subtitle": "Master agile practices through interactive learning",
+    "modules": [
+      {
+        "id": "story-points",
+        "title": "Story Point Estimation Mastery",
+        "description": "Master the art of relative sizing in agile development",
+        "icon": "🎯",
+        "difficulty": "Beginner",
+        "estimatedTime": "30-45 minutes",
+        "prerequisites": [],
+        "status": "available"
+      },
+      {
+        "id": "story-hierarchy",
+        "title": "Story Hierarchy & Breakdown",
+        "description": "Learn to structure and decompose user stories effectively",
+        "icon": "📋",
+        "difficulty": "Intermediate",
+        "estimatedTime": "45-60 minutes",
+        "prerequisites": ["story-points"],
+        "status": "available"
+      }
+    ]
+  }
+}

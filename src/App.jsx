@@ -1,119 +1,215 @@
-import { useState } from 'react'
+import { useState, useEffect, Suspense, lazy } from 'react'
 import './App.css'
 
-// Import components
+// Import common components
 import Home from './components/Home'
-import Exercise1 from './components/Exercise1'
-import Exercise2 from './components/Exercise2'
-import Exercise3 from './components/Exercise3'
-import Navigation from './components/Navigation'
+import Breadcrumbs from './components/common/Breadcrumbs'
+
+// Lazy load module components for better performance
+const StoryPointModule = lazy(() => import('./components/modules/story-points/StoryPointModule'))
+const StoryHierarchyModule = lazy(() => import('./components/modules/story-hierarchy/StoryHierarchyModule'))
+
+// Import utilities
+import { NavigationManager, createInitialNavigationState, generateBreadcrumbs } from './utils/routingUtils'
+import { ProgressManager, migrateLegacyProgress } from './utils/progressManager'
+import { loadModuleConfig } from './utils/moduleLoader'
 
 function App() {
-  const [currentView, setCurrentView] = useState('home') // 'home' or exercise number
-  const [exerciseProgress, setExerciseProgress] = useState({
-    1: { completed: false, started: false },
-    2: { completed: false, started: false },
-    3: { completed: false, started: false }
-  })
+  // Multi-module navigation state
+  const [navigationState, setNavigationState] = useState(createInitialNavigationState())
+  const [moduleProgress, setModuleProgress] = useState({})
+  const [moduleConfigs, setModuleConfigs] = useState({})
 
-  const handleExerciseComplete = (exerciseNumber) => {
-    setExerciseProgress(prev => ({
-      ...prev,
-      [exerciseNumber]: { ...prev[exerciseNumber], completed: true }
-    }))
+  // Initialize managers
+  const [navigationManager] = useState(() => new NavigationManager(navigationState))
+  const [progressManager] = useState(() => new ProgressManager(moduleProgress))
 
-    // Auto-advance to next exercise if not the last one
-    if (exerciseNumber < 3) {
-      setCurrentView(exerciseNumber + 1)
-      setExerciseProgress(prev => ({
-        ...prev,
-        [exerciseNumber + 1]: { ...prev[exerciseNumber + 1], started: true }
-      }))
-    } else {
-      // After completing the last exercise, return to home
-      setCurrentView('home')
+  // Load and migrate progress from localStorage on app start
+  useEffect(() => {
+    const loadInitialProgress = () => {
+      try {
+        // Check for legacy progress first
+        const legacyProgress = localStorage.getItem('exerciseProgress')
+        const newProgress = localStorage.getItem('moduleProgress')
+
+        if (newProgress) {
+          // Use existing new progress format
+          const parsed = JSON.parse(newProgress)
+          setModuleProgress(parsed)
+          progressManager.setProgress(parsed)
+        } else if (legacyProgress) {
+          // Migrate legacy progress to new format
+          const parsed = JSON.parse(legacyProgress)
+          const migrated = migrateLegacyProgress(parsed, 'story-points')
+          setModuleProgress(migrated)
+          progressManager.setProgress(migrated)
+
+          // Save migrated progress and remove legacy
+          localStorage.setItem('moduleProgress', JSON.stringify(migrated))
+          localStorage.removeItem('exerciseProgress')
+        }
+      } catch (error) {
+        console.error('Failed to load progress from localStorage:', error)
+      }
+    }
+
+    loadInitialProgress()
+  }, [progressManager])
+
+  // Save progress to localStorage whenever it changes
+  useEffect(() => {
+    if (Object.keys(moduleProgress).length > 0) {
+      localStorage.setItem('moduleProgress', JSON.stringify(moduleProgress))
+    }
+  }, [moduleProgress])
+
+  // Load module configurations as needed
+  const loadModuleConfigIfNeeded = async (moduleId) => {
+    if (!moduleConfigs[moduleId]) {
+      try {
+        const config = await loadModuleConfig(moduleId)
+        setModuleConfigs(prev => ({
+          ...prev,
+          [moduleId]: config
+        }))
+        return config
+      } catch (error) {
+        console.error(`Failed to load config for module ${moduleId}:`, error)
+        return null
+      }
+    }
+    return moduleConfigs[moduleId]
+  }
+
+  // Navigation handlers
+  const handleNavigation = (type, moduleId, exerciseId) => {
+    let newNavState
+
+    switch (type) {
+      case 'home':
+        newNavState = navigationManager.navigateToHome()
+        break
+      case 'module':
+        newNavState = navigationManager.navigateToModule(moduleId)
+        break
+      case 'exercise':
+        newNavState = navigationManager.navigateToExercise(moduleId, exerciseId)
+        break
+      default:
+        return
+    }
+
+    setNavigationState(newNavState)
+  }
+
+  const handleExerciseStart = (moduleId, exerciseId) => {
+    const newProgress = progressManager.startExercise(moduleId, exerciseId)
+    setModuleProgress({ ...newProgress })
+  }
+
+  const handleExerciseComplete = async (moduleId, exerciseId) => {
+    try {
+      // Load module configuration to get exercise list
+      const moduleConfig = await loadModuleConfigIfNeeded(moduleId)
+      const moduleExercises = moduleConfig?.module?.exercises || []
+
+      const newProgress = progressManager.completeExercise(moduleId, exerciseId, moduleExercises)
+      setModuleProgress({ ...newProgress })
+
+      // Auto-advance to next exercise or return to module overview
+      const currentIndex = moduleExercises.findIndex(ex => ex.id === exerciseId)
+      if (currentIndex >= 0 && currentIndex < moduleExercises.length - 1) {
+        const nextExercise = moduleExercises[currentIndex + 1]
+        handleNavigation('exercise', moduleId, nextExercise.id)
+      } else {
+        // Last exercise completed, return to module overview
+        handleNavigation('module', moduleId)
+      }
+    } catch (error) {
+      console.error('Failed to complete exercise:', error)
+      // Fallback: just mark as complete without auto-advance
+      const newProgress = progressManager.completeExercise(moduleId, exerciseId, [])
+      setModuleProgress({ ...newProgress })
     }
   }
 
-  const handleExerciseStart = (exerciseNumber) => {
-    setExerciseProgress(prev => ({
-      ...prev,
-      [exerciseNumber]: { ...prev[exerciseNumber], started: true }
-    }))
-  }
-
-  const navigateToExercise = (exerciseNumber) => {
-    setCurrentView(exerciseNumber)
-  }
-
-  const navigateToHome = () => {
-    setCurrentView('home')
-  }
-
   const startFresh = () => {
-    setExerciseProgress({
-      1: { completed: false, started: false },
-      2: { completed: false, started: false },
-      3: { completed: false, started: false }
-    })
-    setCurrentView('home')
+    const newNavState = navigationManager.navigateToHome()
+    setNavigationState(newNavState)
+    progressManager.resetAll()
+    setModuleProgress({})
   }
 
   const renderCurrentView = () => {
-    if (currentView === 'home') {
+    if (navigationState.currentView === 'home') {
       return (
         <Home
-          exerciseProgress={exerciseProgress}
-          onNavigate={navigateToExercise}
+          moduleProgress={moduleProgress}
+          onNavigate={handleNavigation}
           onStartFresh={startFresh}
         />
       )
     }
 
-    // Render exercise based on currentView number
-    switch (currentView) {
-      case 1:
+    if (navigationState.currentView === 'module') {
+      const currentModule = navigationState.currentModule
+      const currentModuleProgress = moduleProgress[currentModule] || { exercises: {} }
+
+      if (currentModule === 'story-points') {
         return (
-          <Exercise1
-            onComplete={() => handleExerciseComplete(1)}
-            onStart={() => handleExerciseStart(1)}
-            isStarted={exerciseProgress[1].started}
-          />
+          <Suspense fallback={<div className="module-loading">Loading Story Points module...</div>}>
+            <StoryPointModule
+              currentExercise={navigationState.currentExercise}
+              moduleProgress={currentModuleProgress}
+              onExerciseComplete={handleExerciseComplete}
+              onExerciseStart={handleExerciseStart}
+              onNavigate={handleNavigation}
+            />
+          </Suspense>
         )
-      case 2:
+      }
+
+      if (currentModule === 'story-hierarchy') {
         return (
-          <Exercise2
-            onComplete={() => handleExerciseComplete(2)}
-            onStart={() => handleExerciseStart(2)}
-            isStarted={exerciseProgress[2].started}
-          />
+          <Suspense fallback={<div className="module-loading">Loading Story Hierarchy module...</div>}>
+            <StoryHierarchyModule
+              currentExercise={navigationState.currentExercise}
+              moduleProgress={currentModuleProgress}
+              onExerciseComplete={handleExerciseComplete}
+              onExerciseStart={handleExerciseStart}
+              onNavigate={handleNavigation}
+            />
+          </Suspense>
         )
-      case 3:
-        return (
-          <Exercise3
-            onComplete={() => handleExerciseComplete(3)}
-            onStart={() => handleExerciseStart(3)}
-            isStarted={exerciseProgress[3].started}
-          />
-        )
-      default:
-        return null
+      }
+
+      // Fallback for unknown modules
+      return (
+        <div className="error">
+          <h2>Module not found</h2>
+          <p>The module "{currentModule}" is not implemented yet.</p>
+          <button onClick={() => handleNavigation('home')}>Return to Home</button>
+        </div>
+      )
     }
+
+    return null
   }
+
+  // Generate breadcrumbs for navigation
+  const breadcrumbs = generateBreadcrumbs(navigationState)
 
   return (
     <div className="app">
+      {breadcrumbs.length > 1 && (
+        <Breadcrumbs
+          breadcrumbs={breadcrumbs}
+          onNavigate={handleNavigation}
+        />
+      )}
       <main className="main-content">
         {renderCurrentView()}
       </main>
-      {currentView !== 'home' && (
-        <Navigation
-          currentExercise={currentView}
-          exerciseProgress={exerciseProgress}
-          onNavigate={navigateToExercise}
-          onNavigateHome={navigateToHome}
-        />
-      )}
     </div>
   )
 }

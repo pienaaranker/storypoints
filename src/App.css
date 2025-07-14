@@ -66,9 +66,29 @@ button:disabled {
   transform: none;
 }
 
+/* Loading states for lazy-loaded components */
+.module-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  font-size: 1.1rem;
+  color: #666;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin: 2rem 0;
+  border: 1px solid #dee2e6;
+}
+
 /* Responsive design */
 @media (max-width: 768px) {
   .main-content {
     padding: 2rem 0.5rem 1rem;
+  }
+
+  .module-loading {
+    margin: 1rem 0;
+    min-height: 150px;
+    font-size: 1rem;
   }
 }

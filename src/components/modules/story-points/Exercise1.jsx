@@ -20,9 +20,9 @@ import {
 
 import './Exercise.css'
 import './Exercise1.css'
-import SortableItem from './SortableItem'
-import PointSelector from './PointSelector'
-import { loadAbstractItems, getExerciseConfig } from '../utils/dataLoader'
+import SortableItem from '../../SortableItem'
+import PointSelector from '../../PointSelector'
+import { loadAbstractItems, getExerciseConfig } from '../../../utils/dataLoader'
 
 function Exercise1({ onComplete, onStart, isStarted }) {
   const [items, setItems] = useState([])
