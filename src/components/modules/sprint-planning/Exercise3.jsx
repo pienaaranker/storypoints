@@ -141,8 +141,13 @@ function Exercise3({ onComplete, onStart, isStarted }) {
   }
 
   const handleDecision = (scenarioId, optionId) => {
+    if (!sprintData || !sprintData.scenarios) return
+
     const scenario = sprintData.scenarios.find(s => s.id === scenarioId)
+    if (!scenario || !scenario.options) return
+
     const option = scenario.options.find(o => o.id === optionId)
+    if (!option) return
     
     const newDecision = {
       scenarioId,
@@ -208,6 +213,10 @@ function Exercise3({ onComplete, onStart, isStarted }) {
   )
 
   const renderSimulationStep = () => {
+    if (!sprintData || !sprintData.scenarios || !sprintData.scenarios[currentScenario]) {
+      return <div className="loading-screen">Loading scenario...</div>
+    }
+
     const scenario = sprintData.scenarios[currentScenario]
     const progressPercentage = ((sprintData.daysPassed + currentScenario * 2) / sprintData.totalDays) * 100
 
