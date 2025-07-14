@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './Exercise.css'
 import './Exercise3.css'
-import { loadQuizQuestions, getExerciseConfig } from '../utils/dataLoader'
+import { loadQuizQuestions, getExerciseConfig } from '../../../utils/dataLoader'
 
 function Exercise3({ onComplete, onStart, isStarted }) {
   const [questions, setQuestions] = useState([])

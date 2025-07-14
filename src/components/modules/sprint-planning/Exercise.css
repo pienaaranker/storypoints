@@ -1,0 +1,463 @@
+/* Sprint Planning Exercise Styles */
+
+.exercise {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.exercise-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.exercise-header h2 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.exercise-header p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+}
+
+/* Start Screen */
+.start-screen {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+.start-screen p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #495057;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.start-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.start-button:hover {
+  background: #0056b3;
+}
+
+.start-button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Loading and Error States */
+.loading-screen, .error-screen {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.error-screen button {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+/* Exercise 1: Capacity Planning */
+.capacity-planning-step {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.team-info {
+  background: #e3f2fd;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #2196f3;
+}
+
+.team-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.stat-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-top: 0.5rem;
+}
+
+.velocity-chart {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  margin: 1rem 0;
+}
+
+.chart-bars {
+  display: flex;
+  align-items: end;
+  gap: 0.5rem;
+  height: 120px;
+  margin: 1rem 0;
+}
+
+.chart-bar {
+  flex: 1;
+  background: #007bff;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  min-height: 20px;
+}
+
+.chart-bar-label {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.chart-bar-value {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #495057;
+}
+
+.planning-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.backlog-section, .sprint-section {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.backlog-section h4, .sprint-section h4 {
+  margin-bottom: 1rem;
+  color: #495057;
+}
+
+.story-item {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  cursor: grab;
+  transition: all 0.2s;
+}
+
+.story-item:hover {
+  background: #e9ecef;
+  border-color: #007bff;
+}
+
+.story-item.dragging {
+  opacity: 0.5;
+  cursor: grabbing;
+}
+
+.story-title {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.story-points {
+  display: inline-block;
+  background: #007bff;
+  color: white;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.story-description {
+  color: #6c757d;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.sprint-capacity {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  border: 2px solid #dee2e6;
+}
+
+.capacity-bar {
+  height: 20px;
+  background: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+
+.capacity-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #28a745, #20c997);
+  transition: width 0.3s ease;
+}
+
+.capacity-fill.over-capacity {
+  background: linear-gradient(90deg, #dc3545, #c82333);
+}
+
+.capacity-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #495057;
+}
+
+/* Exercise 2: Goal Setting */
+.goal-setting-step {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.business-context {
+  background: #fff3cd;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+}
+
+.goal-input-area {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.goal-input {
+  width: 100%;
+  padding: 1rem;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.goal-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+.goal-quality-checks {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 6px;
+}
+
+.quality-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.quality-check-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.quality-check-icon.pass {
+  background: #28a745;
+  color: white;
+}
+
+.quality-check-icon.fail {
+  background: #dc3545;
+  color: white;
+}
+
+.quality-check-icon.pending {
+  background: #6c757d;
+  color: white;
+}
+
+/* Exercise 3: Adaptation Simulation */
+.adaptation-step {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.sprint-status {
+  background: #e3f2fd;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #2196f3;
+}
+
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.scenario-event {
+  background: #fff3cd;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #ffc107;
+  margin: 1rem 0;
+}
+
+.event-type {
+  font-weight: bold;
+  color: #856404;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.decision-options {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.decision-option {
+  background: white;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.decision-option:hover {
+  border-color: #007bff;
+  background: #f8f9fa;
+}
+
+.decision-option.selected {
+  border-color: #007bff;
+  background: #e3f2fd;
+}
+
+.option-title {
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.option-consequences {
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+/* Action Buttons */
+.step-actions {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.submit-button,
+.next-button,
+.complete-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover,
+.next-button:hover,
+.complete-button:hover {
+  background: #0056b3;
+}
+
+.submit-button:disabled,
+.next-button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+.complete-button {
+  background: #28a745;
+}
+
+.complete-button:hover {
+  background: #1e7e34;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .exercise {
+    padding: 1rem;
+  }
+  
+  .planning-area {
+    grid-template-columns: 1fr;
+  }
+  
+  .team-stats {
+    grid-template-columns: 1fr;
+  }
+  
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+}

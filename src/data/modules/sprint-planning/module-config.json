@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "moduleId": "sprint-planning",
+    "version": "1.0.0",
+    "lastUpdated": "2025-01-14",
+    "description": "Sprint Planning Mastery Module Configuration"
+  },
+  "module": {
+    "title": "Sprint Planning Mastery",
+    "description": "Master the art of planning effective sprints with realistic commitments",
+    "learningObjectives": [
+      "Understand team velocity and capacity planning",
+      "Learn to balance scope vs. time constraints",
+      "Master sprint goal setting and commitment",
+      "Practice handling scope changes and blockers",
+      "Apply Definition of Done in planning"
+    ],
+    "exercises": [
+      {
+        "id": 1,
+        "title": "Velocity & Capacity Planning",
+        "description": "Plan realistic sprint commitments based on team capacity and velocity",
+        "details": "Learn to balance team capacity, historical velocity, and story complexity to create achievable sprint plans. Practice making realistic commitments that teams can deliver.",
+        "type": "capacity_planning",
+        "dataFile": "velocity-scenarios.json",
+        "config": {
+          "allowRetry": true,
+          "showHints": true,
+          "maxCapacityVariance": 20,
+          "velocityHistoryLength": 6
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "You'll work with real team scenarios to plan sprint capacity. Use historical velocity data, team availability, and story point estimates to create realistic sprint commitments.",
+            "buttonText": "Start Planning"
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Sprint Goal Workshop",
+        "description": "Craft meaningful sprint goals and select supporting stories",
+        "details": "Practice creating focused sprint goals that align technical work with business value. Learn to select and prioritize stories that support your sprint objective.",
+        "type": "goal_setting",
+        "dataFile": "goal-scenarios.json",
+        "config": {
+          "allowRetry": true,
+          "showExamples": true,
+          "maxStoriesPerSprint": 12,
+          "goalQualityChecks": true
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "You'll be presented with product backlogs and business contexts. Your task is to craft compelling sprint goals and select stories that best support those objectives.",
+            "buttonText": "Start Workshop"
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Mid-Sprint Adaptation",
+        "description": "Handle scope changes and blockers during sprint execution",
+        "details": "Experience realistic mid-sprint scenarios where priorities shift, blockers emerge, and scope needs adjustment. Practice agile decision-making and stakeholder communication.",
+        "type": "adaptation_simulation",
+        "dataFile": "adaptation-scenarios.json",
+        "config": {
+          "allowRetry": true,
+          "showConsequences": true,
+          "scenarioComplexity": "progressive",
+          "stakeholderFeedback": true
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "Navigate realistic mid-sprint challenges including scope changes, technical blockers, and shifting priorities. Make decisions that balance agile principles with practical constraints.",
+            "buttonText": "Start Simulation"
+          }
+        }
+      }
+    ]
+  }
+}

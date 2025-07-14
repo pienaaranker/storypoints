@@ -1,0 +1,473 @@
+/* Story Hierarchy Exercise Styles */
+
+.exercise {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.exercise-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.exercise-header h2 {
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.exercise-header p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+}
+
+/* Start Screen */
+.start-screen {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+.start-screen p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #495057;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.start-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.start-button:hover {
+  background: #0056b3;
+}
+
+.start-button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Loading and Error States */
+.loading-screen, .error-screen {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.error-screen button {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+/* Exercise 1: Categorization */
+.categorization-step {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.instructions {
+  background: #e3f2fd;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #2196f3;
+}
+
+.category-definitions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.definition {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+}
+
+.categorization-area {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+.uncategorized-items h4,
+.categories h4 {
+  margin-bottom: 1rem;
+  color: #495057;
+}
+
+.item-card {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.item-card h5 {
+  margin: 0 0 0.5rem 0;
+  color: #2c3e50;
+}
+
+.item-card p {
+  margin: 0 0 1rem 0;
+  color: #6c757d;
+  font-size: 0.9rem;
+}
+
+.category-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.category-buttons button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #dee2e6;
+  background: white;
+  color: #495057;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.category-buttons button:hover {
+  background: #f8f9fa;
+  border-color: #007bff;
+  color: #007bff;
+}
+
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.category {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  min-height: 200px;
+}
+
+.category.epic {
+  border-top: 4px solid #dc3545;
+}
+
+.category.feature {
+  border-top: 4px solid #ffc107;
+}
+
+.category.story {
+  border-top: 4px solid #28a745;
+}
+
+.categorized-item {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.categorized-item h5 {
+  margin: 0;
+  font-size: 0.9rem;
+  flex: 1;
+}
+
+.remove-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+/* Exercise 2: Decomposition */
+.decomposition-step {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.scenario-info {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.original-story {
+  background: white;
+  padding: 1rem;
+  border-radius: 6px;
+  margin: 1rem 0;
+  border-left: 4px solid #007bff;
+}
+
+.story-text {
+  font-style: italic;
+  color: #495057;
+  margin: 0;
+}
+
+.context {
+  background: #fff3cd;
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 4px solid #ffc107;
+}
+
+.decomposition-area {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.user-stories {
+  margin: 1rem 0;
+}
+
+.story-input-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+}
+
+.story-input-group textarea {
+  flex: 1;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-family: inherit;
+  resize: vertical;
+  min-height: 80px;
+}
+
+.story-input-group textarea:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.remove-story-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.add-story-btn {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.hints-section {
+  background: #e8f5e8;
+  padding: 1rem;
+  border-radius: 6px;
+  border-left: 4px solid #28a745;
+}
+
+.hints-section ul {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.5rem;
+}
+
+.hints-section li {
+  margin-bottom: 0.5rem;
+  color: #495057;
+}
+
+/* Feedback Steps */
+.feedback-step {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.score-summary {
+  text-align: center;
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.score {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #28a745;
+}
+
+.detailed-feedback {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.category-feedback h4 {
+  color: #495057;
+  margin-bottom: 1rem;
+}
+
+.feedback-item {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.feedback-item.correct {
+  border-left: 4px solid #28a745;
+  background: #f8fff8;
+}
+
+.feedback-item.incorrect {
+  border-left: 4px solid #dc3545;
+  background: #fff8f8;
+}
+
+.correction {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+
+.user-decomposition,
+.suggested-decomposition {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.user-decomposition {
+  border-left: 4px solid #007bff;
+}
+
+.suggested-decomposition {
+  border-left: 4px solid #28a745;
+}
+
+.key-learnings {
+  background: #e3f2fd;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid #2196f3;
+}
+
+.key-learnings ul {
+  margin: 0.5rem 0 0 0;
+  padding-left: 1.5rem;
+}
+
+.key-learnings li {
+  margin-bottom: 0.5rem;
+  color: #495057;
+}
+
+/* Action Buttons */
+.step-actions {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.submit-button,
+.next-button,
+.complete-button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-button:hover,
+.next-button:hover,
+.complete-button:hover {
+  background: #0056b3;
+}
+
+.submit-button:disabled,
+.next-button:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+.complete-button {
+  background: #28a745;
+}
+
+.complete-button:hover {
+  background: #1e7e34;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .exercise {
+    padding: 1rem;
+  }
+  
+  .categorization-area {
+    grid-template-columns: 1fr;
+  }
+  
+  .categories {
+    grid-template-columns: 1fr;
+  }
+  
+  .comparison {
+    grid-template-columns: 1fr;
+  }
+  
+  .category-definitions {
+    grid-template-columns: 1fr;
+  }
+}

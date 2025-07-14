@@ -1,0 +1,87 @@
+{
+  "metadata": {
+    "moduleId": "story-points",
+    "version": "2.0.0",
+    "lastUpdated": "2025-01-14",
+    "description": "Story Point Estimation Module Configuration"
+  },
+  "module": {
+    "title": "Story Point Estimation Mastery",
+    "description": "Master the art of relative sizing in agile development",
+    "learningObjectives": [
+      "Understand relative sizing fundamentals",
+      "Apply Fibonacci sequence in estimation",
+      "Distinguish complexity vs. effort factors",
+      "Build team estimation consistency"
+    ],
+    "exercises": [
+      {
+        "id": 1,
+        "title": "Abstract Comparisons",
+        "description": "Learn relative sizing with abstract items",
+        "details": "Start with simple abstract concepts to understand relative effort without real-world bias.",
+        "type": "sorting_and_pointing",
+        "dataFile": "exercise1-items.json",
+        "config": {
+          "allowShuffle": true,
+          "showMindsetReminder": true,
+          "pointScale": [1, 2, 3, 5, 8, 13]
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "You'll be presented with abstract items like \"a grain of sand,\" \"a pebble,\" \"a boulder,\" and \"a mountain.\" Your task is to arrange them by relative effort to move, then assign story points.",
+            "buttonText": "Start Exercise"
+          },
+          "mindsetReminder": "Remember: Story points are about relative effort, not absolute time. A '3' is roughly three times the effort of a '1'."
+        }
+      },
+      {
+        "id": 2,
+        "title": "User Stories",
+        "description": "Apply sizing to real user stories",
+        "details": "Practice with realistic user stories from a typical web application development scenario.",
+        "type": "sorting_and_pointing",
+        "dataFile": "exercise2-stories.json",
+        "config": {
+          "allowShuffle": true,
+          "showMindsetReminder": false,
+          "pointScale": [1, 2, 3, 5, 8, 13]
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "You'll work with realistic user stories from a typical web application. First arrange them by relative complexity, then assign story points (1, 2, 3, 5, 8, 13) based on complexity, effort, and uncertainty.",
+            "buttonText": "Start Exercise"
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Core Principles",
+        "description": "Review and reinforce key concepts",
+        "details": "Test your knowledge with an interactive quiz covering fundamental story point principles.",
+        "type": "quiz",
+        "dataFile": "exercise3-questions.json",
+        "config": {
+          "showProgress": true,
+          "allowReview": true
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "Complete an interactive quiz covering the fundamental principles of story point estimation, then review a comprehensive summary of everything you've learned.",
+            "buttonText": "Start Final Quiz",
+            "preview": {
+              "title": "What You'll Cover:",
+              "items": [
+                "✓ Relative sizing vs. time estimation",
+                "✓ The three factors: complexity, effort, uncertainty",
+                "✓ Fibonacci sequence and scaling",
+                "✓ Team velocity and planning",
+                "✓ Common mistakes to avoid"
+              ]
+            }
+          }
+        }
+      }
+    ]
+  }
+}

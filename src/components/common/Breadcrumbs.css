@@ -1,0 +1,145 @@
+.breadcrumbs {
+  background: white;
+  border-bottom: 1px solid #e9ecef;
+  padding: 12px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumb-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.875rem;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.breadcrumb-link:hover {
+  background-color: #f8f9fa;
+  color: #0056b3;
+}
+
+.breadcrumb-link:focus {
+  outline: none;
+  background-color: #e3f2fd;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.breadcrumb-current {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #6c757d;
+  font-weight: 500;
+  padding: 4px 8px;
+}
+
+.breadcrumb-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.breadcrumb-separator {
+  color: #6c757d;
+  font-weight: 300;
+  user-select: none;
+  margin: 0 4px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .breadcrumbs {
+    padding: 8px 16px;
+  }
+  
+  .breadcrumb-list {
+    font-size: 0.8125rem;
+    gap: 4px;
+  }
+  
+  .breadcrumb-item {
+    gap: 4px;
+  }
+  
+  .breadcrumb-link,
+  .breadcrumb-current {
+    padding: 2px 6px;
+    gap: 4px;
+  }
+  
+  .breadcrumb-separator {
+    margin: 0 2px;
+  }
+  
+  /* Hide icons on very small screens to save space */
+  @media (max-width: 480px) {
+    .breadcrumb-icon {
+      display: none;
+    }
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .breadcrumbs {
+    border-bottom-color: #000;
+  }
+  
+  .breadcrumb-link {
+    color: #0000ee;
+  }
+  
+  .breadcrumb-link:hover {
+    background-color: #000;
+    color: #fff;
+  }
+  
+  .breadcrumb-current {
+    color: #000;
+  }
+  
+  .breadcrumb-separator {
+    color: #000;
+  }
+}
+
+/* Print styles */
+@media print {
+  .breadcrumbs {
+    box-shadow: none;
+    border-bottom: 1px solid #000;
+    background: transparent;
+  }
+  
+  .breadcrumb-link {
+    color: #000;
+    text-decoration: underline;
+  }
+}
