@@ -27,6 +27,16 @@
         "estimatedTime": "45-60 minutes",
         "prerequisites": ["story-points"],
         "status": "available"
+      },
+      {
+        "id": "sprint-planning",
+        "title": "Sprint Planning Mastery",
+        "description": "Master the art of planning effective sprints with realistic commitments",
+        "icon": "🏃‍♂️",
+        "difficulty": "Intermediate",
+        "estimatedTime": "60-75 minutes",
+        "prerequisites": ["story-points", "story-hierarchy"],
+        "status": "available"
       }
     ]
   }

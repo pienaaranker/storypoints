@@ -8,6 +8,7 @@ import Breadcrumbs from './components/common/Breadcrumbs'
 // Lazy load module components for better performance
 const StoryPointModule = lazy(() => import('./components/modules/story-points/StoryPointModule'))
 const StoryHierarchyModule = lazy(() => import('./components/modules/story-hierarchy/StoryHierarchyModule'))
+const SprintPlanningModule = lazy(() => import('./components/modules/sprint-planning/SprintPlanningModule'))
 
 // Import utilities
 import { NavigationManager, createInitialNavigationState, generateBreadcrumbs } from './utils/routingUtils'
@@ -173,6 +174,20 @@ function App() {
         return (
           <Suspense fallback={<div className="module-loading">Loading Story Hierarchy module...</div>}>
             <StoryHierarchyModule
+              currentExercise={navigationState.currentExercise}
+              moduleProgress={currentModuleProgress}
+              onExerciseComplete={handleExerciseComplete}
+              onExerciseStart={handleExerciseStart}
+              onNavigate={handleNavigation}
+            />
+          </Suspense>
+        )
+      }
+
+      if (currentModule === 'sprint-planning') {
+        return (
+          <Suspense fallback={<div className="module-loading">Loading Sprint Planning module...</div>}>
+            <SprintPlanningModule
               currentExercise={navigationState.currentExercise}
               moduleProgress={currentModuleProgress}
               onExerciseComplete={handleExerciseComplete}

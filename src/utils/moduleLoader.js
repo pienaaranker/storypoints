@@ -6,7 +6,8 @@
 // Dynamic imports for modules
 const moduleConfigs = {
   'story-points': () => import('../data/modules/story-points/module-config.json'),
-  'story-hierarchy': () => import('../data/modules/story-hierarchy/module-config.json')
+  'story-hierarchy': () => import('../data/modules/story-hierarchy/module-config.json'),
+  'sprint-planning': () => import('../data/modules/sprint-planning/module-config.json')
 }
 
 const exerciseDataLoaders = {
