@@ -10,56 +10,56 @@
       "id": "relative-sizing",
       "question": "Story points are about relative sizing, not absolute time estimation.",
       "answer": true,
-      "explanation": "Correct! Story points compare the relative effort/complexity between stories, not predict exact time. This makes them more reliable than time estimates.",
+      "explanation": "Story points compare the relative effort/complexity between stories, not predict exact time. This makes them more reliable than time estimates because they focus on comparison rather than prediction.",
       "category": "Core Concept"
     },
     {
       "id": "fibonacci-sequence",
       "question": "The Fibonacci sequence (1, 2, 3, 5, 8, 13...) is used because it reflects the increasing uncertainty in larger estimates.",
       "answer": true,
-      "explanation": "Exactly! As stories get larger, our uncertainty grows exponentially. Fibonacci gaps reflect this natural uncertainty progression.",
+      "explanation": "As stories get larger, our uncertainty grows exponentially. The Fibonacci sequence reflects this natural uncertainty progression - the gaps between numbers increase as estimates get bigger.",
       "category": "Estimation Scale"
     },
     {
       "id": "time-estimation",
       "question": "A 5-point story should always take exactly 5 times longer than a 1-point story.",
       "answer": false,
-      "explanation": "Not necessarily! Story points reflect relative effort/complexity, but actual time can vary based on developer experience, interruptions, and other factors.",
+      "explanation": "Story points reflect relative effort/complexity, but actual time can vary based on developer experience, interruptions, and other factors. The relationship isn't directly proportional to time.",
       "category": "Common Misconception"
     },
     {
       "id": "three-factors",
       "question": "The three main factors in story point estimation are complexity, effort, and uncertainty.",
       "answer": true,
-      "explanation": "Perfect! These three factors work together: complexity (how hard to understand/implement), effort (amount of work), and uncertainty (how much we don't know).",
+      "explanation": "These three factors work together in story point estimation: complexity (how hard to understand/implement), effort (amount of work), and uncertainty (how much we don't know).",
       "category": "Estimation Factors"
     },
     {
       "id": "team-velocity",
       "question": "Team velocity should remain constant across all sprints.",
       "answer": false,
-      "explanation": "Velocity naturally fluctuates due to team changes, learning, holidays, and other factors. It's a planning tool, not a performance metric.",
+      "explanation": "Velocity naturally fluctuates due to team changes, learning, holidays, and other factors. It's a planning tool for forecasting, not a performance metric that should remain constant.",
       "category": "Velocity & Planning"
     },
     {
       "id": "individual-estimation",
       "question": "Story points should be estimated by individual developers working alone.",
       "answer": false,
-      "explanation": "Team estimation (like Planning Poker) is more accurate because it combines different perspectives and catches assumptions that individuals might miss.",
+      "explanation": "Team estimation (like Planning Poker) is more accurate because it combines different perspectives and catches assumptions that individuals might miss. Collaborative estimation leads to better shared understanding.",
       "category": "Team Process"
     },
     {
       "id": "story-splitting",
       "question": "If a story is estimated at 21 points, it should be split into smaller stories.",
       "answer": true,
-      "explanation": "Correct! Stories larger than 13 points are usually too big and uncertain. Splitting them reveals hidden complexity and improves estimation accuracy.",
+      "explanation": "Stories larger than 13 points are usually too big and uncertain. Splitting them reveals hidden complexity and improves estimation accuracy by breaking down the work into more manageable pieces.",
       "category": "Story Management"
     },
     {
       "id": "velocity-comparison",
       "question": "You can directly compare velocity between different teams to measure productivity.",
       "answer": false,
-      "explanation": "Never compare velocities between teams! Each team's points are relative to their context, skills, and definition of done. It's like comparing different currencies.",
+      "explanation": "Comparing velocities between teams is not meaningful because each team's points are relative to their context, skills, and definition of done. It's like comparing different currencies without exchange rates.",
       "category": "Common Mistake"
     }
   ]
