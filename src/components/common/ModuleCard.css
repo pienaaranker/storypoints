@@ -38,6 +38,11 @@
   cursor: not-allowed;
 }
 
+.module-card.maintenance {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .module-card.disabled {
   opacity: 0.6;
   cursor: not-allowed;
@@ -81,6 +86,16 @@
 .status-badge.locked {
   background-color: #fafafa;
   color: #757575;
+}
+
+.status-badge.maintenance {
+  background-color: #fff8e1;
+  color: #f57f17;
+}
+
+.status-badge.disabled {
+  background-color: #ffebee;
+  color: #c62828;
 }
 
 .module-content {

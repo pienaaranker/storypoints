@@ -5,7 +5,7 @@ import './ModuleCard.css'
  * ModuleCard component for displaying module information and progress
  * @param {Object} props - Component props
  * @param {Object} props.module - Module configuration object
- * @param {string} props.status - Module status ('available', 'coming-soon', 'locked')
+ * @param {string} props.status - Module status ('available', 'coming-soon', 'locked', 'maintenance', 'disabled')
  * @param {Object} props.progress - Module progress object
  * @param {Function} props.onNavigate - Navigation callback function
  * @param {boolean} props.disabled - Whether the card is disabled
@@ -35,12 +35,16 @@ function ModuleCard({ module, status = 'available', progress = null, onNavigate,
   const getStatusText = () => {
     switch (status) {
       case 'available':
-        return progress?.moduleCompleted ? 'Completed' : 
+        return progress?.moduleCompleted ? 'Completed' :
                progress?.moduleStarted ? 'In Progress' : 'Start Learning'
       case 'coming-soon':
         return 'Coming Soon'
       case 'locked':
         return 'Locked'
+      case 'maintenance':
+        return 'Under Maintenance'
+      case 'disabled':
+        return 'Temporarily Disabled'
       default:
         return 'Available'
     }
