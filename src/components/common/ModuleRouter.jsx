@@ -11,6 +11,10 @@ const StoryPointsExercise3 = lazy(() => import('../modules/story-points/Exercise
 const StoryHierarchyExercise1 = lazy(() => import('../modules/story-hierarchy/Exercise1'))
 const StoryHierarchyExercise2 = lazy(() => import('../modules/story-hierarchy/Exercise2'))
 
+const DefinitionOfDoneExercise1 = lazy(() => import('../modules/definition-of-done/Exercise1'))
+const DefinitionOfDoneExercise2 = lazy(() => import('../modules/definition-of-done/Exercise2'))
+const DefinitionOfDoneExercise3 = lazy(() => import('../modules/definition-of-done/Exercise3'))
+
 /**
  * ModuleRouter component for handling module-level routing and exercise loading
  * @param {Object} props - Component props
@@ -187,6 +191,31 @@ function ModuleRouter({
           )
         default:
           return <div className="error">Exercise {currentExercise} not implemented for story-hierarchy</div>
+      }
+    }
+
+    if (moduleId === 'definition-of-done') {
+      switch (currentExercise) {
+        case 1:
+          return (
+            <Suspense fallback={<div className="exercise-loading">Loading DoD Creation Workshop...</div>}>
+              <DefinitionOfDoneExercise1 {...exerciseProps} />
+            </Suspense>
+          )
+        case 2:
+          return (
+            <Suspense fallback={<div className="exercise-loading">Loading Acceptance Criteria Mastery...</div>}>
+              <DefinitionOfDoneExercise2 {...exerciseProps} />
+            </Suspense>
+          )
+        case 3:
+          return (
+            <Suspense fallback={<div className="exercise-loading">Loading Quality Gates Assessment...</div>}>
+              <DefinitionOfDoneExercise3 {...exerciseProps} />
+            </Suspense>
+          )
+        default:
+          return <div className="error">Exercise {currentExercise} not implemented for definition-of-done</div>
       }
     }
 

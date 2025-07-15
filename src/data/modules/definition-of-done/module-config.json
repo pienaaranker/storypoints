@@ -1,0 +1,81 @@
+{
+  "metadata": {
+    "moduleId": "definition-of-done",
+    "version": "1.0.0",
+    "lastUpdated": "2025-01-15",
+    "description": "Definition of Done & Quality Gates Module Configuration"
+  },
+  "module": {
+    "title": "Definition of Done & Quality Gates",
+    "description": "Establish clear quality standards and implement effective quality gates throughout development",
+    "learningObjectives": [
+      "Establish clear, measurable Definition of Done criteria",
+      "Write effective, testable acceptance criteria",
+      "Implement quality gates throughout development process",
+      "Align team standards and quality expectations",
+      "Understand the relationship between DoD and acceptance criteria"
+    ],
+    "exercises": [
+      {
+        "id": 1,
+        "title": "DoD Creation Workshop",
+        "description": "Build comprehensive Definition of Done criteria for different types of work",
+        "details": "Practice creating Definition of Done criteria that are clear, measurable, and appropriate for different types of development work. Learn to categorize and prioritize quality standards.",
+        "type": "dod_creation",
+        "dataFile": "dod-scenarios.json",
+        "config": {
+          "allowRetry": true,
+          "showHints": true,
+          "categories": ["technical", "functional", "process", "documentation"],
+          "maxCriteriaPerCategory": 8
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "In this exercise, you will create a comprehensive Definition of Done for an e-commerce application. \n\n1. DRAG quality criteria from the available list on the right into the appropriate category boxes (Technical, Functional, Process, Documentation).\n\n2. ARRANGE the most important criteria first in each category.\n\n3. REVIEW your selections to ensure balanced coverage across all quality dimensions.\n\nYour goal is to create a Definition of Done that ensures high-quality deliverables with appropriate standards for each category.",
+            "buttonText": "Start DoD Workshop"
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Acceptance Criteria Mastery",
+        "description": "Write clear, testable acceptance criteria using Given/When/Then format",
+        "details": "Master the art of writing acceptance criteria that prevent ambiguity and reduce rework. Practice using Given/When/Then format and learn to identify missing scenarios.",
+        "type": "acceptance_criteria",
+        "dataFile": "ac-scenarios.json",
+        "config": {
+          "allowRetry": true,
+          "showExamples": true,
+          "formatTypes": ["given-when-then", "checklist", "scenario-based"],
+          "qualityChecks": true
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "In this exercise, you will write acceptance criteria for real user stories.\n\n1. SELECT a format (Given/When/Then, Checklist, or Scenario-based) using the format buttons.\n\n2. WRITE clear, testable acceptance criteria in the text areas provided.\n\n3. CONSIDER edge cases and error scenarios - what could go wrong?\n\n4. REVIEW your criteria for completeness and clarity.\n\nYour goal is to write acceptance criteria that are specific, measurable, and leave no room for misinterpretation.",
+            "buttonText": "Start AC Workshop"
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Quality Gates Assessment",
+        "description": "Design quality checkpoints for development workflow",
+        "details": "Learn to implement systematic quality gates throughout the development process. Practice identifying where quality checks should occur and what criteria should be evaluated at each gate.",
+        "type": "quality_gates",
+        "dataFile": "quality-gate-scenarios.json",
+        "config": {
+          "allowRetry": true,
+          "showProcessFlow": true,
+          "gateTypes": ["code-review", "testing", "deployment", "documentation"],
+          "maxGatesPerWorkflow": 6
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "In this exercise, you will design a quality gate process for a feature development workflow.\n\n1. DRAG quality gates from the toolbox below into the appropriate workflow stages (Planning, Development, Testing, Deployment).\n\n2. PLACE gates strategically to catch issues early and prevent defects from progressing.\n\n3. BALANCE thoroughness with practicality - consider effort vs. impact.\n\n4. REVIEW your gate placement to ensure comprehensive quality coverage.\n\nYour goal is to create a quality gate process that prevents defects while maintaining development velocity.",
+            "buttonText": "Start Quality Gates"
+          }
+        }
+      }
+    ]
+  }
+}

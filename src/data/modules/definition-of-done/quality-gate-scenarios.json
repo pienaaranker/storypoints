@@ -1,0 +1,279 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Quality Gates scenarios for Quality Gates Assessment Exercise",
+    "lastUpdated": "2025-01-15"
+  },
+  "workflows": [
+    {
+      "id": 1,
+      "title": "Feature Development Workflow",
+      "description": "Standard workflow for developing new features in an agile team",
+      "context": "Your team follows agile practices and needs to ensure quality at every stage of feature development.",
+      "stages": [
+        {
+          "id": "planning",
+          "title": "Planning",
+          "description": "Requirements analysis and design",
+          "icon": "📋"
+        },
+        {
+          "id": "development",
+          "title": "Development",
+          "description": "Code implementation and unit testing",
+          "icon": "💻"
+        },
+        {
+          "id": "testing",
+          "title": "Testing",
+          "description": "Integration and system testing",
+          "icon": "🧪"
+        },
+        {
+          "id": "deployment",
+          "title": "Deployment",
+          "description": "Release to production environment",
+          "icon": "🚀"
+        }
+      ]
+    }
+  ],
+  "availableGates": [
+    {
+      "id": "requirements-review",
+      "title": "Requirements Review",
+      "description": "Validate requirements are clear and complete",
+      "type": "planning",
+      "criteria": [
+        "Acceptance criteria are well-defined",
+        "Business value is clearly articulated",
+        "Dependencies are identified",
+        "Technical approach is feasible"
+      ],
+      "effort": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "design-review",
+      "title": "Design Review",
+      "description": "Architectural and design validation",
+      "type": "planning",
+      "criteria": [
+        "Design follows architectural standards",
+        "Security considerations are addressed",
+        "Performance implications are considered",
+        "Design is reviewed by senior developer"
+      ],
+      "effort": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "code-review",
+      "title": "Code Review",
+      "description": "Peer review of code changes",
+      "type": "development",
+      "criteria": [
+        "Code follows team standards",
+        "Logic is clear and maintainable",
+        "No obvious bugs or security issues",
+        "Approved by at least one peer"
+      ],
+      "effort": "low",
+      "impact": "high"
+    },
+    {
+      "id": "unit-tests",
+      "title": "Unit Test Coverage",
+      "description": "Adequate unit test coverage",
+      "type": "development",
+      "criteria": [
+        "Minimum 80% code coverage",
+        "All critical paths are tested",
+        "Tests are meaningful and maintainable",
+        "All tests pass"
+      ],
+      "effort": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "static-analysis",
+      "title": "Static Code Analysis",
+      "description": "Automated code quality checks",
+      "type": "development",
+      "criteria": [
+        "No critical security vulnerabilities",
+        "Code complexity within acceptable limits",
+        "No code duplication above threshold",
+        "Coding standards are followed"
+      ],
+      "effort": "low",
+      "impact": "medium"
+    },
+    {
+      "id": "integration-tests",
+      "title": "Integration Testing",
+      "description": "Component integration validation",
+      "type": "testing",
+      "criteria": [
+        "All integration points are tested",
+        "API contracts are validated",
+        "Database interactions work correctly",
+        "External service integrations are tested"
+      ],
+      "effort": "high",
+      "impact": "high"
+    },
+    {
+      "id": "performance-tests",
+      "title": "Performance Testing",
+      "description": "Performance and load validation",
+      "type": "testing",
+      "criteria": [
+        "Response times meet requirements",
+        "System handles expected load",
+        "Memory usage is within limits",
+        "No performance regressions"
+      ],
+      "effort": "high",
+      "impact": "medium"
+    },
+    {
+      "id": "security-scan",
+      "title": "Security Scanning",
+      "description": "Automated security vulnerability assessment",
+      "type": "testing",
+      "criteria": [
+        "No high-severity vulnerabilities",
+        "Dependencies are up to date",
+        "Authentication/authorization works correctly",
+        "Input validation is proper"
+      ],
+      "effort": "low",
+      "impact": "high"
+    },
+    {
+      "id": "user-acceptance",
+      "title": "User Acceptance Testing",
+      "description": "Business stakeholder validation",
+      "type": "testing",
+      "criteria": [
+        "All acceptance criteria are met",
+        "Business stakeholder approval",
+        "User experience is acceptable",
+        "Feature works as expected"
+      ],
+      "effort": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "deployment-checklist",
+      "title": "Deployment Checklist",
+      "description": "Pre-deployment validation",
+      "type": "deployment",
+      "criteria": [
+        "Deployment scripts are tested",
+        "Rollback plan is prepared",
+        "Monitoring is configured",
+        "Documentation is updated"
+      ],
+      "effort": "medium",
+      "impact": "high"
+    },
+    {
+      "id": "smoke-tests",
+      "title": "Smoke Testing",
+      "description": "Post-deployment validation",
+      "type": "deployment",
+      "criteria": [
+        "Critical functionality works",
+        "No obvious errors in logs",
+        "Key metrics are normal",
+        "User can access the feature"
+      ],
+      "effort": "low",
+      "impact": "high"
+    },
+    {
+      "id": "monitoring-setup",
+      "title": "Monitoring Setup",
+      "description": "Production monitoring configuration",
+      "type": "deployment",
+      "criteria": [
+        "Application metrics are tracked",
+        "Error alerts are configured",
+        "Performance monitoring is active",
+        "Business metrics are captured"
+      ],
+      "effort": "medium",
+      "impact": "medium"
+    }
+  ],
+  "modelSolution": {
+    "planning": ["requirements-review", "design-review"],
+    "development": ["code-review", "unit-tests", "static-analysis"],
+    "testing": ["integration-tests", "security-scan", "user-acceptance"],
+    "deployment": ["deployment-checklist", "smoke-tests", "monitoring-setup"]
+  },
+  "gateTypes": [
+    {
+      "id": "code-review",
+      "name": "Code Review Gates",
+      "description": "Human review processes for code quality",
+      "color": "#007bff"
+    },
+    {
+      "id": "testing",
+      "name": "Testing Gates",
+      "description": "Automated and manual testing checkpoints",
+      "color": "#28a745"
+    },
+    {
+      "id": "deployment",
+      "name": "Deployment Gates",
+      "description": "Pre and post-deployment validation",
+      "color": "#ffc107"
+    },
+    {
+      "id": "documentation",
+      "name": "Documentation Gates",
+      "description": "Documentation and knowledge sharing requirements",
+      "color": "#6f42c1"
+    }
+  ],
+  "tips": [
+    {
+      "title": "Balance Effort vs Impact",
+      "description": "Focus on gates that provide high impact with reasonable effort. Not every gate needs to be implemented for every feature."
+    },
+    {
+      "title": "Automate Where Possible",
+      "description": "Automated gates (like static analysis) are more consistent and less burdensome than manual processes."
+    },
+    {
+      "title": "Consider Team Maturity",
+      "description": "Start with essential gates and gradually add more as the team matures and processes improve."
+    },
+    {
+      "title": "Make Gates Actionable",
+      "description": "Each gate should have clear criteria and provide actionable feedback when it fails."
+    }
+  ],
+  "feedback": {
+    "excellent": {
+      "threshold": 90,
+      "message": "Excellent! You've designed a comprehensive quality gate process that balances thoroughness with practicality. Your gates cover all critical stages and provide good coverage."
+    },
+    "good": {
+      "threshold": 75,
+      "message": "Good work! Your quality gates cover the main areas well. Consider adding a few more gates in areas that might need additional coverage."
+    },
+    "needsImprovement": {
+      "threshold": 60,
+      "message": "Your quality gate design is a good start, but it's missing some important checkpoints. Review the feedback to strengthen your process."
+    },
+    "insufficient": {
+      "threshold": 0,
+      "message": "Your quality gate process needs significant improvement. A good process should have gates at each major stage of development."
+    }
+  }
+}

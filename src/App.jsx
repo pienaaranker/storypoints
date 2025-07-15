@@ -9,6 +9,7 @@ import Breadcrumbs from './components/common/Breadcrumbs'
 const StoryPointModule = lazy(() => import('./components/modules/story-points/StoryPointModule'))
 const StoryHierarchyModule = lazy(() => import('./components/modules/story-hierarchy/StoryHierarchyModule'))
 const SprintPlanningModule = lazy(() => import('./components/modules/sprint-planning/SprintPlanningModule'))
+const DefinitionOfDoneModule = lazy(() => import('./components/modules/definition-of-done/DefinitionOfDoneModule'))
 
 // Import utilities
 import { NavigationManager, createInitialNavigationState, generateBreadcrumbs } from './utils/routingUtils'
@@ -188,6 +189,20 @@ function App() {
         return (
           <Suspense fallback={<div className="module-loading">Loading Sprint Planning module...</div>}>
             <SprintPlanningModule
+              currentExercise={navigationState.currentExercise}
+              moduleProgress={currentModuleProgress}
+              onExerciseComplete={handleExerciseComplete}
+              onExerciseStart={handleExerciseStart}
+              onNavigate={handleNavigation}
+            />
+          </Suspense>
+        )
+      }
+
+      if (currentModule === 'definition-of-done') {
+        return (
+          <Suspense fallback={<div className="module-loading">Loading Definition of Done module...</div>}>
+            <DefinitionOfDoneModule
               currentExercise={navigationState.currentExercise}
               moduleProgress={currentModuleProgress}
               onExerciseComplete={handleExerciseComplete}

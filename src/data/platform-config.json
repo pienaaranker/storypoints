@@ -37,6 +37,16 @@
         "estimatedTime": "60-75 minutes",
         "prerequisites": ["story-points", "story-hierarchy"],
         "status": "available"
+      },
+      {
+        "id": "definition-of-done",
+        "title": "Definition of Done & Quality Gates",
+        "description": "Establish clear quality standards and implement effective quality gates throughout development",
+        "icon": "✅",
+        "difficulty": "Intermediate",
+        "estimatedTime": "45-60 minutes",
+        "prerequisites": ["story-hierarchy", "sprint-planning"],
+        "status": "coming-soon"
       }
     ]
   }

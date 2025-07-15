@@ -7,7 +7,8 @@
 const moduleConfigs = {
   'story-points': () => import('../data/modules/story-points/module-config.json'),
   'story-hierarchy': () => import('../data/modules/story-hierarchy/module-config.json'),
-  'sprint-planning': () => import('../data/modules/sprint-planning/module-config.json')
+  'sprint-planning': () => import('../data/modules/sprint-planning/module-config.json'),
+  'definition-of-done': () => import('../data/modules/definition-of-done/module-config.json')
 }
 
 const exerciseDataLoaders = {
@@ -15,6 +16,11 @@ const exerciseDataLoaders = {
     1: () => import('../data/modules/story-points/exercise1-items.json'),
     2: () => import('../data/modules/story-points/exercise2-stories.json'),
     3: () => import('../data/modules/story-points/exercise3-questions.json')
+  },
+  'definition-of-done': {
+    1: () => import('../data/modules/definition-of-done/dod-scenarios.json'),
+    2: () => import('../data/modules/definition-of-done/ac-scenarios.json'),
+    3: () => import('../data/modules/definition-of-done/quality-gate-scenarios.json')
   }
   // Future modules will be added here
 }

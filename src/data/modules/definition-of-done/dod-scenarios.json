@@ -1,0 +1,236 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Definition of Done scenarios and criteria for DoD Creation Workshop",
+    "lastUpdated": "2025-01-15"
+  },
+  "scenarios": [
+    {
+      "id": 1,
+      "title": "E-commerce Web Application",
+      "description": "Building features for an online shopping platform with high traffic and strict security requirements",
+      "context": "Your team is developing features for a major e-commerce platform that handles thousands of transactions daily. Quality and security are paramount.",
+      "workTypes": ["user-story", "bug-fix", "technical-debt"]
+    }
+  ],
+  "categories": [
+    {
+      "id": "technical",
+      "title": "Technical Standards",
+      "description": "Code quality, architecture, and technical implementation requirements",
+      "icon": "⚙️",
+      "color": "#007bff"
+    },
+    {
+      "id": "functional",
+      "title": "Functional Requirements",
+      "description": "Feature completeness, user experience, and business logic validation",
+      "icon": "✅",
+      "color": "#28a745"
+    },
+    {
+      "id": "process",
+      "title": "Process & Workflow",
+      "description": "Development workflow, reviews, and team collaboration requirements",
+      "icon": "🔄",
+      "color": "#ffc107"
+    },
+    {
+      "id": "documentation",
+      "title": "Documentation & Knowledge",
+      "description": "Documentation, knowledge sharing, and maintainability requirements",
+      "icon": "📚",
+      "color": "#6f42c1"
+    }
+  ],
+  "availableCriteria": [
+    {
+      "id": "code-review",
+      "text": "Code reviewed by at least one other team member",
+      "category": "process",
+      "priority": "high",
+      "rationale": "Catches bugs early and ensures knowledge sharing"
+    },
+    {
+      "id": "unit-tests",
+      "text": "Unit tests written with minimum 80% code coverage",
+      "category": "technical",
+      "priority": "high",
+      "rationale": "Ensures code reliability and prevents regressions"
+    },
+    {
+      "id": "integration-tests",
+      "text": "Integration tests pass for all affected components",
+      "category": "technical",
+      "priority": "medium",
+      "rationale": "Validates component interactions work correctly"
+    },
+    {
+      "id": "acceptance-criteria",
+      "text": "All acceptance criteria met and verified",
+      "category": "functional",
+      "priority": "high",
+      "rationale": "Ensures feature meets business requirements"
+    },
+    {
+      "id": "security-scan",
+      "text": "Security vulnerability scan completed with no high-risk issues",
+      "category": "technical",
+      "priority": "high",
+      "rationale": "Critical for e-commerce platform security"
+    },
+    {
+      "id": "performance-test",
+      "text": "Performance tests meet response time requirements",
+      "category": "technical",
+      "priority": "medium",
+      "rationale": "Ensures good user experience under load"
+    },
+    {
+      "id": "ui-ux-review",
+      "text": "UI/UX reviewed and approved by design team",
+      "category": "functional",
+      "priority": "medium",
+      "rationale": "Maintains consistent user experience"
+    },
+    {
+      "id": "accessibility",
+      "text": "Accessibility standards (WCAG 2.1 AA) compliance verified",
+      "category": "functional",
+      "priority": "medium",
+      "rationale": "Ensures inclusive user experience"
+    },
+    {
+      "id": "documentation-updated",
+      "text": "Technical documentation updated to reflect changes",
+      "category": "documentation",
+      "priority": "medium",
+      "rationale": "Maintains system knowledge for future development"
+    },
+    {
+      "id": "api-documentation",
+      "text": "API documentation updated if endpoints changed",
+      "category": "documentation",
+      "priority": "medium",
+      "rationale": "Essential for API consumers and integration"
+    },
+    {
+      "id": "deployment-tested",
+      "text": "Deployment process tested in staging environment",
+      "category": "process",
+      "priority": "high",
+      "rationale": "Prevents production deployment issues"
+    },
+    {
+      "id": "rollback-plan",
+      "text": "Rollback plan documented and tested",
+      "category": "process",
+      "priority": "medium",
+      "rationale": "Enables quick recovery from deployment issues"
+    },
+    {
+      "id": "monitoring-alerts",
+      "text": "Monitoring and alerting configured for new features",
+      "category": "technical",
+      "priority": "medium",
+      "rationale": "Enables proactive issue detection"
+    },
+    {
+      "id": "cross-browser",
+      "text": "Tested across supported browsers and devices",
+      "category": "functional",
+      "priority": "medium",
+      "rationale": "Ensures consistent experience across platforms"
+    },
+    {
+      "id": "data-migration",
+      "text": "Data migration scripts tested and documented",
+      "category": "technical",
+      "priority": "high",
+      "rationale": "Critical for data integrity in production"
+    },
+    {
+      "id": "user-training",
+      "text": "User training materials updated if workflow changes",
+      "category": "documentation",
+      "priority": "low",
+      "rationale": "Helps users adapt to new features"
+    },
+    {
+      "id": "compliance-check",
+      "text": "Regulatory compliance requirements verified",
+      "category": "functional",
+      "priority": "high",
+      "rationale": "Essential for e-commerce legal requirements"
+    },
+    {
+      "id": "error-handling",
+      "text": "Error handling and user feedback implemented",
+      "category": "functional",
+      "priority": "high",
+      "rationale": "Provides clear user guidance when issues occur"
+    },
+    {
+      "id": "logging",
+      "text": "Appropriate logging added for debugging and monitoring",
+      "category": "technical",
+      "priority": "medium",
+      "rationale": "Enables effective troubleshooting"
+    },
+    {
+      "id": "feature-flags",
+      "text": "Feature flags configured for gradual rollout",
+      "category": "process",
+      "priority": "low",
+      "rationale": "Allows safe feature deployment and testing"
+    }
+  ],
+  "modelSolution": {
+    "technical": [
+      "unit-tests",
+      "integration-tests",
+      "security-scan",
+      "performance-test",
+      "monitoring-alerts",
+      "data-migration",
+      "logging"
+    ],
+    "functional": [
+      "acceptance-criteria",
+      "ui-ux-review",
+      "accessibility",
+      "cross-browser",
+      "compliance-check",
+      "error-handling"
+    ],
+    "process": [
+      "code-review",
+      "deployment-tested",
+      "rollback-plan",
+      "feature-flags"
+    ],
+    "documentation": [
+      "documentation-updated",
+      "api-documentation",
+      "user-training"
+    ]
+  },
+  "feedback": {
+    "excellent": {
+      "threshold": 90,
+      "message": "Excellent! You've created a comprehensive Definition of Done that covers all critical quality aspects. Your categorization shows strong understanding of different quality dimensions."
+    },
+    "good": {
+      "threshold": 75,
+      "message": "Good work! Your Definition of Done covers most important areas. Consider adding a few more criteria in the areas you might have missed."
+    },
+    "needsImprovement": {
+      "threshold": 60,
+      "message": "Your Definition of Done is a good start, but it's missing some critical quality gates. Review the feedback to strengthen your quality standards."
+    },
+    "insufficient": {
+      "threshold": 0,
+      "message": "Your Definition of Done needs significant improvement. A comprehensive DoD should cover technical, functional, process, and documentation aspects."
+    }
+  }
+}
