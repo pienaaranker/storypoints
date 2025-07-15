@@ -1,0 +1,236 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Acceptance Criteria scenarios for AC Mastery Workshop",
+    "lastUpdated": "2025-01-15"
+  },
+  "scenarios": [
+    {
+      "id": 1,
+      "title": "User Login Feature",
+      "userStory": "As a registered user, I want to log into my account so that I can access my personal dashboard and account information.",
+      "context": "This is a critical security feature for a web application. Users should be able to authenticate securely and access their personalized content.",
+      "businessRules": [
+        "Users must enter both email and password",
+        "Account gets locked after 3 failed attempts",
+        "Password must meet security requirements",
+        "Users should be redirected to dashboard after successful login"
+      ],
+      "edgeCases": [
+        "What happens with invalid email format?",
+        "How to handle forgotten passwords?",
+        "What about users with locked accounts?",
+        "How to handle network connectivity issues?"
+      ],
+      "modelSolution": {
+        "givenWhenThen": [
+          {
+            "given": "I am a registered user with valid credentials",
+            "when": "I enter my correct email and password and click login",
+            "then": "I should be logged in and redirected to my dashboard"
+          },
+          {
+            "given": "I am a registered user",
+            "when": "I enter an invalid email format",
+            "then": "I should see an error message 'Please enter a valid email address'"
+          },
+          {
+            "given": "I am a registered user",
+            "when": "I enter incorrect password 3 times",
+            "then": "My account should be locked and I should see a message about account lockout"
+          },
+          {
+            "given": "I have a locked account",
+            "when": "I try to log in with correct credentials",
+            "then": "I should see a message that my account is locked and instructions to unlock it"
+          }
+        ],
+        "checklist": [
+          "✓ User can log in with valid email and password",
+          "✓ Invalid email format shows appropriate error message",
+          "✓ Wrong password shows error message without revealing if email exists",
+          "✓ Account locks after 3 failed login attempts",
+          "✓ Locked account shows appropriate message and unlock instructions",
+          "✓ Successful login redirects to dashboard",
+          "✓ Login form validates required fields",
+          "✓ Password field masks input characters",
+          "✓ Remember me option works correctly",
+          "✓ Logout functionality works properly"
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "title": "Shopping Cart Feature",
+      "userStory": "As a customer, I want to add items to my shopping cart so that I can review my selections before purchasing.",
+      "context": "E-commerce shopping cart functionality that allows users to manage items before checkout.",
+      "businessRules": [
+        "Users can add multiple quantities of the same item",
+        "Cart persists across browser sessions",
+        "Out-of-stock items cannot be added",
+        "Cart shows total price including taxes"
+      ],
+      "edgeCases": [
+        "What happens when item goes out of stock while in cart?",
+        "How to handle price changes while item is in cart?",
+        "What about maximum quantity limits?",
+        "How to handle cart for guest vs registered users?"
+      ],
+      "modelSolution": {
+        "givenWhenThen": [
+          {
+            "given": "I am viewing a product that is in stock",
+            "when": "I click 'Add to Cart' with quantity 2",
+            "then": "The item should be added to my cart with quantity 2 and cart total should update"
+          },
+          {
+            "given": "I have items in my cart",
+            "when": "I close the browser and return later",
+            "then": "My cart should still contain the same items (for registered users)"
+          },
+          {
+            "given": "I try to add an out-of-stock item to my cart",
+            "when": "I click 'Add to Cart'",
+            "then": "I should see an error message that the item is out of stock"
+          }
+        ],
+        "checklist": [
+          "✓ Can add in-stock items to cart",
+          "✓ Can specify quantity when adding items",
+          "✓ Cart shows correct item count and total price",
+          "✓ Cannot add out-of-stock items",
+          "✓ Cart persists for registered users across sessions",
+          "✓ Can update quantities in cart",
+          "✓ Can remove items from cart",
+          "✓ Cart total updates when items are modified",
+          "✓ Tax calculation is correct",
+          "✓ Cart handles maximum quantity limits"
+        ]
+      }
+    }
+  ],
+  "formats": [
+    {
+      "id": "given-when-then",
+      "name": "Given/When/Then",
+      "description": "Behavior-driven format that describes scenarios clearly",
+      "template": {
+        "given": "Given [initial context or state]",
+        "when": "When [action or event occurs]",
+        "then": "Then [expected outcome or result]"
+      },
+      "benefits": [
+        "Clear scenario structure",
+        "Easy to understand for all stakeholders",
+        "Maps well to automated tests",
+        "Focuses on user behavior"
+      ]
+    },
+    {
+      "id": "checklist",
+      "name": "Checklist Format",
+      "description": "Simple list of requirements that must be met",
+      "template": {
+        "format": "✓ [Specific requirement or behavior]"
+      },
+      "benefits": [
+        "Quick to write and review",
+        "Easy to track completion",
+        "Good for simple features",
+        "Clear pass/fail criteria"
+      ]
+    },
+    {
+      "id": "scenario-based",
+      "name": "Scenario-Based",
+      "description": "Narrative format describing user scenarios",
+      "template": {
+        "format": "In [context], when [action], the system should [outcome]"
+      },
+      "benefits": [
+        "Natural language flow",
+        "Good for complex workflows",
+        "Easy for business stakeholders",
+        "Captures user intent clearly"
+      ]
+    }
+  ],
+  "qualityChecks": [
+    {
+      "id": "specific",
+      "title": "Specific and Measurable",
+      "description": "Criteria should be clear and unambiguous",
+      "examples": {
+        "good": "User receives email confirmation within 5 minutes",
+        "bad": "User gets notified quickly"
+      }
+    },
+    {
+      "id": "testable",
+      "title": "Testable",
+      "description": "Criteria should be verifiable through testing",
+      "examples": {
+        "good": "Login button is disabled when fields are empty",
+        "bad": "Login experience should be smooth"
+      }
+    },
+    {
+      "id": "complete",
+      "title": "Complete Coverage",
+      "description": "All important scenarios and edge cases covered",
+      "examples": {
+        "good": "Covers happy path, error cases, and edge cases",
+        "bad": "Only covers the main success scenario"
+      }
+    },
+    {
+      "id": "independent",
+      "title": "Independent",
+      "description": "Each criterion should be self-contained",
+      "examples": {
+        "good": "Each Given/When/Then scenario stands alone",
+        "bad": "Criteria that depend on other criteria being tested first"
+      }
+    }
+  ],
+  "commonMistakes": [
+    {
+      "mistake": "Too vague or ambiguous",
+      "example": "The system should work well",
+      "fix": "Be specific about expected behavior and outcomes"
+    },
+    {
+      "mistake": "Implementation details instead of behavior",
+      "example": "Use jQuery to validate the form",
+      "fix": "Focus on what the user experiences, not how it's built"
+    },
+    {
+      "mistake": "Missing edge cases",
+      "example": "Only testing the happy path",
+      "fix": "Consider error conditions, boundary cases, and unusual scenarios"
+    },
+    {
+      "mistake": "Not testable",
+      "example": "The interface should be intuitive",
+      "fix": "Define measurable criteria that can be verified"
+    }
+  ],
+  "feedback": {
+    "excellent": {
+      "threshold": 90,
+      "message": "Excellent! Your acceptance criteria are clear, comprehensive, and testable. You've covered the main scenarios and important edge cases."
+    },
+    "good": {
+      "threshold": 75,
+      "message": "Good work! Your acceptance criteria cover the main requirements. Consider adding a few more edge cases for completeness."
+    },
+    "needsImprovement": {
+      "threshold": 60,
+      "message": "Your acceptance criteria are a good start, but they need more detail and coverage of edge cases."
+    },
+    "insufficient": {
+      "threshold": 0,
+      "message": "Your acceptance criteria need significant improvement. Focus on being more specific and covering more scenarios."
+    }
+  }
+}
