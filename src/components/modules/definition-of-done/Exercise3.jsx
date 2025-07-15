@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { DndContext, useSensor, useSensors, PointerSensor, KeyboardSensor } from '@dnd-kit/core'
+import { useState, useEffect } from 'react'
+import { DndContext, useSensor, useSensors, PointerSensor, KeyboardSensor, useDraggable, useDroppable } from '@dnd-kit/core'
 import { sortableKeyboardCoordinates } from '@dnd-kit/sortable'
-import { loadExerciseData } from '../../../utils/moduleLoader'
+import { loadExerciseData, getModuleExerciseConfig } from '../../../utils/moduleLoader'
 import './Exercise.css'
 
 /**
@@ -32,31 +32,18 @@ function Exercise3({ onComplete, onStart, isStarted }) {
         setLoading(true)
         setError(null)
 
+        // Load exercise configuration from module config
+        const exerciseConfigData = await getModuleExerciseConfig('definition-of-done', 3)
+
         // Load exercise data using the module loader
         const exerciseData = await loadExerciseData('definition-of-done', 3)
-        
+
         // Extract data from the loaded JSON
         const workflow = exerciseData.workflows[0] // Use first workflow for now
         const availableGates = exerciseData.availableGates
         const tips = exerciseData.tips
-        
-        // Mock exercise config - this would come from module-config.json
-        const mockConfig = {
-          ui: {
-            startScreen: {
-              instructions: "You'll design quality gate processes for different development workflows. Place quality checkpoints at appropriate stages and define criteria for each gate to prevent defects from progressing.",
-              buttonText: "Start Quality Gates"
-            }
-          },
-          config: {
-            allowRetry: true,
-            showProcessFlow: true,
-            gateTypes: ["code-review", "testing", "deployment", "documentation"],
-            maxGatesPerWorkflow: 6
-          }
-        }
 
-        setExerciseConfig(mockConfig)
+        setExerciseConfig(exerciseConfigData)
         setWorkflow(workflow)
         setAvailableGates(availableGates)
         setTips(tips)
@@ -88,6 +75,71 @@ function Exercise3({ onComplete, onStart, isStarted }) {
 
   const handleStart = () => {
     onStart()
+  }
+
+  // Draggable gate component
+  const DraggableGate = ({ gate }) => {
+    const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
+      id: gate.id,
+    })
+
+    const style = transform ? {
+      transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+      opacity: isDragging ? 0.5 : 1,
+    } : undefined
+
+    return (
+      <div
+        ref={setNodeRef}
+        style={style}
+        {...listeners}
+        {...attributes}
+        className={`quality-gate ${isDragging ? 'dragging' : ''}`}
+      >
+        <div className="gate-title">{gate.title}</div>
+        <div className="gate-description">{gate.description}</div>
+        <div className="gate-meta">
+          <span className="gate-type">{gate.type}</span>
+          <span className="gate-effort">Effort: {gate.effort}</span>
+          <span className="gate-impact">Impact: {gate.impact}</span>
+        </div>
+      </div>
+    )
+  }
+
+  // Droppable stage component
+  const DroppableStage = ({ stage, gates }) => {
+    const { isOver, setNodeRef } = useDroppable({
+      id: stage.id,
+    })
+
+    return (
+      <div
+        ref={setNodeRef}
+        className={`workflow-stage ${isOver ? 'drag-over' : ''}`}
+      >
+        <div className="stage-header">
+          <span className="stage-icon">{stage.icon}</span>
+          <span className="stage-title">{stage.title}</span>
+        </div>
+        <p className="stage-description">{stage.description}</p>
+
+        <div className="stage-gates">
+          {gates.map(gate => (
+            <div key={gate.id} className="quality-gate">
+              <div className="gate-title">{gate.title}</div>
+              <div className="gate-description">{gate.description}</div>
+              <button
+                className="remove-gate"
+                onClick={() => handleRemoveGate(stage.id, gate.id)}
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
   }
 
   const handleDragEnd = (event) => {
@@ -190,58 +242,39 @@ function Exercise3({ onComplete, onStart, isStarted }) {
             <p className="workflow-description">{workflow.description}</p>
             <p className="workflow-context">{workflow.context}</p>
           </div>
+
+          <div className="exercise-instructions">
+            <h4>🚪 How to Design Quality Gates:</h4>
+            <ol>
+              <li><strong>Drag</strong> quality gates from the toolbox below into the workflow stages</li>
+              <li><strong>Place</strong> gates strategically to catch issues early in the process</li>
+              <li><strong>Balance</strong> thoroughness with practicality - consider effort vs. impact</li>
+              <li><strong>Ensure</strong> each stage has appropriate quality checkpoints</li>
+              <li><strong>Review</strong> your gate placement for comprehensive coverage</li>
+            </ol>
+            <p><em>💡 Tip: Early detection is cheaper than late fixes. Place critical gates where they'll catch the most issues.</em></p>
+          </div>
           
           <div className="gate-toolbox">
             <h3 className="gate-toolbox-title">Available Quality Gates</h3>
             <div className="available-gates">
               {availableGates.map(gate => (
-                <div 
-                  key={gate.id} 
-                  className="quality-gate"
-                  id={gate.id} // For DnD
-                  draggable
-                >
-                  <div className="gate-title">{gate.title}</div>
-                  <div className="gate-description">{gate.description}</div>
-                  <div className="gate-meta">
-                    <span className="gate-type">{gate.type}</span>
-                    <span className="gate-effort">Effort: {gate.effort}</span>
-                    <span className="gate-impact">Impact: {gate.impact}</span>
-                  </div>
-                </div>
+                <DraggableGate
+                  key={gate.id}
+                  gate={gate}
+                />
               ))}
             </div>
           </div>
-          
+
           <div className="workflow-canvas">
             <div className="workflow-stages">
               {workflow.stages.map(stage => (
-                <div 
-                  key={stage.id} 
-                  className="workflow-stage"
-                  id={stage.id} // For DnD
-                >
-                  <div className="stage-header">
-                    <span className="stage-icon">{stage.icon}</span>
-                    <span className="stage-title">{stage.title}</span>
-                  </div>
-                  <p className="stage-description">{stage.description}</p>
-                  
-                  <div className="stage-gates">
-                    {selectedGates[stage.id].map(gate => (
-                      <div key={gate.id} className="quality-gate">
-                        <div className="gate-title">{gate.title}</div>
-                        <div className="gate-description">{gate.description}</div>
-                        <button 
-                          className="remove-gate" 
-                          onClick={() => handleRemoveGate(stage.id, gate.id)}
-                        >
-                          Remove
-                        </button>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+                <DroppableStage
+                  key={stage.id}
+                  stage={stage}
+                  gates={selectedGates[stage.id]}
+                />
               ))}
             </div>
           </div>

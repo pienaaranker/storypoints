@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { DndContext, useSensor, useSensors, PointerSensor, KeyboardSensor, DragOverlay } from '@dnd-kit/core'
+import { useState, useEffect } from 'react'
+import { DndContext, useSensor, useSensors, PointerSensor, KeyboardSensor, useDraggable, useDroppable } from '@dnd-kit/core'
 import { sortableKeyboardCoordinates } from '@dnd-kit/sortable'
-import { loadExerciseData } from '../../../utils/moduleLoader'
+import { loadExerciseData, getModuleExerciseConfig } from '../../../utils/moduleLoader'
 import './Exercise.css'
 
 /**
@@ -32,6 +32,9 @@ function Exercise1({ onComplete, onStart, isStarted }) {
         setLoading(true)
         setError(null)
 
+        // Load exercise configuration from module config
+        const exerciseConfigData = await getModuleExerciseConfig('definition-of-done', 1)
+
         // Load exercise data using the module loader
         const exerciseData = await loadExerciseData('definition-of-done', 1)
 
@@ -40,26 +43,10 @@ function Exercise1({ onComplete, onStart, isStarted }) {
         const categories = exerciseData.categories
         const availableCriteria = exerciseData.availableCriteria
 
-        // Mock exercise config - this would come from module-config.json
-        const mockConfig = {
-          ui: {
-            startScreen: {
-              instructions: "You'll work through different development scenarios and build comprehensive Definition of Done criteria. Arrange quality standards into appropriate categories and prioritize them based on importance and feasibility.",
-              buttonText: "Start DoD Workshop"
-            }
-          },
-          config: {
-            allowRetry: true,
-            showHints: true,
-            categories: ["technical", "functional", "process", "documentation"],
-            maxCriteriaPerCategory: 8
-          }
-        }
-
-          setExerciseConfig(mockConfig)
-          setScenario(scenario)
-          setCategories(categories)
-          setAvailableCriteria(availableCriteria)
+        setExerciseConfig(exerciseConfigData)
+        setScenario(scenario)
+        setCategories(categories)
+        setAvailableCriteria(availableCriteria)
 
           // Initialize selected criteria
           const initialSelected = {}
@@ -88,6 +75,66 @@ function Exercise1({ onComplete, onStart, isStarted }) {
 
   const handleStart = () => {
     onStart()
+  }
+
+  // Draggable criterion component
+  const DraggableCriterion = ({ criterion }) => {
+    const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
+      id: criterion.id,
+    })
+
+    const style = transform ? {
+      transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+      opacity: isDragging ? 0.5 : 1,
+    } : undefined
+
+    return (
+      <div
+        ref={setNodeRef}
+        style={style}
+        {...listeners}
+        {...attributes}
+        className={`dod-criterion ${isDragging ? 'dragging' : ''}`}
+      >
+        <div className="dod-criterion-text">{criterion.text}</div>
+        <div className="dod-criterion-priority">Priority: {criterion.priority}</div>
+      </div>
+    )
+  }
+
+  // Droppable category component
+  const DroppableCategory = ({ category, criteria }) => {
+    const { isOver, setNodeRef } = useDroppable({
+      id: category.id,
+    })
+
+    return (
+      <div
+        ref={setNodeRef}
+        className={`dod-category ${isOver ? 'drag-over' : ''}`}
+      >
+        <div className="dod-category-header" style={{ color: category.color }}>
+          <span className="dod-category-icon">{category.icon}</span>
+          <span>{category.title}</span>
+        </div>
+        <p className="dod-category-description">{category.description}</p>
+
+        <div className="dod-criteria-list">
+          {criteria.map(criterion => (
+            <div key={criterion.id} className="dod-criterion">
+              <div className="dod-criterion-text">{criterion.text}</div>
+              <div className="dod-criterion-priority">Priority: {criterion.priority}</div>
+              <button
+                className="remove-criterion"
+                onClick={() => handleRemoveCriterion(category.id, criterion.id)}
+              >
+                Remove
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    )
   }
 
   const handleDragEnd = (event) => {
@@ -179,51 +226,36 @@ function Exercise1({ onComplete, onStart, isStarted }) {
             <p className="scenario-description">{scenario.description}</p>
             <p className="scenario-context">{scenario.context}</p>
           </div>
+
+          <div className="exercise-instructions">
+            <h4>📋 How to Complete This Exercise:</h4>
+            <ol>
+              <li><strong>Drag</strong> quality criteria from the "Available Criteria" section below into the appropriate category boxes</li>
+              <li><strong>Categorize</strong> each criterion into Technical, Functional, Process, or Documentation</li>
+              <li><strong>Prioritize</strong> by placing the most important criteria first in each category</li>
+              <li><strong>Balance</strong> your selection across all categories for comprehensive coverage</li>
+            </ol>
+            <p><em>💡 Tip: A good Definition of Done should cover all aspects of quality without being overwhelming.</em></p>
+          </div>
           
           <div className="dod-categories">
             {categories.map(category => (
-              <div 
-                key={category.id} 
-                className="dod-category"
-                id={category.id} // For DnD
-              >
-                <div className="dod-category-header" style={{ color: category.color }}>
-                  <span className="dod-category-icon">{category.icon}</span>
-                  <span>{category.title}</span>
-                </div>
-                <p className="dod-category-description">{category.description}</p>
-                
-                <div className="dod-criteria-list">
-                  {selectedCriteria[category.id].map(criterion => (
-                    <div key={criterion.id} className="dod-criterion">
-                      <div className="dod-criterion-text">{criterion.text}</div>
-                      <div className="dod-criterion-priority">Priority: {criterion.priority}</div>
-                      <button 
-                        className="remove-criterion" 
-                        onClick={() => handleRemoveCriterion(category.id, criterion.id)}
-                      >
-                        Remove
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <DroppableCategory
+                key={category.id}
+                category={category}
+                criteria={selectedCriteria[category.id]}
+              />
             ))}
           </div>
-          
+
           <div className="available-criteria">
             <h3>Available Criteria</h3>
             <div className="criteria-list">
               {availableCriteria.map(criterion => (
-                <div 
-                  key={criterion.id} 
-                  className="dod-criterion"
-                  id={criterion.id} // For DnD
-                  draggable
-                >
-                  <div className="dod-criterion-text">{criterion.text}</div>
-                  <div className="dod-criterion-priority">Priority: {criterion.priority}</div>
-                </div>
+                <DraggableCriterion
+                  key={criterion.id}
+                  criterion={criterion}
+                />
               ))}
             </div>
           </div>

@@ -31,7 +31,7 @@
         },
         "ui": {
           "startScreen": {
-            "instructions": "You'll work through different development scenarios and build comprehensive Definition of Done criteria. Arrange quality standards into appropriate categories and prioritize them based on importance and feasibility.",
+            "instructions": "In this exercise, you will create a comprehensive Definition of Done for an e-commerce application. \n\n1. DRAG quality criteria from the available list on the right into the appropriate category boxes (Technical, Functional, Process, Documentation).\n\n2. ARRANGE the most important criteria first in each category.\n\n3. REVIEW your selections to ensure balanced coverage across all quality dimensions.\n\nYour goal is to create a Definition of Done that ensures high-quality deliverables with appropriate standards for each category.",
             "buttonText": "Start DoD Workshop"
           }
         }
@@ -51,7 +51,7 @@
         },
         "ui": {
           "startScreen": {
-            "instructions": "You'll be presented with user stories that need acceptance criteria. Practice writing clear, testable criteria using different formats and learn to identify edge cases and missing scenarios.",
+            "instructions": "In this exercise, you will write acceptance criteria for real user stories.\n\n1. SELECT a format (Given/When/Then, Checklist, or Scenario-based) using the format buttons.\n\n2. WRITE clear, testable acceptance criteria in the text areas provided.\n\n3. CONSIDER edge cases and error scenarios - what could go wrong?\n\n4. REVIEW your criteria for completeness and clarity.\n\nYour goal is to write acceptance criteria that are specific, measurable, and leave no room for misinterpretation.",
             "buttonText": "Start AC Workshop"
           }
         }
@@ -71,7 +71,7 @@
         },
         "ui": {
           "startScreen": {
-            "instructions": "You'll design quality gate processes for different development workflows. Place quality checkpoints at appropriate stages and define criteria for each gate to prevent defects from progressing.",
+            "instructions": "In this exercise, you will design a quality gate process for a feature development workflow.\n\n1. DRAG quality gates from the toolbox below into the appropriate workflow stages (Planning, Development, Testing, Deployment).\n\n2. PLACE gates strategically to catch issues early and prevent defects from progressing.\n\n3. BALANCE thoroughness with practicality - consider effort vs. impact.\n\n4. REVIEW your gate placement to ensure comprehensive quality coverage.\n\nYour goal is to create a quality gate process that prevents defects while maintaining development velocity.",
             "buttonText": "Start Quality Gates"
           }
         }

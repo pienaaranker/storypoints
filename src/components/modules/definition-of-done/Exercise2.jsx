@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { loadExerciseData } from '../../../utils/moduleLoader'
+import { loadExerciseData, getModuleExerciseConfig } from '../../../utils/moduleLoader'
 import './Exercise.css'
 
 /**
@@ -33,31 +33,18 @@ function Exercise2({ onComplete, onStart, isStarted }) {
         setLoading(true)
         setError(null)
 
+        // Load exercise configuration from module config
+        const exerciseConfigData = await getModuleExerciseConfig('definition-of-done', 2)
+
         // Load exercise data using the module loader
         const exerciseData = await loadExerciseData('definition-of-done', 2)
-        
+
         // Extract data from the loaded JSON
         const scenarios = exerciseData.scenarios
         const formats = exerciseData.formats
         const qualityChecks = exerciseData.qualityChecks
-        
-        // Mock exercise config - this would come from module-config.json
-        const mockConfig = {
-          ui: {
-            startScreen: {
-              instructions: "You'll be presented with user stories that need acceptance criteria. Practice writing clear, testable criteria using different formats and learn to identify edge cases and missing scenarios.",
-              buttonText: "Start AC Workshop"
-            }
-          },
-          config: {
-            allowRetry: true,
-            showExamples: true,
-            formatTypes: ["given-when-then", "checklist", "scenario-based"],
-            qualityChecks: true
-          }
-        }
 
-        setExerciseConfig(mockConfig)
+        setExerciseConfig(exerciseConfigData)
         setScenarios(scenarios)
         setFormats(formats)
         setQualityChecks(qualityChecks)
@@ -249,9 +236,21 @@ function Exercise2({ onComplete, onStart, isStarted }) {
 
   const renderWritingStep = () => {
     const scenario = scenarios[currentScenario]
-    
+
     return (
       <div className="ac-workshop">
+        <div className="exercise-instructions">
+          <h4>✍️ How to Write Acceptance Criteria:</h4>
+          <ol>
+            <li><strong>Select</strong> a format using the buttons below (Given/When/Then is recommended for beginners)</li>
+            <li><strong>Read</strong> the user story and business rules carefully</li>
+            <li><strong>Write</strong> specific, testable criteria that define when the story is "done"</li>
+            <li><strong>Consider</strong> the edge cases listed - what could go wrong?</li>
+            <li><strong>Review</strong> your criteria for clarity and completeness</li>
+          </ol>
+          <p><em>💡 Tip: Good acceptance criteria are specific, measurable, and leave no room for interpretation.</em></p>
+        </div>
+
         <div className="ac-story-card">
           <h3 className="ac-story-title">{scenario.title}</h3>
           <div className="user-story">
