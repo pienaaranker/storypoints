@@ -1,0 +1,109 @@
+{
+  "metadata": {
+    "moduleId": "agile-metrics",
+    "version": "1.0.0",
+    "lastUpdated": "2025-01-15",
+    "description": "Agile Metrics & Measurement Module Configuration"
+  },
+  "module": {
+    "title": "Agile Metrics & Measurement",
+    "description": "Master velocity tracking, burndown charts, and team performance metrics for continuous improvement",
+    "learningObjectives": [
+      "Calculate and interpret team velocity trends for effective planning",
+      "Analyze burndown chart patterns to identify team behavior and blockers",
+      "Optimize development flow using cycle time metrics and bottleneck analysis",
+      "Create balanced team health scorecards combining performance and satisfaction",
+      "Implement data-driven continuous improvement practices"
+    ],
+    "exercises": [
+      {
+        "id": 1,
+        "title": "Velocity Analysis Workshop",
+        "description": "Analyze team velocity patterns and make data-driven planning decisions",
+        "details": "Learn to distinguish between measurement and meaningful interpretation of team velocity. Master trend recognition, forecasting, and the crucial difference between capacity and velocity for effective sprint and release planning.",
+        "type": "velocity_analysis",
+        "dataFile": "velocity-scenarios.json",
+        "config": {
+          "allowRetry": true,
+          "showCalculations": true,
+          "chartTypes": ["line", "bar", "trend"],
+          "scenarioCount": 4,
+          "maxVelocityRange": 50,
+          "showForecasting": true
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "In this exercise, you will analyze real team velocity data to make planning decisions.\n\n1. EXAMINE velocity trends across multiple sprints to identify meaningful patterns\n\n2. CALCULATE realistic velocity ranges for planning purposes\n\n3. FORECAST delivery timelines using historical data\n\n4. DISTINGUISH between normal variation and significant velocity changes\n\nYour goal is to transform from measuring velocity to using it as an effective planning and communication tool.",
+            "buttonText": "Start Velocity Analysis"
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Burndown Chart Mastery",
+        "description": "Analyze burndown charts to identify team performance patterns and issues",
+        "details": "Develop diagnostic skills to read burndown patterns like warning signs. Learn to spot problems early, understand root causes, and know when and how to intervene during sprints.",
+        "type": "burndown_analysis",
+        "dataFile": "burndown-scenarios.json",
+        "config": {
+          "allowRetry": true,
+          "showPatternGuide": true,
+          "chartInteraction": true,
+          "patternTypes": ["ideal", "late-start", "scope-creep", "blocked", "early-finish", "staircase", "cliff-drop"],
+          "scenarioCount": 6,
+          "showDiagnostics": true
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "You will analyze burndown charts to diagnose team behavior and identify improvement opportunities.\n\n1. IDENTIFY burndown patterns and what they reveal about team dynamics\n\n2. DIAGNOSE root causes behind problematic patterns\n\n3. RECOMMEND interventions for different burndown scenarios\n\n4. PREDICT potential issues before they become critical\n\nYour goal is to become a burndown chart detective who can spot problems early and guide teams toward sustainable practices.",
+            "buttonText": "Start Burndown Analysis"
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Cycle Time Optimization",
+        "description": "Analyze development flow and identify bottlenecks using cycle time data",
+        "details": "Transform from feature-focused to flow-focused thinking. Learn to identify system bottlenecks, optimize team throughput, and implement continuous flow improvements.",
+        "type": "cycle_time_analysis",
+        "dataFile": "cycle-time-scenarios.json",
+        "config": {
+          "allowRetry": true,
+          "showFlowDiagram": true,
+          "stageTypes": ["backlog", "development", "review", "testing", "deployment"],
+          "maxCycleTime": 30,
+          "improvementSuggestions": true,
+          "bottleneckAnalysis": true
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "You will analyze development flow to optimize team throughput and identify process improvements.\n\n1. MAP development stages and measure cycle times for each phase\n\n2. IDENTIFY bottlenecks that constrain overall team throughput\n\n3. DESIGN interventions to reduce cycle time and improve flow\n\n4. MEASURE the impact of process improvements on delivery speed\n\nYour goal is to think systemically about flow optimization rather than individual productivity.",
+            "buttonText": "Start Flow Analysis"
+          }
+        }
+      },
+      {
+        "id": 4,
+        "title": "Team Health Dashboard",
+        "description": "Build comprehensive team health metrics combining performance and satisfaction indicators",
+        "details": "Develop holistic team assessment skills that balance productivity with sustainability. Learn to create balanced scorecards that predict problems and guide sustainable improvement.",
+        "type": "team_health_metrics",
+        "dataFile": "team-health-scenarios.json",
+        "config": {
+          "allowRetry": true,
+          "showMetricGuide": true,
+          "metricCategories": ["performance", "quality", "satisfaction", "collaboration"],
+          "maxMetricsPerCategory": 3,
+          "dashboardTemplates": true,
+          "trendAnalysis": true
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "You will create balanced team health assessments that go beyond simple productivity metrics.\n\n1. SELECT appropriate metrics across performance, quality, satisfaction, and collaboration dimensions\n\n2. BUILD balanced scorecards that provide holistic team health views\n\n3. ANALYZE trends to identify early warning signs of team dysfunction\n\n4. RECOMMEND sustainable improvement strategies that maintain team well-being\n\nYour goal is to create comprehensive team health monitoring that supports both productivity and sustainability.",
+            "buttonText": "Start Health Assessment"
+          }
+        }
+      }
+    ]
+  }
+}

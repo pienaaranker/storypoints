@@ -1,0 +1,190 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Burndown chart scenarios with pattern recognition exercises",
+    "lastUpdated": "2025-01-15"
+  },
+  "scenarios": [
+    {
+      "id": 1,
+      "title": "The Staircase Pattern",
+      "description": "Team completing work in large chunks rather than continuously",
+      "sprintLength": 10,
+      "totalPoints": 40,
+      "dailyData": [
+        { "day": 0, "remaining": 40, "ideal": 40 },
+        { "day": 1, "remaining": 40, "ideal": 36 },
+        { "day": 2, "remaining": 40, "ideal": 32 },
+        { "day": 3, "remaining": 28, "ideal": 28 },
+        { "day": 4, "remaining": 28, "ideal": 24 },
+        { "day": 5, "remaining": 28, "ideal": 20 },
+        { "day": 6, "remaining": 16, "ideal": 16 },
+        { "day": 7, "remaining": 16, "ideal": 12 },
+        { "day": 8, "remaining": 8, "ideal": 8 },
+        { "day": 9, "remaining": 8, "ideal": 4 },
+        { "day": 10, "remaining": 0, "ideal": 0 }
+      ],
+      "pattern": "staircase",
+      "diagnosis": {
+        "symptoms": ["Work completed in large chunks", "Flat periods followed by steep drops", "Stories not broken down small enough"],
+        "root_causes": ["Stories too large", "Not breaking work into daily tasks", "Waiting to complete entire stories"],
+        "interventions": ["Break stories into smaller tasks", "Update burndown daily", "Focus on continuous progress"],
+        "prevention": ["Better story decomposition", "Daily task planning", "Pair programming"]
+      },
+      "questions": [
+        {
+          "type": "pattern_recognition",
+          "question": "What does this burndown pattern indicate?",
+          "options": ["Team is blocked", "Stories are too large", "Scope is increasing", "Team is ahead of schedule"],
+          "correct": 1,
+          "explanation": "The staircase pattern shows work being completed in large chunks, indicating stories aren't broken down into daily-sized tasks"
+        },
+        {
+          "type": "intervention",
+          "question": "What's the best intervention for this pattern?",
+          "options": ["Add more team members", "Extend the sprint", "Break stories into smaller tasks", "Remove some stories"],
+          "correct": 2,
+          "explanation": "Breaking stories into smaller, daily-completable tasks would create smoother burndown progress"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "The Scope Creep Pattern",
+      "description": "Work being added mid-sprint causing the burndown to go up",
+      "sprintLength": 10,
+      "totalPoints": 35,
+      "dailyData": [
+        { "day": 0, "remaining": 35, "ideal": 35 },
+        { "day": 1, "remaining": 32, "ideal": 31.5 },
+        { "day": 2, "remaining": 29, "ideal": 28 },
+        { "day": 3, "remaining": 26, "ideal": 24.5 },
+        { "day": 4, "remaining": 23, "ideal": 21 },
+        { "day": 5, "remaining": 28, "ideal": 17.5 },
+        { "day": 6, "remaining": 25, "ideal": 14 },
+        { "day": 7, "remaining": 22, "ideal": 10.5 },
+        { "day": 8, "remaining": 18, "ideal": 7 },
+        { "day": 9, "remaining": 12, "ideal": 3.5 },
+        { "day": 10, "remaining": 8, "ideal": 0 }
+      ],
+      "pattern": "scope_creep",
+      "diagnosis": {
+        "symptoms": ["Burndown line goes up", "More work added mid-sprint", "Sprint goal at risk"],
+        "root_causes": ["Unclear requirements", "Stakeholder pressure", "Poor sprint planning", "Weak product owner"],
+        "interventions": ["Protect sprint scope", "Defer new work to backlog", "Educate stakeholders", "Strengthen sprint commitment"],
+        "prevention": ["Better sprint planning", "Clear definition of done", "Strong product owner", "Stakeholder education"]
+      },
+      "questions": [
+        {
+          "type": "diagnosis",
+          "question": "What happened on day 5 of this sprint?",
+          "options": ["Team got blocked", "Work was added to the sprint", "A story was re-estimated", "Team member was sick"],
+          "correct": 1,
+          "explanation": "The burndown went up from 23 to 28 points, indicating 5 points of work was added mid-sprint"
+        },
+        {
+          "type": "action",
+          "question": "What should the Scrum Master do immediately?",
+          "options": ["Extend the sprint", "Remove team members", "Protect the sprint scope", "Add more resources"],
+          "correct": 2,
+          "explanation": "The Scrum Master should protect the sprint scope and help defer new work to the next sprint"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "The Blocked Team Pattern",
+      "description": "Team unable to make progress due to external dependencies",
+      "sprintLength": 10,
+      "totalPoints": 42,
+      "dailyData": [
+        { "day": 0, "remaining": 42, "ideal": 42 },
+        { "day": 1, "remaining": 38, "ideal": 37.8 },
+        { "day": 2, "remaining": 35, "ideal": 33.6 },
+        { "day": 3, "remaining": 32, "ideal": 29.4 },
+        { "day": 4, "remaining": 32, "ideal": 25.2 },
+        { "day": 5, "remaining": 32, "ideal": 21 },
+        { "day": 6, "remaining": 32, "ideal": 16.8 },
+        { "day": 7, "remaining": 32, "ideal": 12.6 },
+        { "day": 8, "remaining": 18, "ideal": 8.4 },
+        { "day": 9, "remaining": 12, "ideal": 4.2 },
+        { "day": 10, "remaining": 6, "ideal": 0 }
+      ],
+      "pattern": "blocked",
+      "diagnosis": {
+        "symptoms": ["Flat line for multiple days", "Sudden progress near end", "Sprint goal at risk"],
+        "root_causes": ["External dependencies", "Waiting for approvals", "Technical blockers", "Resource unavailability"],
+        "interventions": ["Escalate blockers", "Work on unblocked items", "Swarm on blockers", "Adjust sprint scope"],
+        "prevention": ["Identify dependencies early", "Have backup work ready", "Improve cross-team communication"]
+      },
+      "questions": [
+        {
+          "type": "timeline",
+          "question": "When did the team get blocked?",
+          "options": ["Day 1", "Day 4", "Day 6", "Day 8"],
+          "correct": 1,
+          "explanation": "The burndown flatlined from day 4-7, indicating the team was blocked during this period"
+        },
+        {
+          "type": "outcome",
+          "question": "Will this team likely meet their sprint goal?",
+          "options": ["Yes, easily", "Yes, but barely", "No, they'll miss by a lot", "No, they'll miss by a little"],
+          "correct": 3,
+          "explanation": "They'll finish with 6 points remaining out of 42, missing by about 14% - a small miss"
+        }
+      ]
+    }
+  ],
+  "burndownPatterns": {
+    "ideal": {
+      "description": "Smooth, consistent progress toward zero",
+      "characteristics": ["Linear decline", "Minimal variation", "Predictable completion"],
+      "team_behavior": "Well-planned work, good collaboration, no major blockers"
+    },
+    "staircase": {
+      "description": "Work completed in large chunks with flat periods",
+      "characteristics": ["Steep drops", "Flat periods", "Irregular progress"],
+      "team_behavior": "Stories too large, not breaking work into daily tasks"
+    },
+    "scope_creep": {
+      "description": "Burndown line goes up due to added work",
+      "characteristics": ["Upward spikes", "Increased total work", "Sprint goal at risk"],
+      "team_behavior": "Poor scope protection, unclear requirements"
+    },
+    "blocked": {
+      "description": "Flat line indicating no progress",
+      "characteristics": ["Horizontal line", "No work completion", "Late sprint recovery"],
+      "team_behavior": "External dependencies, waiting for decisions"
+    },
+    "late_start": {
+      "description": "Little progress early, rushed completion",
+      "characteristics": ["Flat early", "Steep late decline", "High risk"],
+      "team_behavior": "Procrastination, unclear priorities, poor planning"
+    },
+    "early_finish": {
+      "description": "Work completed ahead of schedule",
+      "characteristics": ["Steeper than ideal", "Early completion", "Potential undercommitment"],
+      "team_behavior": "Conservative planning, efficient execution, or simple work"
+    }
+  },
+  "interventionGuide": {
+    "daily_standup": {
+      "staircase": "Focus on breaking down current work into daily tasks",
+      "scope_creep": "Discuss new requests and protect sprint scope",
+      "blocked": "Escalate blockers and identify alternative work",
+      "late_start": "Prioritize work and remove distractions"
+    },
+    "mid_sprint": {
+      "staircase": "Coach team on task decomposition",
+      "scope_creep": "Meet with product owner about scope changes",
+      "blocked": "Escalate to management, consider scope adjustment",
+      "late_start": "Consider removing lower priority items"
+    },
+    "retrospective": {
+      "staircase": "Discuss story sizing and task breakdown practices",
+      "scope_creep": "Review sprint planning and stakeholder communication",
+      "blocked": "Identify dependency patterns and prevention strategies",
+      "late_start": "Examine team motivation and work prioritization"
+    }
+  }
+}

@@ -8,7 +8,8 @@ This document outlines the comprehensive plan to transform Story Point Master fr
 - **From**: Single-purpose story point app
 - **To**: Extensible agile learning hub supporting multiple independent modules
 - **Preserve**: All existing functionality during migration
-- **Add**: Story Hierarchy & Breakdown module as proof of concept
+- **Completed**: Story Points, Story Hierarchy, Sprint Planning, and Definition of Done modules
+- **Next**: Agile Metrics & Measurement module
 
 ## 🏗️ New Architecture Design
 
@@ -21,27 +22,60 @@ src/
 │   │   ├── ProgressTracker.jsx    # Module progress tracking
 │   │   └── ModuleCard.jsx         # Module selection cards
 │   ├── modules/                   # Module-specific components
-│   │   ├── story-points/          # Current story point module
+│   │   ├── story-points/          # Story point estimation module ✅
 │   │   │   ├── StoryPointModule.jsx
-│   │   │   ├── Exercise1.jsx      # Moved from root components/
+│   │   │   ├── Exercise1.jsx
 │   │   │   ├── Exercise2.jsx
 │   │   │   └── Exercise3.jsx
-│   │   └── story-hierarchy/       # New module (future)
-│   │       ├── StoryHierarchyModule.jsx
-│   │       ├── EpicVsStoryExercise.jsx
-│   │       └── DecompositionExercise.jsx
+│   │   ├── story-hierarchy/       # Story hierarchy module ✅
+│   │   │   ├── StoryHierarchyModule.jsx
+│   │   │   ├── Exercise1.jsx
+│   │   │   └── Exercise2.jsx
+│   │   ├── sprint-planning/       # Sprint planning module ✅
+│   │   │   ├── SprintPlanningModule.jsx
+│   │   │   ├── Exercise1.jsx
+│   │   │   ├── Exercise2.jsx
+│   │   │   └── Exercise3.jsx
+│   │   ├── definition-of-done/    # DoD & quality gates module ✅
+│   │   │   ├── DefinitionOfDoneModule.jsx
+│   │   │   ├── Exercise1.jsx
+│   │   │   ├── Exercise2.jsx
+│   │   │   └── Exercise3.jsx
+│   │   └── agile-metrics/         # Metrics & measurement module (next)
+│   │       ├── AgileMetricsModule.jsx
+│   │       ├── Exercise1.jsx
+│   │       ├── Exercise2.jsx
+│   │       ├── Exercise3.jsx
+│   │       └── Exercise4.jsx
 │   ├── Home.jsx                   # Restructured as module hub
 │   └── ModuleRouter.jsx           # Handles module-level routing
 ├── data/
 │   ├── modules/                   # Module-specific data
-│   │   ├── story-points/          # Current exercise data moved here
+│   │   ├── story-points/          # Story point estimation data ✅
 │   │   │   ├── module-config.json
 │   │   │   ├── exercise1-items.json
 │   │   │   ├── exercise2-stories.json
 │   │   │   └── exercise3-questions.json
-│   │   └── story-hierarchy/       # New module data
+│   │   ├── story-hierarchy/       # Story hierarchy data ✅
+│   │   │   ├── module-config.json
+│   │   │   ├── hierarchy-examples.json
+│   │   │   └── decomposition-scenarios.json
+│   │   ├── sprint-planning/       # Sprint planning data ✅
+│   │   │   ├── module-config.json
+│   │   │   ├── planning-scenarios.json
+│   │   │   ├── capacity-scenarios.json
+│   │   │   └── commitment-scenarios.json
+│   │   ├── definition-of-done/    # DoD module data ✅
+│   │   │   ├── module-config.json
+│   │   │   ├── dod-scenarios.json
+│   │   │   ├── ac-scenarios.json
+│   │   │   └── quality-gate-scenarios.json
+│   │   └── agile-metrics/         # Metrics module data (next)
 │   │       ├── module-config.json
-│   │       └── exercises/
+│   │       ├── velocity-scenarios.json
+│   │       ├── burndown-scenarios.json
+│   │       ├── cycle-time-scenarios.json
+│   │       └── team-health-scenarios.json
 │   └── platform-config.json      # Platform-wide configuration
 └── utils/
     ├── moduleLoader.js            # Module data loading
@@ -126,6 +160,16 @@ moduleProgress: {
         "difficulty": "Intermediate", 
         "estimatedTime": "45-60 minutes",
         "prerequisites": ["story-points"],
+        "status": "available"
+      },
+      {
+        "id": "agile-metrics",
+        "title": "Agile Metrics & Measurement",
+        "description": "Master velocity tracking, burndown charts, and team performance metrics for continuous improvement",
+        "icon": "📊",
+        "difficulty": "Advanced",
+        "estimatedTime": "60-90 minutes",
+        "prerequisites": ["definition-of-done"],
         "status": "coming-soon"
       }
     ]
@@ -183,13 +227,26 @@ moduleProgress: {
 ### **Navigation Hierarchy**
 ```
 Home (Module Hub)
-├── Story Point Estimation Module
+├── Story Point Estimation Module ✅
 │   ├── Exercise 1: Abstract Comparisons
-│   ├── Exercise 2: User Stories  
+│   ├── Exercise 2: User Stories
 │   └── Exercise 3: Core Principles
-└── Story Hierarchy Module
-    ├── Exercise 1: Epic vs Feature vs Story
-    └── Exercise 2: Story Decomposition
+├── Story Hierarchy Module ✅
+│   ├── Exercise 1: Epic vs Feature vs Story
+│   └── Exercise 2: Story Decomposition
+├── Sprint Planning Module ✅
+│   ├── Exercise 1: Capacity Planning
+│   ├── Exercise 2: Story Selection
+│   └── Exercise 3: Sprint Commitment
+├── Definition of Done Module ✅
+│   ├── Exercise 1: DoD Creation Workshop
+│   ├── Exercise 2: Acceptance Criteria Mastery
+│   └── Exercise 3: Quality Gates Assessment
+└── Agile Metrics Module (Next)
+    ├── Exercise 1: Velocity Analysis Workshop
+    ├── Exercise 2: Burndown Chart Mastery
+    ├── Exercise 3: Cycle Time Optimization
+    └── Exercise 4: Team Health Dashboard
 ```
 
 ### **Breadcrumb Navigation**
@@ -274,6 +331,28 @@ function ModuleCard({ module, status, progress, onNavigate }) {
 - Breadcrumb support
 - Module switching capabilities
 - Enhanced progress visualization
+
+## 📊 Current Implementation Status
+
+### **Completed Modules** ✅
+1. **Story Points Module** - Fully implemented with 3 exercises
+2. **Story Hierarchy Module** - Fully implemented with 2 exercises
+3. **Sprint Planning Module** - Fully implemented with 3 exercises
+4. **Definition of Done Module** - **Just completed** with 3 exercises
+
+### **Next Module: Agile Metrics & Measurement** 📊
+- **Status**: Specification complete, ready for implementation
+- **Priority**: High - builds on DoD foundation
+- **Complexity**: Advanced (4 exercises with data visualization)
+- **Estimated Development**: 6-8 weeks
+- **Key Features**: Interactive charts, pattern recognition, dashboard building
+
+### **Implementation Progress**
+- ✅ **Architecture**: Multi-module system fully established
+- ✅ **Data Structure**: JSON-based configuration system working
+- ✅ **Navigation**: Hierarchical routing and progress tracking
+- ✅ **UI Components**: Reusable exercise patterns established
+- 🔄 **Next**: Metrics module with advanced data visualization
 
 ## 🚀 Implementation Roadmap
 
@@ -494,7 +573,36 @@ function App() {
 - Document rollback procedures for each phase
 - Create automated tests to verify legacy functionality
 
-## 📚 New Story Hierarchy Module
+## 📊 Next Module: Agile Metrics & Measurement
+
+### **Module Overview**
+The Agile Metrics & Measurement module represents the most advanced learning experience in the platform, focusing on data-driven agile practices and continuous improvement.
+
+### **Key Challenges**
+1. **Data Visualization**: Requires interactive charts and complex visualizations
+2. **Statistical Analysis**: Velocity calculations, trend analysis, pattern recognition
+3. **Real-world Scenarios**: Authentic team data and realistic metrics scenarios
+4. **Advanced Interactions**: Chart manipulation, dashboard building, pattern matching
+
+### **Technical Requirements**
+- **Chart Library**: Interactive charting solution (Chart.js, D3.js, or Recharts)
+- **Data Processing**: Statistical calculations and trend analysis
+- **Performance**: Optimized rendering for complex visualizations
+- **Accessibility**: Screen reader support and keyboard navigation for charts
+
+### **Implementation Phases**
+1. **Foundation** (Weeks 1-2): Module structure, basic charts, velocity exercise
+2. **Core Exercises** (Weeks 3-4): Burndown analysis, cycle time optimization
+3. **Advanced Features** (Weeks 5-6): Team health dashboard, pattern recognition
+4. **Polish & Testing** (Weeks 7-8): Performance optimization, comprehensive testing
+
+### **Success Criteria**
+- Interactive charts with smooth performance
+- Pattern recognition accuracy >80%
+- Completion rate >85% despite advanced difficulty
+- Strong user engagement with data visualizations
+
+## 📚 Completed Story Hierarchy Module
 
 ### **Learning Objectives**
 - Distinguish between Epics, Features, and Stories

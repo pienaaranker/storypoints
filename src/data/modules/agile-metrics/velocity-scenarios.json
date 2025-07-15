@@ -1,0 +1,147 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Velocity analysis scenarios with realistic team data",
+    "lastUpdated": "2025-01-15"
+  },
+  "scenarios": [
+    {
+      "id": 1,
+      "title": "Stable Team - E-commerce Platform",
+      "description": "A mature team working on an e-commerce platform with consistent membership",
+      "context": "This team has been working together for 8 months on a well-established product. They have stable requirements and good technical practices.",
+      "teamSize": 6,
+      "sprintLength": 2,
+      "sprintData": [
+        { "sprint": 1, "committed": 28, "completed": 26, "teamDays": 60, "notes": "New team member onboarding" },
+        { "sprint": 2, "committed": 30, "completed": 32, "teamDays": 60, "notes": "Good momentum, small stories" },
+        { "sprint": 3, "committed": 32, "completed": 29, "teamDays": 60, "notes": "Complex integration work" },
+        { "sprint": 4, "committed": 30, "completed": 31, "teamDays": 60, "notes": "Steady progress" },
+        { "sprint": 5, "committed": 31, "completed": 33, "teamDays": 60, "notes": "Well-defined stories" },
+        { "sprint": 6, "committed": 33, "completed": 30, "teamDays": 60, "notes": "Technical debt cleanup" },
+        { "sprint": 7, "committed": 30, "completed": 32, "teamDays": 60, "notes": "Feature complete sprint" },
+        { "sprint": 8, "committed": 32, "completed": 31, "teamDays": 60, "notes": "Bug fixes and polish" }
+      ],
+      "questions": [
+        {
+          "type": "calculation",
+          "question": "What is the team's average velocity over the last 6 sprints?",
+          "options": ["29.5", "30.8", "31.2", "32.1"],
+          "correct": 1,
+          "explanation": "Average of sprints 3-8: (29+31+33+30+32+31)/6 = 31.0 points"
+        },
+        {
+          "type": "interpretation",
+          "question": "What velocity range should this team use for sprint planning?",
+          "options": ["25-35 points", "28-33 points", "30-32 points", "29-34 points"],
+          "correct": 1,
+          "explanation": "Based on recent performance, 28-33 points captures the typical range while accounting for complexity variation"
+        },
+        {
+          "type": "forecasting",
+          "question": "How many sprints would it take to complete a 95-point epic?",
+          "options": ["3 sprints", "3-4 sprints", "4 sprints", "4-5 sprints"],
+          "correct": 1,
+          "explanation": "At 31 points average velocity: 95/31 = 3.1 sprints, so 3-4 sprints is realistic"
+        }
+      ],
+      "insights": [
+        "This team shows healthy velocity stability with minor variation",
+        "The slight dip in sprint 3 and 6 suggests complexity impacts but good recovery",
+        "Consistent team size and sprint length contribute to predictable velocity"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Growing Team - Mobile App Startup",
+      "description": "A startup team that has been scaling rapidly with changing requirements",
+      "context": "This mobile app team started with 3 developers and has grown to 7. They're dealing with evolving product requirements and technical scaling challenges.",
+      "teamSize": "3→7",
+      "sprintLength": 1,
+      "sprintData": [
+        { "sprint": 1, "committed": 15, "completed": 18, "teamDays": 15, "notes": "3 developers, simple features" },
+        { "sprint": 2, "committed": 18, "completed": 16, "teamDays": 15, "notes": "Underestimated complexity" },
+        { "sprint": 3, "committed": 16, "completed": 19, "teamDays": 15, "notes": "Better story breakdown" },
+        { "sprint": 4, "committed": 20, "completed": 14, "teamDays": 20, "notes": "Added 1 new developer" },
+        { "sprint": 5, "committed": 16, "completed": 22, "teamDays": 20, "notes": "New dev ramping up" },
+        { "sprint": 6, "committed": 24, "completed": 20, "teamDays": 20, "notes": "Architecture refactoring" },
+        { "sprint": 7, "committed": 22, "completed": 28, "teamDays": 35, "notes": "Added 3 more developers" },
+        { "sprint": 8, "committed": 30, "completed": 24, "teamDays": 35, "notes": "Team coordination challenges" },
+        { "sprint": 9, "committed": 26, "completed": 32, "teamDays": 35, "notes": "Improved processes" },
+        { "sprint": 10, "committed": 32, "completed": 35, "teamDays": 35, "notes": "Team hitting stride" }
+      ],
+      "questions": [
+        {
+          "type": "analysis",
+          "question": "Why shouldn't you use the overall average velocity for planning?",
+          "options": ["Team size changed significantly", "Sprint length varied", "Requirements were unclear", "Technical debt increased"],
+          "correct": 0,
+          "explanation": "The team doubled in size, making early velocity data irrelevant for current planning"
+        },
+        {
+          "type": "segmentation",
+          "question": "Which sprints should you use to calculate current team velocity?",
+          "options": ["All 10 sprints", "Last 6 sprints", "Sprints 7-10 only", "Sprints 8-10 only"],
+          "correct": 2,
+          "explanation": "Sprints 7-10 represent the current team size of 7 developers, making them most relevant"
+        },
+        {
+          "type": "planning",
+          "question": "What's the most appropriate velocity range for the next sprint?",
+          "options": ["20-25 points", "28-35 points", "30-40 points", "25-30 points"],
+          "correct": 1,
+          "explanation": "Based on sprints 7-10 with current team size: range of 24-35 points, so 28-35 is appropriate"
+        }
+      ],
+      "insights": [
+        "Team growth significantly impacts velocity - use recent data only",
+        "New team members initially decrease velocity before increasing it",
+        "Velocity stabilizes as team coordination improves"
+      ]
+    }
+  ],
+  "velocityPatterns": {
+    "stable": {
+      "description": "Consistent velocity with minor variation (±10%)",
+      "characteristics": ["Mature team", "Stable requirements", "Good practices"],
+      "planningApproach": "Use recent average with small buffer"
+    },
+    "trending_up": {
+      "description": "Increasing velocity over time",
+      "characteristics": ["Team learning", "Process improvements", "Technical debt reduction"],
+      "planningApproach": "Use recent higher values but be conservative"
+    },
+    "trending_down": {
+      "description": "Decreasing velocity over time",
+      "characteristics": ["Technical debt accumulation", "Team changes", "Increasing complexity"],
+      "planningApproach": "Investigate root causes, use lower recent values"
+    },
+    "volatile": {
+      "description": "High variation in velocity (>20%)",
+      "characteristics": ["Inconsistent story sizing", "External dependencies", "Team disruptions"],
+      "planningApproach": "Use wider range, focus on improving consistency"
+    }
+  },
+  "calculationMethods": {
+    "simple_average": {
+      "description": "Sum of completed points / number of sprints",
+      "when_to_use": "Stable teams with consistent context",
+      "limitations": "Doesn't account for trends or outliers"
+    },
+    "weighted_average": {
+      "description": "Recent sprints weighted more heavily",
+      "when_to_use": "Teams with improving or declining trends",
+      "limitations": "May overreact to recent changes"
+    },
+    "median": {
+      "description": "Middle value when sprints are ordered by velocity",
+      "when_to_use": "Teams with occasional outliers",
+      "limitations": "May not reflect recent improvements"
+    },
+    "range_planning": {
+      "description": "Use minimum and maximum from recent sprints",
+      "when_to_use": "Planning with uncertainty",
+      "limitations": "May be too conservative or optimistic"
+    }
+  }
+}

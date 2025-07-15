@@ -1,0 +1,207 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Team health dashboard scenarios with balanced scorecard exercises",
+    "lastUpdated": "2025-01-15"
+  },
+  "scenarios": [
+    {
+      "id": 1,
+      "title": "High Performance, Low Satisfaction",
+      "description": "Team delivering well but showing signs of burnout and declining morale",
+      "context": "A high-performing team that has been consistently delivering but recent surveys show declining satisfaction and engagement.",
+      "teamProfile": {
+        "size": 7,
+        "tenure": "18 months average",
+        "domain": "Financial services platform",
+        "workload": "High pressure, tight deadlines"
+      },
+      "metrics": {
+        "performance": {
+          "velocity": { "current": 42, "trend": "stable", "target": 40, "status": "good" },
+          "cycle_time": { "current": 8.5, "trend": "increasing", "target": 7, "status": "warning" },
+          "throughput": { "current": 5.2, "trend": "stable", "target": 5, "status": "good" },
+          "predictability": { "current": 85, "trend": "stable", "target": 80, "status": "good" }
+        },
+        "quality": {
+          "defect_rate": { "current": 12, "trend": "increasing", "target": 8, "status": "warning" },
+          "test_coverage": { "current": 78, "trend": "declining", "target": 85, "status": "warning" },
+          "code_review_time": { "current": 2.1, "trend": "increasing", "target": 1.5, "status": "warning" },
+          "technical_debt": { "current": 35, "trend": "increasing", "target": 25, "status": "critical" }
+        },
+        "satisfaction": {
+          "team_morale": { "current": 6.2, "trend": "declining", "target": 8, "status": "critical" },
+          "work_life_balance": { "current": 5.8, "trend": "declining", "target": 7.5, "status": "critical" },
+          "learning_opportunities": { "current": 5.5, "trend": "stable", "target": 7, "status": "warning" },
+          "autonomy": { "current": 7.1, "trend": "stable", "target": 7.5, "status": "warning" }
+        },
+        "collaboration": {
+          "communication": { "current": 7.8, "trend": "stable", "target": 8, "status": "good" },
+          "knowledge_sharing": { "current": 6.9, "trend": "declining", "target": 8, "status": "warning" },
+          "pair_programming": { "current": 25, "trend": "declining", "target": 40, "status": "warning" },
+          "cross_training": { "current": 4.2, "trend": "stable", "target": 6, "status": "warning" }
+        }
+      },
+      "questions": [
+        {
+          "type": "pattern_recognition",
+          "question": "What's the primary concern with this team's health?",
+          "options": ["Poor performance", "Quality issues", "Team burnout risk", "Communication problems"],
+          "correct": 2,
+          "explanation": "Despite good performance, declining satisfaction metrics and increasing quality issues suggest burnout risk"
+        },
+        {
+          "type": "root_cause",
+          "question": "What's likely causing the declining quality metrics?",
+          "options": ["Lack of skills", "Poor tools", "Time pressure", "Bad requirements"],
+          "correct": 2,
+          "explanation": "High performance pressure with declining satisfaction suggests teams are cutting quality corners to meet deadlines"
+        },
+        {
+          "type": "intervention",
+          "question": "What should be the immediate priority?",
+          "options": ["Increase velocity", "Reduce technical debt", "Improve work-life balance", "Add more testing"],
+          "correct": 2,
+          "explanation": "Addressing work-life balance and reducing pressure is critical to prevent burnout and maintain long-term performance"
+        }
+      ],
+      "recommendations": [
+        {
+          "category": "Immediate",
+          "actions": ["Reduce sprint commitments by 15%", "Implement no-meeting Fridays", "Address technical debt in next sprint"],
+          "rationale": "Prevent burnout while addressing quality issues"
+        },
+        {
+          "category": "Short-term",
+          "actions": ["Increase learning time allocation", "Implement pair programming goals", "Regular team health check-ins"],
+          "rationale": "Rebuild team satisfaction and knowledge sharing"
+        },
+        {
+          "category": "Long-term",
+          "actions": ["Sustainable pace practices", "Career development planning", "Process improvement focus"],
+          "rationale": "Create sustainable high performance"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "New Team Formation",
+      "description": "Recently formed team with good collaboration but inconsistent performance",
+      "context": "A newly formed team with members from different backgrounds, showing good teamwork but struggling with consistent delivery.",
+      "teamProfile": {
+        "size": 6,
+        "tenure": "3 months average",
+        "domain": "E-commerce platform",
+        "workload": "Moderate, learning-focused"
+      },
+      "metrics": {
+        "performance": {
+          "velocity": { "current": 28, "trend": "improving", "target": 35, "status": "warning" },
+          "cycle_time": { "current": 12, "trend": "improving", "target": 8, "status": "warning" },
+          "throughput": { "current": 2.8, "trend": "improving", "target": 4, "status": "warning" },
+          "predictability": { "current": 65, "trend": "improving", "target": 80, "status": "warning" }
+        },
+        "quality": {
+          "defect_rate": { "current": 8, "trend": "stable", "target": 8, "status": "good" },
+          "test_coverage": { "current": 82, "trend": "stable", "target": 85, "status": "good" },
+          "code_review_time": { "current": 1.8, "trend": "stable", "target": 1.5, "status": "good" },
+          "technical_debt": { "current": 22, "trend": "stable", "target": 25, "status": "good" }
+        },
+        "satisfaction": {
+          "team_morale": { "current": 8.1, "trend": "stable", "target": 8, "status": "good" },
+          "work_life_balance": { "current": 7.8, "trend": "stable", "target": 7.5, "status": "good" },
+          "learning_opportunities": { "current": 8.5, "trend": "stable", "target": 7, "status": "good" },
+          "autonomy": { "current": 6.8, "trend": "improving", "target": 7.5, "status": "warning" }
+        },
+        "collaboration": {
+          "communication": { "current": 8.2, "trend": "stable", "target": 8, "status": "good" },
+          "knowledge_sharing": { "current": 8.8, "trend": "stable", "target": 8, "status": "good" },
+          "pair_programming": { "current": 65, "trend": "stable", "target": 40, "status": "good" },
+          "cross_training": { "current": 7.2, "trend": "improving", "target": 6, "status": "good" }
+        }
+      },
+      "questions": [
+        {
+          "type": "assessment",
+          "question": "What's this team's biggest strength?",
+          "options": ["High performance", "Quality delivery", "Team collaboration", "Technical skills"],
+          "correct": 2,
+          "explanation": "The team shows excellent collaboration metrics with high knowledge sharing and pair programming"
+        },
+        {
+          "type": "development_focus",
+          "question": "What should this team focus on improving?",
+          "options": ["Team morale", "Code quality", "Delivery predictability", "Communication"],
+          "correct": 2,
+          "explanation": "Performance metrics show room for improvement in predictability and throughput while maintaining good collaboration"
+        }
+      ],
+      "recommendations": [
+        {
+          "category": "Leverage Strengths",
+          "actions": ["Continue high pair programming", "Maintain learning focus", "Use collaboration for knowledge transfer"],
+          "rationale": "Build on excellent collaboration foundation"
+        },
+        {
+          "category": "Address Gaps",
+          "actions": ["Improve estimation practices", "Standardize development processes", "Focus on consistent delivery"],
+          "rationale": "Convert good collaboration into consistent performance"
+        }
+      ]
+    }
+  ],
+  "healthDimensions": {
+    "performance": {
+      "description": "Team's ability to deliver value consistently",
+      "key_metrics": ["velocity", "cycle_time", "throughput", "predictability"],
+      "warning_signs": ["Declining velocity", "Increasing cycle time", "Missing commitments"],
+      "improvement_strategies": ["Process optimization", "Skill development", "Tool improvements"]
+    },
+    "quality": {
+      "description": "Sustainability and maintainability of team output",
+      "key_metrics": ["defect_rate", "test_coverage", "code_review_time", "technical_debt"],
+      "warning_signs": ["Increasing defects", "Declining test coverage", "Growing technical debt"],
+      "improvement_strategies": ["Quality practices", "Automated testing", "Refactoring time"]
+    },
+    "satisfaction": {
+      "description": "Team member engagement and well-being",
+      "key_metrics": ["team_morale", "work_life_balance", "learning_opportunities", "autonomy"],
+      "warning_signs": ["Low morale", "High stress", "Limited growth", "Micromanagement"],
+      "improvement_strategies": ["Workload management", "Career development", "Empowerment"]
+    },
+    "collaboration": {
+      "description": "Team's ability to work together effectively",
+      "key_metrics": ["communication", "knowledge_sharing", "pair_programming", "cross_training"],
+      "warning_signs": ["Poor communication", "Knowledge silos", "Low collaboration"],
+      "improvement_strategies": ["Team building", "Knowledge sharing", "Collaborative practices"]
+    }
+  },
+  "balancedScorecardPrinciples": {
+    "holistic_view": "Measure multiple dimensions to avoid optimization in one area at expense of others",
+    "leading_indicators": "Include metrics that predict future performance, not just current results",
+    "actionable_insights": "Choose metrics that can drive specific improvement actions",
+    "team_ownership": "Involve team in selecting and interpreting their health metrics"
+  },
+  "metricSelectionGuidelines": {
+    "performance_metrics": {
+      "essential": ["velocity", "cycle_time"],
+      "valuable": ["throughput", "predictability", "sprint_goal_success"],
+      "context_dependent": ["story_points_per_person", "hours_worked"]
+    },
+    "quality_metrics": {
+      "essential": ["defect_rate", "test_coverage"],
+      "valuable": ["code_review_feedback", "technical_debt_ratio"],
+      "context_dependent": ["code_complexity", "security_vulnerabilities"]
+    },
+    "satisfaction_metrics": {
+      "essential": ["team_morale", "work_life_balance"],
+      "valuable": ["learning_opportunities", "autonomy", "recognition"],
+      "context_dependent": ["career_satisfaction", "tool_satisfaction"]
+    },
+    "collaboration_metrics": {
+      "essential": ["communication_effectiveness", "knowledge_sharing"],
+      "valuable": ["pair_programming_frequency", "cross_training_level"],
+      "context_dependent": ["meeting_effectiveness", "conflict_resolution"]
+    }
+  }
+}

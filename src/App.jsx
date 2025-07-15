@@ -10,6 +10,7 @@ const StoryPointModule = lazy(() => import('./components/modules/story-points/St
 const StoryHierarchyModule = lazy(() => import('./components/modules/story-hierarchy/StoryHierarchyModule'))
 const SprintPlanningModule = lazy(() => import('./components/modules/sprint-planning/SprintPlanningModule'))
 const DefinitionOfDoneModule = lazy(() => import('./components/modules/definition-of-done/DefinitionOfDoneModule'))
+const AgileMetricsModule = lazy(() => import('./components/modules/agile-metrics/AgileMetricsModule'))
 
 // Import utilities
 import { NavigationManager, createInitialNavigationState, generateBreadcrumbs } from './utils/routingUtils'
@@ -203,6 +204,20 @@ function App() {
         return (
           <Suspense fallback={<div className="module-loading">Loading Definition of Done module...</div>}>
             <DefinitionOfDoneModule
+              currentExercise={navigationState.currentExercise}
+              moduleProgress={currentModuleProgress}
+              onExerciseComplete={handleExerciseComplete}
+              onExerciseStart={handleExerciseStart}
+              onNavigate={handleNavigation}
+            />
+          </Suspense>
+        )
+      }
+
+      if (currentModule === 'agile-metrics') {
+        return (
+          <Suspense fallback={<div className="module-loading">Loading Agile Metrics module...</div>}>
+            <AgileMetricsModule
               currentExercise={navigationState.currentExercise}
               moduleProgress={currentModuleProgress}
               onExerciseComplete={handleExerciseComplete}

@@ -46,7 +46,17 @@
         "difficulty": "Intermediate",
         "estimatedTime": "45-60 minutes",
         "prerequisites": ["story-hierarchy", "sprint-planning"],
-        "status": "coming-soon"
+        "status": "available"
+      },
+      {
+        "id": "agile-metrics",
+        "title": "Agile Metrics & Measurement",
+        "description": "Master velocity tracking, burndown charts, and team performance metrics for continuous improvement",
+        "icon": "📊",
+        "difficulty": "Advanced",
+        "estimatedTime": "60-90 minutes",
+        "prerequisites": ["definition-of-done"],
+        "status": "available"
       }
     ]
   }

@@ -8,7 +8,8 @@ const moduleConfigs = {
   'story-points': () => import('../data/modules/story-points/module-config.json'),
   'story-hierarchy': () => import('../data/modules/story-hierarchy/module-config.json'),
   'sprint-planning': () => import('../data/modules/sprint-planning/module-config.json'),
-  'definition-of-done': () => import('../data/modules/definition-of-done/module-config.json')
+  'definition-of-done': () => import('../data/modules/definition-of-done/module-config.json'),
+  'agile-metrics': () => import('../data/modules/agile-metrics/module-config.json')
 }
 
 const exerciseDataLoaders = {
@@ -21,6 +22,12 @@ const exerciseDataLoaders = {
     1: () => import('../data/modules/definition-of-done/dod-scenarios.json'),
     2: () => import('../data/modules/definition-of-done/ac-scenarios.json'),
     3: () => import('../data/modules/definition-of-done/quality-gate-scenarios.json')
+  },
+  'agile-metrics': {
+    1: () => import('../data/modules/agile-metrics/velocity-scenarios.json'),
+    2: () => import('../data/modules/agile-metrics/burndown-scenarios.json'),
+    3: () => import('../data/modules/agile-metrics/cycle-time-scenarios.json'),
+    4: () => import('../data/modules/agile-metrics/team-health-scenarios.json')
   }
   // Future modules will be added here
 }

@@ -15,6 +15,11 @@ const DefinitionOfDoneExercise1 = lazy(() => import('../modules/definition-of-do
 const DefinitionOfDoneExercise2 = lazy(() => import('../modules/definition-of-done/Exercise2'))
 const DefinitionOfDoneExercise3 = lazy(() => import('../modules/definition-of-done/Exercise3'))
 
+const AgileMetricsExercise1 = lazy(() => import('../modules/agile-metrics/Exercise1'))
+const AgileMetricsExercise2 = lazy(() => import('../modules/agile-metrics/Exercise2'))
+const AgileMetricsExercise3 = lazy(() => import('../modules/agile-metrics/Exercise3'))
+const AgileMetricsExercise4 = lazy(() => import('../modules/agile-metrics/Exercise4'))
+
 /**
  * ModuleRouter component for handling module-level routing and exercise loading
  * @param {Object} props - Component props
@@ -216,6 +221,37 @@ function ModuleRouter({
           )
         default:
           return <div className="error">Exercise {currentExercise} not implemented for definition-of-done</div>
+      }
+    }
+
+    if (moduleId === 'agile-metrics') {
+      switch (currentExercise) {
+        case 1:
+          return (
+            <Suspense fallback={<div className="exercise-loading">Loading Velocity Analysis Workshop...</div>}>
+              <AgileMetricsExercise1 {...exerciseProps} />
+            </Suspense>
+          )
+        case 2:
+          return (
+            <Suspense fallback={<div className="exercise-loading">Loading Burndown Chart Mastery...</div>}>
+              <AgileMetricsExercise2 {...exerciseProps} />
+            </Suspense>
+          )
+        case 3:
+          return (
+            <Suspense fallback={<div className="exercise-loading">Loading Cycle Time Optimization...</div>}>
+              <AgileMetricsExercise3 {...exerciseProps} />
+            </Suspense>
+          )
+        case 4:
+          return (
+            <Suspense fallback={<div className="exercise-loading">Loading Team Health Dashboard...</div>}>
+              <AgileMetricsExercise4 {...exerciseProps} />
+            </Suspense>
+          )
+        default:
+          return <div className="error">Exercise {currentExercise} not implemented for agile-metrics</div>
       }
     }
 
