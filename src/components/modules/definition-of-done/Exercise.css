@@ -12,22 +12,56 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding: 0;
+}
+
+/* Scenario Card - shared across exercises */
+.scenario-card {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.scenario-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #212529;
+  margin: 0 0 12px 0;
+}
+
+.scenario-description {
+  color: #6c757d;
+  line-height: 1.5;
+  margin: 0 0 12px 0;
+  font-size: 15px;
+}
+
+.scenario-context {
+  color: #495057;
+  line-height: 1.5;
+  margin: 0;
+  font-size: 14px;
+  font-style: italic;
 }
 
 .dod-categories {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  margin: 20px 0;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin: 0 0 24px 0;
 }
 
 .dod-category {
   background: #f8f9fa;
   border: 2px solid #e9ecef;
   border-radius: 12px;
-  padding: 16px;
-  min-height: 200px;
+  padding: 20px;
+  min-height: 250px;
   transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .dod-category.drag-over {
@@ -46,6 +80,13 @@
 
 .dod-category-icon {
   font-size: 1.2em;
+}
+
+.dod-category-description {
+  color: #6c757d;
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 0 0 16px 0;
 }
 
 .dod-criteria-list {
@@ -86,6 +127,44 @@
   font-weight: 500;
 }
 
+/* Available Criteria Section */
+.available-criteria {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 24px;
+}
+
+.available-criteria h3 {
+  margin: 0 0 20px 0;
+  color: #495057;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.criteria-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.remove-criterion {
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.remove-criterion:hover {
+  background: #c82333;
+}
+
 /* Acceptance Criteria Styles */
 .ac-workshop {
   display: flex;
@@ -97,8 +176,9 @@
   background: #f8f9fa;
   border: 1px solid #dee2e6;
   border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 20px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .ac-story-title {
@@ -112,6 +192,41 @@
   color: #6c757d;
   line-height: 1.5;
   margin-bottom: 16px;
+}
+
+.user-story, .story-context {
+  margin: 16px 0;
+  padding: 12px;
+  background: white;
+  border-radius: 6px;
+  border-left: 4px solid #007bff;
+}
+
+.business-rules, .edge-cases {
+  margin: 20px 0;
+  padding: 16px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #e9ecef;
+}
+
+.business-rules h4, .edge-cases h4 {
+  margin: 0 0 12px 0;
+  color: #495057;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.business-rules ul, .edge-cases ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.business-rules li, .edge-cases li {
+  margin: 8px 0;
+  line-height: 1.4;
+  color: #6c757d;
+  font-size: 14px;
 }
 
 .ac-format-selector {
@@ -189,15 +304,48 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding: 0;
+}
+
+/* Workflow Description */
+.workflow-description {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.workflow-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #212529;
+  margin: 0 0 12px 0;
+}
+
+.workflow-description p {
+  color: #6c757d;
+  line-height: 1.5;
+  margin: 0 0 12px 0;
+  font-size: 15px;
+}
+
+.workflow-description p:last-child {
+  margin-bottom: 0;
+  font-style: italic;
+  color: #495057;
+  font-size: 14px;
 }
 
 .workflow-canvas {
   background: #f8f9fa;
   border: 2px dashed #dee2e6;
   border-radius: 12px;
-  padding: 24px;
-  min-height: 400px;
+  padding: 32px;
+  min-height: 450px;
   position: relative;
+  margin-bottom: 24px;
 }
 
 .workflow-stages {
@@ -205,6 +353,7 @@
   justify-content: space-between;
   align-items: flex-start;
   height: 100%;
+  gap: 20px;
 }
 
 .workflow-stage {
@@ -213,10 +362,12 @@
   align-items: center;
   gap: 16px;
   flex: 1;
-  padding: 0 12px;
+  padding: 20px 16px;
   border: 2px dashed transparent;
-  border-radius: 8px;
+  border-radius: 12px;
   transition: all 0.2s ease;
+  background: white;
+  min-height: 300px;
 }
 
 .workflow-stage.drag-over {
@@ -227,12 +378,22 @@
 .stage-header {
   background: #007bff;
   color: white;
-  padding: 8px 16px;
-  border-radius: 20px;
+  padding: 10px 20px;
+  border-radius: 25px;
   font-weight: 600;
   font-size: 14px;
   text-align: center;
-  min-width: 120px;
+  min-width: 140px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.3);
+}
+
+.stage-description {
+  text-align: center;
+  color: #6c757d;
+  font-size: 12px;
+  margin: 0 0 16px 0;
+  line-height: 1.3;
 }
 
 .stage-gates {
@@ -240,15 +401,14 @@
   flex-direction: column;
   gap: 12px;
   width: 100%;
-  min-height: 200px;
+  min-height: 180px;
 }
 
 .quality-gate {
   background: white;
   border: 2px solid #28a745;
   border-radius: 8px;
-  padding: 12px;
-  text-align: center;
+  padding: 16px;
   cursor: grab;
   transition: all 0.2s ease;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -257,11 +417,28 @@
 .quality-gate:hover {
   border-color: #20c997;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
 .quality-gate.dragging {
   opacity: 0.5;
   transform: rotate(3deg);
+}
+
+.remove-gate {
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 11px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.remove-gate:hover {
+  background: #c82333;
 }
 
 .gate-title {
@@ -275,26 +452,102 @@
   font-size: 12px;
   color: #6c757d;
   line-height: 1.3;
+  margin: 8px 0;
+}
+
+.gate-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+  justify-content: center;
+}
+
+.gate-type, .gate-effort, .gate-impact {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.gate-type {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+
+.gate-effort {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.gate-impact {
+  background: #e8f5e8;
+  color: #2e7d32;
+}
+
+/* Quality Tips Section */
+.quality-tips {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 24px;
+}
+
+.quality-tips h3 {
+  margin: 0 0 20px 0;
+  color: #495057;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.tips-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.tip-item {
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+}
+
+.tip-title {
+  margin: 0 0 8px 0;
+  color: #495057;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.tip-description {
+  margin: 0;
+  color: #6c757d;
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 .gate-toolbox {
   background: white;
   border: 1px solid #dee2e6;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 20px;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .gate-toolbox-title {
   font-weight: 600;
-  margin-bottom: 12px;
+  margin: 0 0 16px 0;
   color: #495057;
+  font-size: 18px;
 }
 
 .available-gates {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
 }
 
 /* Exercise Instructions */
@@ -337,7 +590,8 @@
 /* Shared Exercise Styles */
 .exercise-header {
   text-align: center;
-  margin-bottom: 32px;
+  margin: 0 0 32px 0;
+  padding: 0 20px;
 }
 
 .exercise-title {
@@ -351,6 +605,17 @@
   font-size: 16px;
   color: #6c757d;
   line-height: 1.5;
+}
+
+.scenario-progress {
+  display: inline-block;
+  background: #e9ecef;
+  color: #495057;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-top: 16px;
 }
 
 .exercise-progress {
@@ -390,7 +655,9 @@
   display: flex;
   justify-content: center;
   gap: 16px;
-  margin-top: 32px;
+  margin: 32px 0 0 0;
+  padding: 24px 0;
+  border-top: 1px solid #e9ecef;
 }
 
 .action-button {
@@ -546,26 +813,60 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .definition-of-done-module {
+    padding: 16px;
+  }
+
   .dod-categories {
     grid-template-columns: 1fr;
+    gap: 16px;
   }
-  
+
+  .dod-category {
+    min-height: 200px;
+    padding: 16px;
+  }
+
   .workflow-stages {
     flex-direction: column;
-    gap: 24px;
+    gap: 20px;
   }
-  
+
+  .workflow-stage {
+    min-height: 200px;
+    padding: 16px;
+  }
+
   .available-gates {
     grid-template-columns: 1fr;
   }
-  
+
+  .criteria-list {
+    grid-template-columns: 1fr;
+  }
+
+  .tips-list {
+    grid-template-columns: 1fr;
+  }
+
   .exercise-actions {
     flex-direction: column;
     align-items: center;
+    gap: 12px;
   }
-  
+
   .action-button {
     width: 100%;
     max-width: 300px;
+  }
+
+  .scenario-card, .ac-story-card, .workflow-description, .gate-toolbox {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .exercise-instructions {
+    padding: 16px;
+    margin: 16px 0;
   }
 }
