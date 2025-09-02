@@ -13,14 +13,14 @@
   - Add non-estimable work examples (spikes, research, proof of concepts)
   - _Requirements: 1.1, 1.3, 1.4, 2.1, 2.2, 4.1, 4.2_
 
-- [ ] 3. Implement story breakdown workshop component
+- [x] 3. Implement story breakdown workshop component
   - Create interactive StoryBreakdownWorkshop component with multiple decomposition techniques
   - Implement breakdown validation to ensure resulting stories are appropriately sized
   - Add visual feedback for breakdown quality and story size validation
   - Write unit tests for breakdown logic and component interactions
   - _Requirements: 3.1, 3.2, 3.3, 3.4_
 
-- [ ] 4. Build team context awareness system
+- [x] 4. Build team context awareness system
   - Create TeamContextSelector component for switching between team scenarios
   - Implement estimation variance display showing how different teams estimate the same story
   - Add explanatory content for why team context affects estimation

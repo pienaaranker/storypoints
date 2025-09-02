@@ -1,0 +1,624 @@
+/* Story Breakdown Workshop Styles */
+
+.breakdown-workshop {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.breakdown-workshop.error {
+  text-align: center;
+  padding: 40px;
+}
+
+/* Workshop Header */
+.workshop-header {
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 20px;
+}
+
+.workshop-header h3 {
+  margin: 0 0 15px 0;
+  color: #2c3e50;
+  font-size: 1.8rem;
+}
+
+.workshop-progress {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.workshop-progress .step {
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: #f8f9fa;
+  color: #6c757d;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border: 2px solid #e9ecef;
+  transition: all 0.3s ease;
+}
+
+.workshop-progress .step.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.workshop-progress .step.completed {
+  background: #28a745;
+  color: white;
+  border-color: #28a745;
+}
+
+/* Original Story Display */
+.original-story {
+  margin-bottom: 30px;
+}
+
+.original-story h4 {
+  margin-bottom: 15px;
+  color: #495057;
+}
+
+.story-card {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.story-card.large {
+  border-left: 4px solid #dc3545;
+}
+
+.story-card h5 {
+  margin: 0 0 10px 0;
+  color: #2c3e50;
+  font-size: 1.2rem;
+}
+
+.story-card p {
+  margin: 0 0 15px 0;
+  color: #495057;
+  line-height: 1.5;
+}
+
+.acceptance-criteria {
+  margin-top: 15px;
+}
+
+.acceptance-criteria strong {
+  color: #495057;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.acceptance-criteria ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.acceptance-criteria li {
+  margin-bottom: 5px;
+  color: #6c757d;
+}
+
+/* Technique Selection */
+.technique-selection h4 {
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.technique-selection p {
+  margin-bottom: 20px;
+  color: #6c757d;
+}
+
+.technique-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.technique-card {
+  background: white;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.technique-card:hover {
+  border-color: #007bff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.1);
+}
+
+.technique-card.selected {
+  border-color: #007bff;
+  background: #f8f9ff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.15);
+}
+
+.technique-card h5 {
+  margin: 0 0 10px 0;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.technique-card p {
+  margin: 0 0 15px 0;
+  color: #6c757d;
+  font-size: 0.95rem;
+}
+
+.technique-card .benefits {
+  margin-top: 15px;
+}
+
+.technique-card .benefits strong {
+  color: #495057;
+  font-size: 0.9rem;
+}
+
+.technique-card .benefits ul {
+  margin: 5px 0 0 0;
+  padding-left: 18px;
+}
+
+.technique-card .benefits li {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-bottom: 3px;
+}
+
+/* Breakdown Practice */
+.breakdown-practice h4 {
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.breakdown-practice > p {
+  margin-bottom: 20px;
+  color: #6c757d;
+  font-style: italic;
+}
+
+.practice-area {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+.user-breakdown {
+  min-width: 0;
+}
+
+.breakdown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.breakdown-header h5 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.breakdown-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.empty-breakdown {
+  background: #f8f9fa;
+  border: 2px dashed #dee2e6;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  color: #6c757d;
+  margin-bottom: 20px;
+}
+
+/* User Story Editor */
+.user-story-editor {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-left: 4px solid #28a745;
+}
+
+.story-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.story-title-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.story-title-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.story-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.points-input {
+  width: 80px;
+  padding: 6px 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.points-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.story-description-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  resize: vertical;
+  margin-bottom: 15px;
+}
+
+.story-description-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Acceptance Criteria Editor */
+.acceptance-criteria-editor label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #495057;
+}
+
+.criteria-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.criteria-input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.criteria-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Breakdown Summary */
+.breakdown-summary {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-points {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* Hints Panel */
+.hints-panel {
+  width: 350px;
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 8px;
+  padding: 20px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.hints-panel h5 {
+  margin: 0 0 15px 0;
+  color: #856404;
+}
+
+.hints-panel > p {
+  margin: 0 0 15px 0;
+  color: #856404;
+  font-size: 0.9rem;
+}
+
+.suggested-story {
+  background: white;
+  border: 1px solid #ffeaa7;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+.suggested-story h6 {
+  margin: 0 0 8px 0;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+.suggested-story p {
+  margin: 0 0 10px 0;
+  color: #6c757d;
+  font-size: 0.85rem;
+}
+
+.suggested-story ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.suggested-story li {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-bottom: 3px;
+}
+
+/* Validation Results */
+.validation-results h4 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.validation-status {
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.validation-status.success {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.validation-status.error {
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+.success-message h5 {
+  margin: 0 0 10px 0;
+  color: #155724;
+}
+
+.success-message p {
+  margin: 0;
+  color: #155724;
+}
+
+.error-message h5 {
+  margin: 0 0 10px 0;
+  color: #721c24;
+}
+
+.error-message p {
+  margin: 0;
+  color: #721c24;
+}
+
+.validation-errors,
+.validation-warnings,
+.validation-suggestions {
+  margin-bottom: 20px;
+}
+
+.validation-errors h6 {
+  color: #dc3545;
+  margin-bottom: 10px;
+}
+
+.validation-warnings h6 {
+  color: #ffc107;
+  margin-bottom: 10px;
+}
+
+.validation-suggestions h6 {
+  color: #17a2b8;
+  margin-bottom: 10px;
+}
+
+.validation-errors ul,
+.validation-warnings ul,
+.validation-suggestions ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.validation-errors li.error {
+  color: #dc3545;
+  margin-bottom: 5px;
+}
+
+.validation-warnings li.warning {
+  color: #856404;
+  margin-bottom: 5px;
+}
+
+.validation-suggestions li.suggestion {
+  color: #0c5460;
+  margin-bottom: 5px;
+}
+
+/* Workshop Navigation */
+.workshop-navigation,
+.validation-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #e9ecef;
+}
+
+/* Button Styles */
+.btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: #007bff;
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+.btn-secondary {
+  background: #6c757d;
+  color: white;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #545b62;
+}
+
+.btn-success {
+  background: #28a745;
+  color: white;
+}
+
+.btn-success:hover:not(:disabled) {
+  background: #1e7e34;
+}
+
+.btn-danger {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #c82333;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+
+.btn-xs {
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  min-width: 24px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .breakdown-workshop {
+    padding: 15px;
+  }
+  
+  .workshop-progress {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .workshop-progress .step {
+    text-align: center;
+    width: 100%;
+  }
+  
+  .technique-options {
+    grid-template-columns: 1fr;
+  }
+  
+  .practice-area {
+    grid-template-columns: 1fr;
+  }
+  
+  .hints-panel {
+    width: 100%;
+  }
+  
+  .story-header {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .story-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .breakdown-summary {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  .workshop-navigation,
+  .validation-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .criteria-row {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .btn-xs {
+    align-self: flex-end;
+  }
+}
