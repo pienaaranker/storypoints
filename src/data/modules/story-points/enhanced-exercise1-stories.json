@@ -1,0 +1,219 @@
+{
+  "metadata": {
+    "exerciseId": 1,
+    "type": "foundation_stories",
+    "version": "2.0.0",
+    "description": "Foundation stories (1-5 points) with team context variations for establishing baseline understanding"
+  },
+  "stories": [
+    {
+      "id": "display-user-name",
+      "title": "Display User Name in Header",
+      "description": "As a logged-in user, I want to see my name displayed in the application header so that I know I'm logged in correctly.",
+      "acceptanceCriteria": [
+        "Show user's first and last name in top-right corner",
+        "Display placeholder text when name is not available",
+        "Truncate long names with ellipsis after 20 characters"
+      ],
+      "teamContext": {
+        "experienceLevel": "intermediate",
+        "domainKnowledge": "medium",
+        "technicalStack": "familiar",
+        "teamSize": 5,
+        "workingAgreements": ["Definition of Done includes unit tests", "Code review required"]
+      },
+      "estimationVariance": {
+        "juniorTeam": {
+          "points": 2,
+          "reasoning": "Need time to understand component structure and styling patterns",
+          "confidenceLevel": "medium"
+        },
+        "seniorTeam": {
+          "points": 1,
+          "reasoning": "Simple UI change, well-understood pattern",
+          "confidenceLevel": "high"
+        }
+      },
+      "breakdownRequired": false,
+      "breakdownSuggestions": [],
+      "complexityFactors": {
+        "technical": "low",
+        "business": "low",
+        "integration": "low",
+        "uncertainty": "low"
+      },
+      "correctPoints": 1
+    },
+    {
+      "id": "add-logout-button",
+      "title": "Add Logout Button",
+      "description": "As a user, I want a logout button so that I can securely end my session.",
+      "acceptanceCriteria": [
+        "Add logout button next to user name in header",
+        "Clear session data when clicked",
+        "Redirect to login page after logout",
+        "Show confirmation message"
+      ],
+      "teamContext": {
+        "experienceLevel": "intermediate",
+        "domainKnowledge": "medium",
+        "technicalStack": "familiar",
+        "teamSize": 5,
+        "workingAgreements": ["Definition of Done includes unit tests", "Code review required"]
+      },
+      "estimationVariance": {
+        "juniorTeam": {
+          "points": 3,
+          "reasoning": "Need to understand session management and routing",
+          "confidenceLevel": "medium"
+        },
+        "seniorTeam": {
+          "points": 2,
+          "reasoning": "Straightforward implementation with existing auth patterns",
+          "confidenceLevel": "high"
+        }
+      },
+      "breakdownRequired": false,
+      "breakdownSuggestions": [],
+      "complexityFactors": {
+        "technical": "low",
+        "business": "low",
+        "integration": "medium",
+        "uncertainty": "low"
+      },
+      "correctPoints": 2
+    },
+    {
+      "id": "validate-email-format",
+      "title": "Email Format Validation",
+      "description": "As a user registering an account, I want email format validation so that I enter a valid email address.",
+      "acceptanceCriteria": [
+        "Validate email format using standard regex pattern",
+        "Show error message for invalid formats",
+        "Clear error when valid email is entered",
+        "Support common email formats including plus addressing"
+      ],
+      "teamContext": {
+        "experienceLevel": "intermediate",
+        "domainKnowledge": "medium",
+        "technicalStack": "familiar",
+        "teamSize": 5,
+        "workingAgreements": ["Definition of Done includes unit tests", "Code review required"]
+      },
+      "estimationVariance": {
+        "juniorTeam": {
+          "points": 3,
+          "reasoning": "Need to research email validation patterns and edge cases",
+          "confidenceLevel": "medium"
+        },
+        "seniorTeam": {
+          "points": 2,
+          "reasoning": "Standard validation pattern, well-known implementation",
+          "confidenceLevel": "high"
+        },
+        "newTechStackTeam": {
+          "points": 4,
+          "reasoning": "Learning new validation library and form handling patterns",
+          "confidenceLevel": "low"
+        }
+      },
+      "breakdownRequired": false,
+      "breakdownSuggestions": [],
+      "complexityFactors": {
+        "technical": "low",
+        "business": "medium",
+        "integration": "low",
+        "uncertainty": "low"
+      },
+      "correctPoints": 3
+    },
+    {
+      "id": "search-users-basic",
+      "title": "Basic User Search",
+      "description": "As an admin, I want to search for users by name so that I can quickly find specific user accounts.",
+      "acceptanceCriteria": [
+        "Search input field in user management page",
+        "Filter users by first name or last name (case-insensitive)",
+        "Show results as user types (debounced)",
+        "Display 'No results found' when no matches"
+      ],
+      "teamContext": {
+        "experienceLevel": "intermediate",
+        "domainKnowledge": "medium",
+        "technicalStack": "familiar",
+        "teamSize": 5,
+        "workingAgreements": ["Definition of Done includes unit tests", "Code review required"]
+      },
+      "estimationVariance": {
+        "juniorTeam": {
+          "points": 5,
+          "reasoning": "Need to implement debouncing, filtering logic, and handle edge cases",
+          "confidenceLevel": "medium"
+        },
+        "seniorTeam": {
+          "points": 3,
+          "reasoning": "Standard search implementation with known patterns",
+          "confidenceLevel": "high"
+        },
+        "highDomainKnowledge": {
+          "points": 3,
+          "reasoning": "Familiar with user management requirements and edge cases",
+          "confidenceLevel": "high"
+        }
+      },
+      "breakdownRequired": false,
+      "breakdownSuggestions": [],
+      "complexityFactors": {
+        "technical": "medium",
+        "business": "low",
+        "integration": "low",
+        "uncertainty": "low"
+      },
+      "correctPoints": 3
+    },
+    {
+      "id": "export-user-list",
+      "title": "Export User List to CSV",
+      "description": "As an admin, I want to export the user list to CSV so that I can analyze user data in external tools.",
+      "acceptanceCriteria": [
+        "Export button on user management page",
+        "Generate CSV with user ID, name, email, registration date",
+        "Handle special characters in user data",
+        "Provide download with meaningful filename including timestamp"
+      ],
+      "teamContext": {
+        "experienceLevel": "intermediate",
+        "domainKnowledge": "medium",
+        "technicalStack": "familiar",
+        "teamSize": 5,
+        "workingAgreements": ["Definition of Done includes unit tests", "Code review required"]
+      },
+      "estimationVariance": {
+        "juniorTeam": {
+          "points": 5,
+          "reasoning": "Need to research CSV generation libraries and handle data formatting",
+          "confidenceLevel": "low"
+        },
+        "seniorTeam": {
+          "points": 3,
+          "reasoning": "Straightforward data export with existing libraries",
+          "confidenceLevel": "high"
+        },
+        "newTechStackTeam": {
+          "points": 8,
+          "reasoning": "Learning new CSV library and file handling in unfamiliar framework",
+          "confidenceLevel": "low"
+        }
+      },
+      "breakdownRequired": false,
+      "breakdownSuggestions": [],
+      "complexityFactors": {
+        "technical": "medium",
+        "business": "low",
+        "integration": "medium",
+        "uncertainty": "medium"
+      },
+      "correctPoints": 5
+    }
+  ]
+}

@@ -1,0 +1,364 @@
+{
+  "metadata": {
+    "exerciseId": 99,
+    "type": "enhanced_user_stories",
+    "version": "2.0.0",
+    "description": "Sample enhanced story examples demonstrating new data structure"
+  },
+  "stories": [
+    {
+      "id": "user-profile-view",
+      "title": "View User Profile",
+      "description": "As a user, I want to view my profile information so that I can see my current details and account status.",
+      "acceptanceCriteria": [
+        "Display user name, email, and profile picture",
+        "Show account creation date and last login",
+        "Display user preferences and settings",
+        "Show account status (active, suspended, etc.)"
+      ],
+      "teamContext": {
+        "experienceLevel": "intermediate",
+        "domainKnowledge": "high",
+        "technicalStack": "familiar",
+        "teamSize": 5,
+        "workingAgreements": [
+          "Definition of Done includes unit tests",
+          "Code review required for all changes",
+          "UI changes require design approval"
+        ]
+      },
+      "estimationVariance": {
+        "juniorTeam": {
+          "points": 3,
+          "reasoning": "Need time to understand user management system and UI patterns",
+          "confidenceLevel": "medium"
+        },
+        "seniorTeam": {
+          "points": 2,
+          "reasoning": "Straightforward read operation with familiar UI components",
+          "confidenceLevel": "high"
+        },
+        "crossFunctionalTeam": {
+          "points": 2,
+          "reasoning": "Simple feature with clear requirements and existing patterns",
+          "confidenceLevel": "high"
+        }
+      },
+      "breakdownRequired": false,
+      "breakdownSuggestions": [],
+      "complexityFactors": {
+        "technical": "low",
+        "business": "low",
+        "integration": "low",
+        "uncertainty": "low"
+      }
+    },
+    {
+      "id": "social-media-integration",
+      "title": "Social Media Login Integration",
+      "description": "As a user, I want to log in using my social media accounts (Google, Facebook, Twitter) so that I can access the app more conveniently without creating a new account.",
+      "acceptanceCriteria": [
+        "Support Google OAuth 2.0 login",
+        "Support Facebook Login API",
+        "Support Twitter OAuth 1.0a",
+        "Handle account linking for existing users",
+        "Manage OAuth tokens securely",
+        "Sync basic profile data appropriately",
+        "Handle edge cases (revoked permissions, account conflicts)",
+        "Provide fallback for OAuth failures"
+      ],
+      "teamContext": {
+        "experienceLevel": "senior",
+        "domainKnowledge": "medium",
+        "technicalStack": "mixed",
+        "teamSize": 6,
+        "workingAgreements": [
+          "Definition of Done includes security review",
+          "External integrations require architecture approval",
+          "OAuth implementations need security team sign-off",
+          "Integration tests required for external APIs"
+        ]
+      },
+      "estimationVariance": {
+        "juniorTeam": {
+          "points": 21,
+          "reasoning": "Complex OAuth flows, multiple providers, security considerations, and edge cases are challenging for junior developers",
+          "confidenceLevel": "low"
+        },
+        "seniorTeam": {
+          "points": 13,
+          "reasoning": "Familiar with OAuth patterns but multiple providers and edge cases add complexity",
+          "confidenceLevel": "medium"
+        },
+        "securityFocusedTeam": {
+          "points": 8,
+          "reasoning": "Strong OAuth experience and security expertise, but still complex due to multiple providers",
+          "confidenceLevel": "high"
+        }
+      },
+      "breakdownRequired": true,
+      "breakdownSuggestions": [
+        {
+          "technique": "by-workflow",
+          "description": "Break down by OAuth provider implementation",
+          "resultingStories": [
+            {
+              "id": "google-oauth",
+              "title": "Google OAuth Integration",
+              "description": "Implement Google OAuth 2.0 login flow",
+              "acceptanceCriteria": [
+                "Google OAuth 2.0 login works",
+                "Handle Google OAuth errors gracefully",
+                "Sync basic Google profile data"
+              ],
+              "teamContext": {
+                "experienceLevel": "senior",
+                "domainKnowledge": "medium",
+                "technicalStack": "mixed",
+                "teamSize": 6,
+                "workingAgreements": [
+                  "Security review required",
+                  "Integration tests required"
+                ]
+              },
+              "estimationVariance": {
+                "seniorTeam": {
+                  "points": 5,
+                  "reasoning": "Single provider OAuth implementation with Google's well-documented API",
+                  "confidenceLevel": "high"
+                }
+              },
+              "breakdownRequired": false,
+              "complexityFactors": {
+                "technical": "medium",
+                "business": "low",
+                "integration": "medium",
+                "uncertainty": "low"
+              }
+            },
+            {
+              "id": "facebook-oauth",
+              "title": "Facebook Login Integration",
+              "description": "Implement Facebook Login API integration",
+              "acceptanceCriteria": [
+                "Facebook Login API works",
+                "Handle Facebook API errors",
+                "Sync Facebook profile data"
+              ],
+              "teamContext": {
+                "experienceLevel": "senior",
+                "domainKnowledge": "medium",
+                "technicalStack": "mixed",
+                "teamSize": 6,
+                "workingAgreements": [
+                  "Security review required",
+                  "Integration tests required"
+                ]
+              },
+              "estimationVariance": {
+                "seniorTeam": {
+                  "points": 5,
+                  "reasoning": "Similar to Google OAuth but Facebook API has some quirks",
+                  "confidenceLevel": "medium"
+                }
+              },
+              "breakdownRequired": false,
+              "complexityFactors": {
+                "technical": "medium",
+                "business": "low",
+                "integration": "medium",
+                "uncertainty": "medium"
+              }
+            },
+            {
+              "id": "account-linking",
+              "title": "Social Account Linking",
+              "description": "Handle linking social accounts to existing user accounts",
+              "acceptanceCriteria": [
+                "Link social account to existing user",
+                "Handle account conflicts gracefully",
+                "Prevent duplicate account creation",
+                "Allow unlinking social accounts"
+              ],
+              "teamContext": {
+                "experienceLevel": "senior",
+                "domainKnowledge": "medium",
+                "technicalStack": "mixed",
+                "teamSize": 6,
+                "workingAgreements": [
+                  "Security review required",
+                  "Business logic tests required"
+                ]
+              },
+              "estimationVariance": {
+                "seniorTeam": {
+                  "points": 8,
+                  "reasoning": "Complex business logic with many edge cases and security implications",
+                  "confidenceLevel": "medium"
+                }
+              },
+              "breakdownRequired": false,
+              "complexityFactors": {
+                "technical": "medium",
+                "business": "high",
+                "integration": "low",
+                "uncertainty": "medium"
+              }
+            }
+          ],
+          "benefits": [
+            "Each OAuth provider can be implemented and tested independently",
+            "Reduces risk by tackling one integration at a time",
+            "Allows for incremental delivery of social login features",
+            "Easier to estimate individual provider complexities"
+          ]
+        },
+        {
+          "technique": "by-acceptance-criteria",
+          "description": "Separate core OAuth functionality from edge case handling",
+          "resultingStories": [
+            {
+              "id": "basic-oauth-flow",
+              "title": "Basic Social OAuth Flow",
+              "description": "Implement core OAuth login flow for all providers",
+              "acceptanceCriteria": [
+                "OAuth login works for Google, Facebook, Twitter",
+                "Basic profile data is retrieved and stored",
+                "Users can log in successfully"
+              ],
+              "teamContext": {
+                "experienceLevel": "senior",
+                "domainKnowledge": "medium",
+                "technicalStack": "mixed",
+                "teamSize": 6,
+                "workingAgreements": [
+                  "Security review required"
+                ]
+              },
+              "estimationVariance": {
+                "seniorTeam": {
+                  "points": 8,
+                  "reasoning": "Core OAuth implementation across multiple providers",
+                  "confidenceLevel": "medium"
+                }
+              },
+              "breakdownRequired": false,
+              "complexityFactors": {
+                "technical": "high",
+                "business": "medium",
+                "integration": "high",
+                "uncertainty": "medium"
+              }
+            },
+            {
+              "id": "oauth-edge-cases",
+              "title": "OAuth Edge Case Handling",
+              "description": "Handle OAuth edge cases and error scenarios",
+              "acceptanceCriteria": [
+                "Handle revoked permissions gracefully",
+                "Manage OAuth token expiration",
+                "Handle network failures during OAuth",
+                "Provide clear error messages to users"
+              ],
+              "teamContext": {
+                "experienceLevel": "senior",
+                "domainKnowledge": "medium",
+                "technicalStack": "mixed",
+                "teamSize": 6,
+                "workingAgreements": [
+                  "Error handling tests required"
+                ]
+              },
+              "estimationVariance": {
+                "seniorTeam": {
+                  "points": 5,
+                  "reasoning": "Error handling and edge cases, building on core OAuth functionality",
+                  "confidenceLevel": "medium"
+                }
+              },
+              "breakdownRequired": false,
+              "complexityFactors": {
+                "technical": "medium",
+                "business": "low",
+                "integration": "medium",
+                "uncertainty": "high"
+              }
+            }
+          ],
+          "benefits": [
+            "Separates happy path from error handling",
+            "Allows core functionality to be delivered first",
+            "Edge cases can be refined based on user feedback",
+            "Reduces initial complexity for core feature"
+          ]
+        }
+      ],
+      "complexityFactors": {
+        "technical": "high",
+        "business": "medium",
+        "integration": "high",
+        "uncertainty": "high"
+      },
+      "dependencies": [
+        {
+          "id": "oauth-providers",
+          "description": "External OAuth provider APIs (Google, Facebook, Twitter)",
+          "type": "external",
+          "impact": "high",
+          "mitigation": "Use well-documented APIs and implement proper error handling"
+        },
+        {
+          "id": "user-management",
+          "description": "Existing user management system for account linking",
+          "type": "internal",
+          "impact": "medium",
+          "mitigation": "Coordinate with user management team on account linking strategy"
+        }
+      ],
+      "technicalDebt": {
+        "description": "Current authentication system uses basic username/password only",
+        "additionalComplexity": "medium",
+        "refactoringRequired": true,
+        "estimatedImpact": "May need to refactor authentication middleware to support multiple auth methods"
+      }
+    }
+  ],
+  "nonEstimableWork": [
+    {
+      "type": "spike",
+      "title": "OAuth Security Research",
+      "timeBox": "8 hours",
+      "learningObjective": "Understand OAuth security best practices and potential vulnerabilities in our implementation approach",
+      "acceptanceCriteria": [
+        "Document OAuth security best practices",
+        "Identify potential security vulnerabilities",
+        "Recommend security measures for implementation",
+        "Create security checklist for OAuth features"
+      ],
+      "transitionToStories": [
+        "Implement OAuth security measures",
+        "Add OAuth security tests",
+        "Create OAuth security documentation"
+      ],
+      "reasoning": "OAuth implementations have significant security implications that need research before estimation"
+    },
+    {
+      "type": "research",
+      "title": "OAuth Provider API Comparison",
+      "timeBox": "4 hours",
+      "learningObjective": "Compare OAuth implementation approaches across Google, Facebook, and Twitter APIs",
+      "acceptanceCriteria": [
+        "Document API differences between providers",
+        "Identify common patterns and unique requirements",
+        "Recommend unified implementation approach",
+        "Estimate effort differences between providers"
+      ],
+      "transitionToStories": [
+        "Implement Google OAuth integration",
+        "Implement Facebook OAuth integration",
+        "Implement Twitter OAuth integration"
+      ],
+      "reasoning": "Need to understand API differences before accurately estimating individual provider implementations"
+    }
+  ]
+}
