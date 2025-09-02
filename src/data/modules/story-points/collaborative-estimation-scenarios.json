@@ -1,0 +1,409 @@
+{
+  "metadata": {
+    "type": "collaborative_estimation_scenarios",
+    "version": "1.0.0",
+    "description": "Planning Poker simulation scenarios with team members and estimation exercises"
+  },
+  "teamMembers": [
+    {
+      "id": "alice-senior",
+      "name": "Alice Chen",
+      "role": "Senior Developer",
+      "experienceLevel": "senior",
+      "domainKnowledge": "high",
+      "technicalStack": "familiar",
+      "characteristics": [
+        "5+ years experience",
+        "Strong architectural knowledge",
+        "Mentors junior developers",
+        "Conservative estimator"
+      ],
+      "estimationStyle": "conservative",
+      "avatar": "👩‍💻"
+    },
+    {
+      "id": "bob-intermediate",
+      "name": "Bob Martinez",
+      "role": "Full Stack Developer",
+      "experienceLevel": "intermediate",
+      "domainKnowledge": "medium",
+      "technicalStack": "familiar",
+      "characteristics": [
+        "3 years experience",
+        "Good problem solver",
+        "Asks clarifying questions",
+        "Balanced estimator"
+      ],
+      "estimationStyle": "balanced",
+      "avatar": "👨‍💻"
+    },
+    {
+      "id": "carol-junior",
+      "name": "Carol Kim",
+      "role": "Junior Developer",
+      "experienceLevel": "junior",
+      "domainKnowledge": "low",
+      "technicalStack": "new",
+      "characteristics": [
+        "1 year experience",
+        "Eager to learn",
+        "Needs guidance on complex tasks",
+        "Optimistic estimator"
+      ],
+      "estimationStyle": "optimistic",
+      "avatar": "👩‍🎓"
+    },
+    {
+      "id": "david-qa",
+      "name": "David Wilson",
+      "role": "QA Engineer",
+      "experienceLevel": "intermediate",
+      "domainKnowledge": "high",
+      "technicalStack": "familiar",
+      "characteristics": [
+        "4 years testing experience",
+        "Thinks about edge cases",
+        "Considers testing complexity",
+        "Detail-oriented estimator"
+      ],
+      "estimationStyle": "detail-oriented",
+      "avatar": "🧪"
+    },
+    {
+      "id": "emma-product",
+      "name": "Emma Thompson",
+      "role": "Product Owner",
+      "experienceLevel": "senior",
+      "domainKnowledge": "high",
+      "technicalStack": "new",
+      "characteristics": [
+        "Strong business knowledge",
+        "Understands user needs",
+        "Limited technical background",
+        "Business-focused perspective"
+      ],
+      "estimationStyle": "business-focused",
+      "avatar": "📋"
+    }
+  ],
+  "estimationScenarios": [
+    {
+      "id": "scenario-1",
+      "name": "Basic Feature Estimation",
+      "description": "Simple features with clear requirements",
+      "difficulty": "beginner",
+      "stories": [
+        {
+          "id": "user-profile-update",
+          "title": "Update User Profile Information",
+          "description": "As a user, I want to update my profile information so that my account details are current.",
+          "acceptanceCriteria": [
+            "User can edit name, email, and phone number",
+            "Form validation prevents invalid data",
+            "Changes are saved to the database",
+            "Success message is displayed after update"
+          ],
+          "complexityFactors": {
+            "technical": "low",
+            "business": "low",
+            "integration": "low",
+            "uncertainty": "low"
+          },
+          "estimationVariance": {
+            "alice-senior": {
+              "points": 3,
+              "reasoning": "Straightforward CRUD operation with basic validation. Standard implementation pattern.",
+              "confidenceLevel": "high"
+            },
+            "bob-intermediate": {
+              "points": 5,
+              "reasoning": "Need to handle form validation and database updates. Should include error handling.",
+              "confidenceLevel": "medium"
+            },
+            "carol-junior": {
+              "points": 8,
+              "reasoning": "Need to learn form handling patterns and validation techniques. Want to be thorough.",
+              "confidenceLevel": "low"
+            },
+            "david-qa": {
+              "points": 5,
+              "reasoning": "Consider testing various validation scenarios and edge cases. UI testing needed.",
+              "confidenceLevel": "medium"
+            },
+            "emma-product": {
+              "points": 3,
+              "reasoning": "Seems like a simple form update. Users do this all the time on other sites.",
+              "confidenceLevel": "medium"
+            }
+          },
+          "discussionPoints": [
+            {
+              "trigger": "estimate_divergence",
+              "speaker": "facilitator",
+              "message": "We have estimates ranging from 3 to 8 points. Let's discuss the differences.",
+              "followUp": [
+                {
+                  "speaker": "alice-senior",
+                  "message": "This is a standard pattern we've implemented before. The validation logic is straightforward."
+                },
+                {
+                  "speaker": "carol-junior",
+                  "message": "I haven't done form validation before. I'll need time to research best practices."
+                },
+                {
+                  "speaker": "david-qa",
+                  "message": "We should consider testing invalid inputs, boundary conditions, and concurrent updates."
+                }
+              ]
+            }
+          ],
+          "consensusTarget": 5,
+          "learningPoints": [
+            "Junior developers need learning time factored into estimates",
+            "Different perspectives (dev vs QA) reveal hidden complexity",
+            "Experience with similar features reduces uncertainty"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scenario-2", 
+      "name": "Complex Integration Estimation",
+      "description": "Features requiring external integrations",
+      "difficulty": "intermediate",
+      "stories": [
+        {
+          "id": "payment-processing",
+          "title": "Credit Card Payment Processing",
+          "description": "As a customer, I want to pay with a credit card so that I can complete my purchase securely.",
+          "acceptanceCriteria": [
+            "Integrate with Stripe payment API",
+            "Handle successful payment flow",
+            "Handle payment failures gracefully",
+            "Store transaction records securely",
+            "Send confirmation emails"
+          ],
+          "complexityFactors": {
+            "technical": "high",
+            "business": "medium",
+            "integration": "high",
+            "uncertainty": "medium"
+          },
+          "estimationVariance": {
+            "alice-senior": {
+              "points": 8,
+              "reasoning": "Complex external integration with security implications. Need thorough error handling and testing.",
+              "confidenceLevel": "medium"
+            },
+            "bob-intermediate": {
+              "points": 13,
+              "reasoning": "Haven't worked with payment APIs before. Lots of edge cases and security considerations.",
+              "confidenceLevel": "low"
+            },
+            "carol-junior": {
+              "points": 21,
+              "reasoning": "This seems very complex with security and money involved. Need to be extra careful.",
+              "confidenceLevel": "low"
+            },
+            "david-qa": {
+              "points": 13,
+              "reasoning": "Extensive testing needed for payment flows, error scenarios, and security validation.",
+              "confidenceLevel": "low"
+            },
+            "emma-product": {
+              "points": 5,
+              "reasoning": "Payment processing is standard e-commerce functionality. Should be straightforward.",
+              "confidenceLevel": "medium"
+            }
+          },
+          "discussionPoints": [
+            {
+              "trigger": "high_estimates",
+              "speaker": "facilitator", 
+              "message": "Several estimates are quite high. Should we consider breaking this down or doing a spike first?",
+              "followUp": [
+                {
+                  "speaker": "alice-senior",
+                  "message": "A spike to research Stripe integration patterns would reduce uncertainty for the team."
+                },
+                {
+                  "speaker": "bob-intermediate",
+                  "message": "Yes, I'd feel more confident after understanding the API and security requirements."
+                },
+                {
+                  "speaker": "emma-product",
+                  "message": "We could start with a basic payment flow and add error handling in a follow-up story."
+                }
+              ]
+            }
+          ],
+          "consensusTarget": 13,
+          "breakdownSuggestion": {
+            "recommended": true,
+            "reason": "High complexity and uncertainty warrant breakdown",
+            "stories": [
+              {
+                "title": "Spike: Research Stripe Integration",
+                "points": "time-boxed",
+                "description": "Research Stripe API, security requirements, and implementation patterns"
+              },
+              {
+                "title": "Basic Payment Flow Implementation", 
+                "points": 8,
+                "description": "Implement happy path payment processing"
+              },
+              {
+                "title": "Payment Error Handling",
+                "points": 5,
+                "description": "Handle payment failures and edge cases"
+              }
+            ]
+          },
+          "learningPoints": [
+            "High uncertainty suggests need for research spike",
+            "External integrations often have hidden complexity",
+            "Breaking down complex stories reduces risk"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scenario-3",
+      "name": "Estimation with Dependencies",
+      "description": "Stories with external dependencies and technical debt",
+      "difficulty": "advanced",
+      "stories": [
+        {
+          "id": "reporting-dashboard",
+          "title": "Executive Sales Dashboard",
+          "description": "As an executive, I want to see real-time sales metrics in a dashboard so that I can make informed business decisions.",
+          "acceptanceCriteria": [
+            "Display key sales metrics (revenue, conversion, etc.)",
+            "Real-time data updates",
+            "Interactive charts and filters",
+            "Export functionality",
+            "Mobile responsive design"
+          ],
+          "complexityFactors": {
+            "technical": "high",
+            "business": "high", 
+            "integration": "high",
+            "uncertainty": "high"
+          },
+          "dependencies": [
+            {
+              "id": "data-pipeline",
+              "description": "Data pipeline team needs to expose real-time metrics API",
+              "type": "external",
+              "impact": "high"
+            },
+            {
+              "id": "legacy-system",
+              "description": "Legacy sales system integration required",
+              "type": "technical",
+              "impact": "medium"
+            }
+          ],
+          "technicalDebt": {
+            "description": "Current reporting system uses outdated charting library",
+            "additionalComplexity": "medium",
+            "refactoringRequired": true
+          },
+          "estimationVariance": {
+            "alice-senior": {
+              "points": 21,
+              "reasoning": "Complex dashboard with multiple dependencies. Technical debt adds significant complexity.",
+              "confidenceLevel": "low"
+            },
+            "bob-intermediate": {
+              "points": 21,
+              "reasoning": "Too many unknowns and dependencies. This needs to be broken down significantly.",
+              "confidenceLevel": "low"
+            },
+            "carol-junior": {
+              "points": "?",
+              "reasoning": "This is too complex for me to estimate. I don't understand the dependencies.",
+              "confidenceLevel": "low"
+            },
+            "david-qa": {
+              "points": 21,
+              "reasoning": "Testing real-time features and multiple integrations is very complex.",
+              "confidenceLevel": "low"
+            },
+            "emma-product": {
+              "points": 13,
+              "reasoning": "Dashboards are important but this seems like a big effort. Maybe we can simplify the requirements.",
+              "confidenceLevel": "low"
+            }
+          },
+          "discussionPoints": [
+            {
+              "trigger": "too_large",
+              "speaker": "facilitator",
+              "message": "This story is clearly too large and has too many dependencies. How should we approach this?",
+              "followUp": [
+                {
+                  "speaker": "alice-senior",
+                  "message": "We need to break this down by functionality and address dependencies first."
+                },
+                {
+                  "speaker": "emma-product",
+                  "message": "What's the minimum viable dashboard we could deliver first?"
+                },
+                {
+                  "speaker": "bob-intermediate",
+                  "message": "Should we coordinate with the data pipeline team before estimating?"
+                }
+              ]
+            }
+          ],
+          "consensusTarget": "needs_breakdown",
+          "breakdownSuggestion": {
+            "recommended": true,
+            "reason": "Story is too large and has multiple dependencies",
+            "approach": "Break down by functionality and address dependencies",
+            "stories": [
+              {
+                "title": "Coordinate with Data Pipeline Team",
+                "points": "coordination",
+                "description": "Define API requirements and timeline with data team"
+              },
+              {
+                "title": "Basic Sales Metrics Display",
+                "points": 8,
+                "description": "Static dashboard with core metrics"
+              },
+              {
+                "title": "Real-time Data Integration",
+                "points": 13,
+                "description": "Connect to real-time API when available"
+              },
+              {
+                "title": "Interactive Charts and Filters",
+                "points": 8,
+                "description": "Add interactivity to dashboard"
+              }
+            ]
+          },
+          "learningPoints": [
+            "Stories with multiple dependencies are difficult to estimate",
+            "Technical debt significantly impacts complexity",
+            "Large stories should be broken down before estimation",
+            "Coordination with other teams is necessary work"
+          ]
+        }
+      ]
+    }
+  ],
+  "simulationSettings": {
+    "defaultTeam": ["alice-senior", "bob-intermediate", "carol-junior", "david-qa"],
+    "facilitatorEnabled": true,
+    "discussionTimeouts": {
+      "reveal": 1500,
+      "discussion": 3000,
+      "consensus": 2000
+    },
+    "learningMode": true,
+    "showEstimationTips": true
+  }
+}
