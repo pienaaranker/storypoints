@@ -1,0 +1,235 @@
+{
+  "metadata": {
+    "type": "proper_size_distribution",
+    "version": "1.0.0",
+    "description": "Demonstrates proper story size distribution following Scrum best practices (majority 1-8 points)"
+  },
+  "sizeDistributionExample": {
+    "totalStories": 20,
+    "distribution": {
+      "1-3 points": {
+        "count": 13,
+        "percentage": "65%",
+        "description": "Small, well-understood stories that can be completed quickly"
+      },
+      "5 points": {
+        "count": 4,
+        "percentage": "20%",
+        "description": "Medium complexity stories requiring more effort"
+      },
+      "8 points": {
+        "count": 2,
+        "percentage": "10%",
+        "description": "Complex but manageable stories at the upper limit"
+      },
+      "13+ points": {
+        "count": 1,
+        "percentage": "5%",
+        "description": "Stories requiring breakdown - should not remain this size"
+      }
+    }
+  },
+  "stories": [
+    {
+      "id": "update-footer-text",
+      "title": "Update Footer Copyright Text",
+      "points": 1,
+      "category": "small-change",
+      "reasoning": "Simple text change, no logic required"
+    },
+    {
+      "id": "add-tooltip-help",
+      "title": "Add Tooltip to Help Icon",
+      "points": 1,
+      "category": "small-enhancement",
+      "reasoning": "Basic UI enhancement with existing component"
+    },
+    {
+      "id": "fix-mobile-spacing",
+      "title": "Fix Mobile Button Spacing",
+      "points": 1,
+      "category": "bug-fix",
+      "reasoning": "CSS adjustment for mobile responsiveness"
+    },
+    {
+      "id": "add-field-validation",
+      "title": "Add Email Validation to Contact Form",
+      "points": 2,
+      "category": "validation",
+      "reasoning": "Standard validation pattern implementation"
+    },
+    {
+      "id": "loading-indicator",
+      "title": "Add Loading Indicator to Search",
+      "points": 2,
+      "category": "user-experience",
+      "reasoning": "UI state management with async operations"
+    },
+    {
+      "id": "sort-table-columns",
+      "title": "Make Table Columns Sortable",
+      "points": 2,
+      "category": "feature-enhancement",
+      "reasoning": "Standard table functionality with existing data"
+    },
+    {
+      "id": "user-preferences",
+      "title": "User Notification Preferences",
+      "points": 3,
+      "category": "user-settings",
+      "reasoning": "Settings UI with backend integration"
+    },
+    {
+      "id": "export-csv",
+      "title": "Export Data to CSV",
+      "points": 3,
+      "category": "data-export",
+      "reasoning": "Data formatting and file generation"
+    },
+    {
+      "id": "password-reset",
+      "title": "Password Reset Flow",
+      "points": 3,
+      "category": "authentication",
+      "reasoning": "Email integration with security considerations"
+    },
+    {
+      "id": "image-upload",
+      "title": "Profile Image Upload",
+      "points": 3,
+      "category": "file-handling",
+      "reasoning": "File upload with image processing"
+    },
+    {
+      "id": "basic-search",
+      "title": "Basic Content Search",
+      "points": 3,
+      "category": "search",
+      "reasoning": "Text search with filtering logic"
+    },
+    {
+      "id": "audit-logging",
+      "title": "User Action Audit Logging",
+      "points": 3,
+      "category": "security",
+      "reasoning": "Event tracking and log storage"
+    },
+    {
+      "id": "role-permissions",
+      "title": "User Role and Permissions",
+      "points": 5,
+      "category": "authorization",
+      "reasoning": "Complex security logic with role hierarchy"
+    },
+    {
+      "id": "api-rate-limiting",
+      "title": "API Rate Limiting Implementation",
+      "points": 5,
+      "category": "performance",
+      "reasoning": "Complex middleware with configuration options"
+    },
+    {
+      "id": "notification-system",
+      "title": "In-App Notification System",
+      "points": 5,
+      "category": "messaging",
+      "reasoning": "Real-time updates with persistence"
+    },
+    {
+      "id": "advanced-filtering",
+      "title": "Advanced Search Filters",
+      "points": 5,
+      "category": "search",
+      "reasoning": "Multiple filter types with complex UI"
+    },
+    {
+      "id": "payment-integration",
+      "title": "Payment Processing Integration",
+      "points": 8,
+      "category": "external-integration",
+      "reasoning": "Complex external API with security requirements"
+    },
+    {
+      "id": "reporting-dashboard",
+      "title": "Basic Analytics Dashboard",
+      "points": 8,
+      "category": "analytics",
+      "reasoning": "Data visualization with multiple chart types"
+    },
+    {
+      "id": "multi-tenant-architecture",
+      "title": "Multi-Tenant Data Architecture",
+      "points": 21,
+      "category": "architecture",
+      "reasoning": "NEEDS BREAKDOWN: Complex architectural change affecting entire system",
+      "breakdownRequired": true,
+      "breakdownSuggestion": "Break into: tenant isolation model (8), data migration strategy (5), UI tenant switching (3), security model updates (5)"
+    }
+  ],
+  "breakdownGuidance": {
+    "whenToBreakdown": [
+      "Story is larger than 8 points",
+      "Story has high uncertainty or risk",
+      "Story involves multiple complex systems",
+      "Story cannot be completed in one sprint",
+      "Team cannot clearly define acceptance criteria"
+    ],
+    "breakdownTechniques": [
+      {
+        "name": "By Workflow Steps",
+        "description": "Break down by user journey or process steps",
+        "example": "User registration → Email verification → Profile setup → Welcome tour"
+      },
+      {
+        "name": "By Data Operations",
+        "description": "Separate CRUD operations or data entities",
+        "example": "Create user → Update user → Delete user → List users"
+      },
+      {
+        "name": "By Acceptance Criteria",
+        "description": "Each acceptance criterion becomes a story",
+        "example": "Form validation → Data submission → Success feedback → Error handling"
+      },
+      {
+        "name": "By Technical Layers",
+        "description": "Separate frontend, backend, database changes",
+        "example": "API endpoints → Database schema → UI components → Integration"
+      },
+      {
+        "name": "By Complexity",
+        "description": "Start with simple version, add complexity incrementally",
+        "example": "Basic search → Add filters → Add sorting → Add advanced options"
+      }
+    ]
+  },
+  "antiPatterns": {
+    "tooManyLargeStories": {
+      "problem": "Most stories are 8+ points",
+      "impact": "Difficult to complete in sprint, high risk of incomplete work",
+      "solution": "Break down large stories using decomposition techniques"
+    },
+    "allStoriesSameSize": {
+      "problem": "All stories estimated at same point value",
+      "impact": "Loses relative sizing benefit, poor estimation accuracy",
+      "solution": "Use reference stories to establish relative sizing"
+    },
+    "usingHalfPoints": {
+      "problem": "Estimating with 2.5, 4.5 point values",
+      "impact": "False precision, defeats purpose of relative sizing",
+      "solution": "Stick to Fibonacci sequence: 1, 2, 3, 5, 8, 13"
+    },
+    "estimatingTasks": {
+      "problem": "Breaking stories into tasks and estimating tasks",
+      "impact": "Loses focus on user value, becomes time estimation",
+      "solution": "Estimate stories as complete user value, not implementation tasks"
+    }
+  },
+  "bestPractices": {
+    "referenceStories": "Establish 1, 2, 3, 5, 8 point reference stories that team agrees on",
+    "relativeComparison": "Always compare new stories to reference stories, not absolute time",
+    "teamEstimation": "Estimate as a team using Planning Poker or similar collaborative technique",
+    "regularCalibration": "Regularly review completed stories to calibrate estimation accuracy",
+    "focusOnValue": "Estimate complete user value, not technical implementation details",
+    "embraceUncertainty": "Use spikes for high-uncertainty work before estimation"
+  }
+}

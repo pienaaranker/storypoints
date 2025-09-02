@@ -1,0 +1,317 @@
+{
+  "metadata": {
+    "type": "breakdown_required_stories",
+    "version": "1.0.0",
+    "description": "Stories larger than 8 points that require breakdown with multiple decomposition techniques"
+  },
+  "stories": [
+    {
+      "id": "complete-user-management",
+      "title": "Complete User Management System",
+      "description": "As an admin, I want a comprehensive user management system so that I can efficiently manage all user accounts and permissions.",
+      "acceptanceCriteria": [
+        "Create, read, update, delete user accounts",
+        "Assign and manage user roles and permissions",
+        "Bulk operations (import, export, bulk edit)",
+        "User activity tracking and audit logs",
+        "Advanced search and filtering",
+        "User account suspension and reactivation",
+        "Password reset and security management"
+      ],
+      "teamContext": {
+        "experienceLevel": "intermediate",
+        "domainKnowledge": "medium",
+        "technicalStack": "familiar",
+        "teamSize": 5,
+        "workingAgreements": ["Stories must be 8 points or smaller", "Definition of Done includes security review"]
+      },
+      "estimationVariance": {
+        "experiencedTeam": {
+          "points": 21,
+          "reasoning": "Multiple complex features that need to be broken down into smaller stories",
+          "confidenceLevel": "low"
+        }
+      },
+      "breakdownRequired": true,
+      "breakdownSuggestions": [
+        {
+          "technique": "by-workflow",
+          "description": "Break down by admin workflow steps",
+          "resultingStories": [
+            {
+              "id": "basic-user-crud",
+              "title": "Basic User CRUD Operations",
+              "description": "Create, read, update, delete individual user accounts",
+              "acceptanceCriteria": ["Add new user form", "Edit user details", "Delete user with confirmation", "View user profile"],
+              "teamContext": {
+                "experienceLevel": "intermediate",
+                "domainKnowledge": "medium",
+                "technicalStack": "familiar",
+                "teamSize": 5,
+                "workingAgreements": ["Stories must be 8 points or smaller", "Definition of Done includes security review"]
+              },
+              "estimationVariance": {
+                "experiencedTeam": {
+                  "points": 5,
+                  "reasoning": "Standard CRUD operations with validation",
+                  "confidenceLevel": "high"
+                }
+              },
+              "breakdownRequired": false,
+              "complexityFactors": {
+                "technical": "medium",
+                "business": "medium",
+                "integration": "medium",
+                "uncertainty": "low"
+              }
+            },
+            {
+              "id": "user-roles-permissions",
+              "title": "User Roles and Permissions",
+              "description": "Assign and manage user roles with permission-based access control",
+              "acceptanceCriteria": ["Role assignment interface", "Permission matrix display", "Role-based access enforcement"],
+              "teamContext": {
+                "experienceLevel": "intermediate",
+                "domainKnowledge": "medium",
+                "technicalStack": "familiar",
+                "teamSize": 5,
+                "workingAgreements": ["Stories must be 8 points or smaller", "Definition of Done includes security review"]
+              },
+              "estimationVariance": {
+                "experiencedTeam": {
+                  "points": 8,
+                  "reasoning": "Complex security logic with role hierarchy",
+                  "confidenceLevel": "medium"
+                }
+              },
+              "breakdownRequired": false,
+              "complexityFactors": {
+                "technical": "high",
+                "business": "high",
+                "integration": "high",
+                "uncertainty": "medium"
+              }
+            },
+            {
+              "id": "bulk-user-operations",
+              "title": "Bulk User Operations",
+              "description": "Import, export, and bulk edit user accounts",
+              "acceptanceCriteria": ["CSV import with validation", "Bulk edit selected users", "Export filtered user lists"],
+              "teamContext": {
+                "experienceLevel": "intermediate",
+                "domainKnowledge": "medium",
+                "technicalStack": "familiar",
+                "teamSize": 5,
+                "workingAgreements": ["Stories must be 8 points or smaller", "Definition of Done includes security review"]
+              },
+              "estimationVariance": {
+                "experiencedTeam": {
+                  "points": 8,
+                  "reasoning": "File processing with error handling and validation",
+                  "confidenceLevel": "medium"
+                }
+              },
+              "breakdownRequired": false,
+              "complexityFactors": {
+                "technical": "high",
+                "business": "medium",
+                "integration": "medium",
+                "uncertainty": "medium"
+              }
+            }
+          ],
+          "benefits": ["Each story delivers independent value", "Allows incremental delivery", "Reduces risk per story"]
+        },
+        {
+          "technique": "by-data",
+          "description": "Break down by data entities and operations",
+          "resultingStories": [
+            {
+              "id": "user-account-management",
+              "title": "User Account Data Management",
+              "description": "Core user account creation, editing, and basic operations",
+              "acceptanceCriteria": ["User profile data CRUD", "Account status management", "Basic validation"],
+              "teamContext": {
+                "experienceLevel": "intermediate",
+                "domainKnowledge": "medium",
+                "technicalStack": "familiar",
+                "teamSize": 5,
+                "workingAgreements": ["Stories must be 8 points or smaller", "Definition of Done includes security review"]
+              },
+              "estimationVariance": {
+                "experiencedTeam": {
+                  "points": 3,
+                  "reasoning": "Basic data operations",
+                  "confidenceLevel": "high"
+                }
+              },
+              "breakdownRequired": false,
+              "complexityFactors": {
+                "technical": "low",
+                "business": "medium",
+                "integration": "low",
+                "uncertainty": "low"
+              }
+            },
+            {
+              "id": "permission-data-management",
+              "title": "Permission and Role Data Management",
+              "description": "Manage roles, permissions, and user-role assignments",
+              "acceptanceCriteria": ["Role definition interface", "Permission assignment", "User-role relationships"],
+              "teamContext": {
+                "experienceLevel": "intermediate",
+                "domainKnowledge": "medium",
+                "technicalStack": "familiar",
+                "teamSize": 5,
+                "workingAgreements": ["Stories must be 8 points or smaller", "Definition of Done includes security review"]
+              },
+              "estimationVariance": {
+                "experiencedTeam": {
+                  "points": 5,
+                  "reasoning": "Complex relationships and security considerations",
+                  "confidenceLevel": "medium"
+                }
+              },
+              "breakdownRequired": false,
+              "complexityFactors": {
+                "technical": "medium",
+                "business": "high",
+                "integration": "medium",
+                "uncertainty": "medium"
+              }
+            }
+          ],
+          "benefits": ["Clear data boundaries", "Enables parallel database design", "Focused testing scope"]
+        }
+      ],
+      "complexityFactors": {
+        "technical": "high",
+        "business": "high",
+        "integration": "high",
+        "uncertainty": "high"
+      },
+      "correctPoints": 21
+    },
+    {
+      "id": "advanced-reporting-dashboard",
+      "title": "Advanced Analytics and Reporting Dashboard",
+      "description": "As a business user, I want comprehensive analytics and reporting so that I can make data-driven decisions.",
+      "acceptanceCriteria": [
+        "Interactive charts and graphs with drill-down capability",
+        "Custom report builder with drag-and-drop interface",
+        "Scheduled report generation and email delivery",
+        "Real-time data updates and live dashboards",
+        "Export capabilities (PDF, Excel, CSV)",
+        "User-specific dashboard customization",
+        "Performance metrics and KPI tracking"
+      ],
+      "teamContext": {
+        "experienceLevel": "senior",
+        "domainKnowledge": "low",
+        "technicalStack": "new",
+        "teamSize": 4,
+        "workingAgreements": ["Spike before complex features", "Performance testing required"]
+      },
+      "estimationVariance": {
+        "seniorTeam": {
+          "points": 34,
+          "reasoning": "Multiple complex features requiring new technology learning, definitely needs breakdown",
+          "confidenceLevel": "low"
+        }
+      },
+      "breakdownRequired": true,
+      "breakdownSuggestions": [
+        {
+          "technique": "by-acceptance-criteria",
+          "description": "Break down by individual acceptance criteria",
+          "resultingStories": [
+            {
+              "id": "basic-charts-graphs",
+              "title": "Basic Interactive Charts",
+              "description": "Display data in interactive charts with basic drill-down",
+              "acceptanceCriteria": ["Bar charts, line charts, pie charts", "Click to drill down one level", "Responsive design"],
+              "teamContext": {
+                "experienceLevel": "senior",
+                "domainKnowledge": "low",
+                "technicalStack": "new",
+                "teamSize": 4,
+                "workingAgreements": ["Spike before complex features", "Performance testing required"]
+              },
+              "estimationVariance": {
+                "seniorTeam": {
+                  "points": 8,
+                  "reasoning": "New charting library but straightforward implementation",
+                  "confidenceLevel": "medium"
+                }
+              },
+              "breakdownRequired": false,
+              "complexityFactors": {
+                "technical": "high",
+                "business": "medium",
+                "integration": "medium",
+                "uncertainty": "high"
+              }
+            },
+            {
+              "id": "custom-report-builder",
+              "title": "Custom Report Builder Interface",
+              "description": "Drag-and-drop interface for building custom reports",
+              "acceptanceCriteria": ["Drag-and-drop field selection", "Filter configuration", "Report preview"],
+              "teamContext": {
+                "experienceLevel": "senior",
+                "domainKnowledge": "low",
+                "technicalStack": "new",
+                "teamSize": 4,
+                "workingAgreements": ["Spike before complex features", "Performance testing required"]
+              },
+              "estimationVariance": {
+                "seniorTeam": {
+                  "points": 13,
+                  "reasoning": "Complex UI with drag-and-drop, may need further breakdown",
+                  "confidenceLevel": "low"
+                }
+              },
+              "breakdownRequired": true,
+              "complexityFactors": {
+                "technical": "high",
+                "business": "high",
+                "integration": "medium",
+                "uncertainty": "high"
+              }
+            }
+          ],
+          "benefits": ["Focused feature delivery", "Independent testing", "Clearer acceptance criteria"]
+        }
+      ],
+      "complexityFactors": {
+        "technical": "high",
+        "business": "high",
+        "integration": "high",
+        "uncertainty": "high"
+      },
+      "dependencies": [
+        {
+          "id": "charting-library",
+          "description": "Third-party charting library selection and integration",
+          "type": "technical",
+          "impact": "high",
+          "mitigation": "Spike to evaluate and select appropriate library"
+        },
+        {
+          "id": "data-warehouse",
+          "description": "Data warehouse setup for analytics queries",
+          "type": "internal",
+          "impact": "high",
+          "mitigation": "Coordinate with data team for warehouse readiness"
+        }
+      ],
+      "technicalDebt": {
+        "description": "Current data model not optimized for analytics queries",
+        "additionalComplexity": "high",
+        "refactoringRequired": true,
+        "estimatedImpact": "May require data model changes and migration scripts"
+      },
+      "correctPoints": 34
+    }
+  ]
+}

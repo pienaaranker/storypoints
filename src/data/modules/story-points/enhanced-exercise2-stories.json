@@ -1,0 +1,340 @@
+{
+  "metadata": {
+    "exerciseId": 2,
+    "type": "realistic_distribution",
+    "version": "2.0.0",
+    "description": "Realistic story size distribution (1-8 points) with breakdown guidance for larger stories"
+  },
+  "stories": [
+    {
+      "id": "update-profile-picture",
+      "title": "Update Profile Picture",
+      "description": "As a user, I want to update my profile picture so that others can recognize me easily.",
+      "acceptanceCriteria": [
+        "Upload image file (JPG, PNG, GIF)",
+        "Crop and resize image to standard dimensions",
+        "Preview before saving",
+        "Remove existing picture option"
+      ],
+      "teamContext": {
+        "experienceLevel": "intermediate",
+        "domainKnowledge": "high",
+        "technicalStack": "familiar",
+        "teamSize": 6,
+        "workingAgreements": ["TDD approach", "Pair programming for complex features"]
+      },
+      "estimationVariance": {
+        "experiencedTeam": {
+          "points": 3,
+          "reasoning": "Standard file upload with image processing, well-understood requirements",
+          "confidenceLevel": "high"
+        },
+        "juniorTeam": {
+          "points": 5,
+          "reasoning": "Need to learn image processing libraries and file handling",
+          "confidenceLevel": "medium"
+        }
+      },
+      "breakdownRequired": false,
+      "breakdownSuggestions": [],
+      "complexityFactors": {
+        "technical": "medium",
+        "business": "low",
+        "integration": "medium",
+        "uncertainty": "low"
+      },
+      "correctPoints": 3
+    },
+    {
+      "id": "notification-preferences",
+      "title": "Email Notification Preferences",
+      "description": "As a user, I want to control my email notification settings so that I only receive emails I'm interested in.",
+      "acceptanceCriteria": [
+        "Settings page with notification categories",
+        "Toggle switches for each notification type",
+        "Save preferences to user profile",
+        "Apply preferences to email sending logic"
+      ],
+      "teamContext": {
+        "experienceLevel": "intermediate",
+        "domainKnowledge": "high",
+        "technicalStack": "familiar",
+        "teamSize": 6,
+        "workingAgreements": ["TDD approach", "Pair programming for complex features"]
+      },
+      "estimationVariance": {
+        "experiencedTeam": {
+          "points": 5,
+          "reasoning": "UI changes plus backend integration, moderate complexity",
+          "confidenceLevel": "high"
+        },
+        "juniorTeam": {
+          "points": 8,
+          "reasoning": "Need to understand email system integration and user preferences architecture",
+          "confidenceLevel": "medium"
+        }
+      },
+      "breakdownRequired": false,
+      "breakdownSuggestions": [],
+      "complexityFactors": {
+        "technical": "medium",
+        "business": "medium",
+        "integration": "high",
+        "uncertainty": "low"
+      },
+      "correctPoints": 5
+    },
+    {
+      "id": "password-strength-meter",
+      "title": "Password Strength Indicator",
+      "description": "As a user creating a password, I want to see password strength feedback so that I can create a secure password.",
+      "acceptanceCriteria": [
+        "Real-time strength meter as user types",
+        "Check length, character variety, common passwords",
+        "Visual indicator (weak/medium/strong) with colors",
+        "Helpful suggestions for improvement"
+      ],
+      "teamContext": {
+        "experienceLevel": "intermediate",
+        "domainKnowledge": "high",
+        "technicalStack": "familiar",
+        "teamSize": 6,
+        "workingAgreements": ["TDD approach", "Pair programming for complex features"]
+      },
+      "estimationVariance": {
+        "securityExperiencedTeam": {
+          "points": 3,
+          "reasoning": "Team has implemented similar security features before",
+          "confidenceLevel": "high"
+        },
+        "generalTeam": {
+          "points": 5,
+          "reasoning": "Need to research password security best practices and algorithms",
+          "confidenceLevel": "medium"
+        }
+      },
+      "breakdownRequired": false,
+      "breakdownSuggestions": [],
+      "complexityFactors": {
+        "technical": "medium",
+        "business": "medium",
+        "integration": "low",
+        "uncertainty": "medium"
+      },
+      "correctPoints": 5
+    },
+    {
+      "id": "advanced-user-search",
+      "title": "Advanced User Search with Filters",
+      "description": "As an admin, I want advanced search capabilities so that I can find users using multiple criteria.",
+      "acceptanceCriteria": [
+        "Search by name, email, registration date range",
+        "Filter by user status (active/inactive/suspended)",
+        "Sort results by various fields",
+        "Pagination for large result sets",
+        "Export filtered results"
+      ],
+      "teamContext": {
+        "experienceLevel": "intermediate",
+        "domainKnowledge": "high",
+        "technicalStack": "familiar",
+        "teamSize": 6,
+        "workingAgreements": ["TDD approach", "Pair programming for complex features"]
+      },
+      "estimationVariance": {
+        "experiencedTeam": {
+          "points": 8,
+          "reasoning": "Complex UI with multiple filter combinations and backend query optimization",
+          "confidenceLevel": "medium"
+        },
+        "juniorTeam": {
+          "points": 13,
+          "reasoning": "Multiple complex features combined, needs breakdown",
+          "confidenceLevel": "low"
+        }
+      },
+      "breakdownRequired": true,
+      "breakdownSuggestions": [
+        {
+          "technique": "by-workflow",
+          "description": "Break down by user workflow steps",
+          "resultingStories": [
+            {
+              "id": "search-filters-ui",
+              "title": "Search Filters UI",
+              "description": "Create the filter interface with form controls",
+              "acceptanceCriteria": ["Filter form with date pickers", "Status dropdown", "Clear filters button"],
+              "teamContext": {
+                "experienceLevel": "intermediate",
+                "domainKnowledge": "high",
+                "technicalStack": "familiar",
+                "teamSize": 6,
+                "workingAgreements": ["TDD approach", "Pair programming for complex features"]
+              },
+              "estimationVariance": {
+                "experiencedTeam": {
+                  "points": 3,
+                  "reasoning": "Standard form UI components",
+                  "confidenceLevel": "high"
+                }
+              },
+              "breakdownRequired": false,
+              "complexityFactors": {
+                "technical": "low",
+                "business": "medium",
+                "integration": "low",
+                "uncertainty": "low"
+              }
+            },
+            {
+              "id": "search-backend-logic",
+              "title": "Search Backend Logic",
+              "description": "Implement backend search with multiple criteria",
+              "acceptanceCriteria": ["Query builder for multiple filters", "Optimized database queries", "Result pagination"],
+              "teamContext": {
+                "experienceLevel": "intermediate",
+                "domainKnowledge": "high",
+                "technicalStack": "familiar",
+                "teamSize": 6,
+                "workingAgreements": ["TDD approach", "Pair programming for complex features"]
+              },
+              "estimationVariance": {
+                "experiencedTeam": {
+                  "points": 5,
+                  "reasoning": "Complex query logic with performance considerations",
+                  "confidenceLevel": "medium"
+                }
+              },
+              "breakdownRequired": false,
+              "complexityFactors": {
+                "technical": "high",
+                "business": "medium",
+                "integration": "medium",
+                "uncertainty": "medium"
+              }
+            }
+          ],
+          "benefits": ["Allows parallel development", "Reduces complexity per story", "Easier testing"]
+        }
+      ],
+      "complexityFactors": {
+        "technical": "high",
+        "business": "medium",
+        "integration": "high",
+        "uncertainty": "medium"
+      },
+      "correctPoints": 8
+    },
+    {
+      "id": "oauth-integration",
+      "title": "OAuth Social Login Integration",
+      "description": "As a user, I want to log in using my Google or GitHub account so that I don't need to create another password.",
+      "acceptanceCriteria": [
+        "Google OAuth 2.0 integration",
+        "GitHub OAuth integration",
+        "Account linking for existing users",
+        "Profile data synchronization",
+        "Handle OAuth errors gracefully"
+      ],
+      "teamContext": {
+        "experienceLevel": "intermediate",
+        "domainKnowledge": "medium",
+        "technicalStack": "new",
+        "teamSize": 6,
+        "workingAgreements": ["TDD approach", "Pair programming for complex features"]
+      },
+      "estimationVariance": {
+        "oauthExperiencedTeam": {
+          "points": 8,
+          "reasoning": "Complex but well-understood OAuth implementation patterns",
+          "confidenceLevel": "medium"
+        },
+        "generalTeam": {
+          "points": 13,
+          "reasoning": "High complexity with external dependencies, needs breakdown",
+          "confidenceLevel": "low"
+        }
+      },
+      "breakdownRequired": true,
+      "breakdownSuggestions": [
+        {
+          "technique": "by-complexity",
+          "description": "Break down by OAuth provider and complexity",
+          "resultingStories": [
+            {
+              "id": "google-oauth-basic",
+              "title": "Google OAuth Basic Integration",
+              "description": "Implement basic Google OAuth login flow",
+              "acceptanceCriteria": ["Google OAuth setup", "Login redirect flow", "Basic user info retrieval"],
+              "teamContext": {
+                "experienceLevel": "intermediate",
+                "domainKnowledge": "medium",
+                "technicalStack": "new",
+                "teamSize": 6,
+                "workingAgreements": ["TDD approach", "Pair programming for complex features"]
+              },
+              "estimationVariance": {
+                "generalTeam": {
+                  "points": 5,
+                  "reasoning": "Single OAuth provider, focused scope",
+                  "confidenceLevel": "medium"
+                }
+              },
+              "breakdownRequired": false,
+              "complexityFactors": {
+                "technical": "high",
+                "business": "medium",
+                "integration": "high",
+                "uncertainty": "medium"
+              }
+            },
+            {
+              "id": "account-linking-logic",
+              "title": "Account Linking Logic",
+              "description": "Handle linking OAuth accounts to existing user accounts",
+              "acceptanceCriteria": ["Detect existing accounts by email", "Link OAuth to existing account", "Handle conflicts"],
+              "teamContext": {
+                "experienceLevel": "intermediate",
+                "domainKnowledge": "medium",
+                "technicalStack": "new",
+                "teamSize": 6,
+                "workingAgreements": ["TDD approach", "Pair programming for complex features"]
+              },
+              "estimationVariance": {
+                "generalTeam": {
+                  "points": 3,
+                  "reasoning": "Business logic complexity with edge cases",
+                  "confidenceLevel": "medium"
+                }
+              },
+              "breakdownRequired": false,
+              "complexityFactors": {
+                "technical": "medium",
+                "business": "high",
+                "integration": "medium",
+                "uncertainty": "medium"
+              }
+            }
+          ],
+          "benefits": ["Reduces external dependencies per story", "Allows incremental delivery", "Easier debugging"]
+        }
+      ],
+      "complexityFactors": {
+        "technical": "high",
+        "business": "high",
+        "integration": "high",
+        "uncertainty": "high"
+      },
+      "dependencies": [
+        {
+          "id": "oauth-providers",
+          "description": "External OAuth provider APIs (Google, GitHub)",
+          "type": "external",
+          "impact": "high",
+          "mitigation": "Use well-documented OAuth libraries and test with sandbox environments"
+        }
+      ],
+      "correctPoints": 13
+    }
+  ]
+}

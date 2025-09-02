@@ -1,0 +1,117 @@
+{
+  "metadata": {
+    "type": "non_estimable_work",
+    "version": "1.0.0",
+    "description": "Examples of work that should not be estimated with story points"
+  },
+  "nonEstimableWork": [
+    {
+      "type": "spike",
+      "title": "Research OAuth Implementation Options",
+      "timeBox": "4 hours",
+      "learningObjective": "Understand OAuth 2.0 implementation complexity and choose appropriate library",
+      "acceptanceCriteria": [
+        "Evaluate 3 OAuth libraries for our tech stack",
+        "Document security considerations and trade-offs",
+        "Create proof-of-concept with Google OAuth",
+        "Estimate implementation effort for chosen approach"
+      ],
+      "transitionToStories": [
+        "Implement Google OAuth login flow",
+        "Add OAuth error handling",
+        "Create account linking functionality"
+      ],
+      "reasoning": "High uncertainty about implementation approach requires research before estimation is possible. The spike will provide information needed to break down and estimate the actual implementation work."
+    },
+    {
+      "type": "research",
+      "title": "Database Performance Analysis",
+      "timeBox": "8 hours",
+      "learningObjective": "Identify performance bottlenecks in user search functionality and determine optimization approach",
+      "acceptanceCriteria": [
+        "Profile current search queries with large datasets",
+        "Identify slow queries and missing indexes",
+        "Research database optimization techniques",
+        "Document recommended optimization strategy"
+      ],
+      "transitionToStories": [
+        "Add database indexes for user search",
+        "Implement query optimization for filters",
+        "Add search result caching"
+      ],
+      "reasoning": "Performance issues require investigation to understand root causes before solutions can be estimated. The research will inform specific optimization stories."
+    },
+    {
+      "type": "proof-of-concept",
+      "title": "Real-time Notification System POC",
+      "timeBox": "12 hours",
+      "learningObjective": "Validate technical feasibility of WebSocket-based notifications and assess integration complexity",
+      "acceptanceCriteria": [
+        "Create basic WebSocket connection handling",
+        "Implement simple notification delivery",
+        "Test with multiple concurrent users",
+        "Document scalability and infrastructure requirements"
+      ],
+      "transitionToStories": [
+        "Implement WebSocket notification infrastructure",
+        "Create notification delivery system",
+        "Add notification persistence and retry logic"
+      ],
+      "reasoning": "New technology with unknown integration challenges. POC will validate approach and reveal implementation complexity for proper estimation."
+    },
+    {
+      "type": "learning",
+      "title": "Team Training on New Testing Framework",
+      "timeBox": "16 hours (2 days)",
+      "learningObjective": "Bring team up to speed on new testing framework to maintain development velocity",
+      "acceptanceCriteria": [
+        "All team members complete framework tutorial",
+        "Team practices writing tests for existing components",
+        "Establish testing patterns and conventions",
+        "Update development workflow documentation"
+      ],
+      "transitionToStories": [
+        "Migrate existing tests to new framework",
+        "Add integration tests for user management",
+        "Implement automated test reporting"
+      ],
+      "reasoning": "Learning activities are investments in team capability rather than deliverable features. Time-boxing ensures focused learning while enabling future story estimation with new knowledge."
+    },
+    {
+      "type": "spike",
+      "title": "Third-party API Integration Feasibility",
+      "timeBox": "6 hours",
+      "learningObjective": "Assess integration complexity with external payment processing API and identify potential issues",
+      "acceptanceCriteria": [
+        "Test API authentication and basic operations",
+        "Understand rate limiting and error handling requirements",
+        "Evaluate webhook reliability and security",
+        "Document integration architecture recommendations"
+      ],
+      "transitionToStories": [
+        "Implement payment processing integration",
+        "Add webhook handling for payment events",
+        "Create payment error handling and retry logic"
+      ],
+      "reasoning": "External API integration has unknown complexity due to third-party constraints. Spike reduces uncertainty and enables accurate estimation of implementation stories."
+    },
+    {
+      "type": "research",
+      "title": "Accessibility Compliance Assessment",
+      "timeBox": "10 hours",
+      "learningObjective": "Evaluate current application against WCAG 2.1 AA standards and identify required improvements",
+      "acceptanceCriteria": [
+        "Audit existing components with accessibility tools",
+        "Test with screen readers and keyboard navigation",
+        "Document compliance gaps and severity levels",
+        "Prioritize improvements by impact and effort"
+      ],
+      "transitionToStories": [
+        "Add ARIA labels to form components",
+        "Implement keyboard navigation for modals",
+        "Improve color contrast in data tables"
+      ],
+      "reasoning": "Compliance assessment requires systematic evaluation before specific improvements can be identified and estimated. Research provides foundation for targeted accessibility stories."
+    }
+  ]
+}

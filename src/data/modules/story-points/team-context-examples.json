@@ -1,0 +1,204 @@
+{
+  "metadata": {
+    "type": "team_context_variations",
+    "version": "1.0.0",
+    "description": "Examples showing how team context affects story point estimation for the same work"
+  },
+  "teamContexts": [
+    {
+      "id": "junior-team",
+      "name": "Junior Development Team",
+      "experienceLevel": "junior",
+      "domainKnowledge": "low",
+      "technicalStack": "new",
+      "teamSize": 4,
+      "workingAgreements": [
+        "Pair programming for all complex tasks",
+        "Senior developer code review required",
+        "Extra time allocated for learning"
+      ],
+      "characteristics": [
+        "1-2 years average experience",
+        "Learning new technology stack",
+        "Limited domain knowledge",
+        "High collaboration and mentoring needs"
+      ]
+    },
+    {
+      "id": "experienced-team",
+      "name": "Experienced Development Team",
+      "experienceLevel": "senior",
+      "domainKnowledge": "high",
+      "technicalStack": "familiar",
+      "teamSize": 5,
+      "workingAgreements": [
+        "Code review by peers",
+        "TDD approach for new features",
+        "Performance testing for user-facing features"
+      ],
+      "characteristics": [
+        "5+ years average experience",
+        "Deep knowledge of technology stack",
+        "Strong domain expertise",
+        "Efficient development practices"
+      ]
+    },
+    {
+      "id": "mixed-team",
+      "name": "Mixed Experience Team",
+      "experienceLevel": "intermediate",
+      "domainKnowledge": "medium",
+      "technicalStack": "mixed",
+      "teamSize": 6,
+      "workingAgreements": [
+        "Knowledge sharing sessions",
+        "Rotate complex tasks among team members",
+        "Document decisions for team learning"
+      ],
+      "characteristics": [
+        "Mix of junior and senior developers",
+        "Some familiar, some new technology components",
+        "Growing domain knowledge",
+        "Focus on knowledge transfer"
+      ]
+    }
+  ],
+  "comparisonStories": [
+    {
+      "id": "user-authentication",
+      "title": "User Login Authentication",
+      "description": "As a user, I want to log in with email and password so that I can access my account.",
+      "acceptanceCriteria": [
+        "Email and password input validation",
+        "Authenticate against user database",
+        "Handle invalid credentials gracefully",
+        "Redirect to dashboard on success"
+      ],
+      "estimationsByTeam": {
+        "junior-team": {
+          "points": 8,
+          "reasoning": "Need to learn authentication patterns, security best practices, and error handling. Requires research time and careful implementation.",
+          "confidenceLevel": "low",
+          "riskFactors": [
+            "Security implementation complexity",
+            "Learning authentication libraries",
+            "Understanding session management"
+          ]
+        },
+        "experienced-team": {
+          "points": 3,
+          "reasoning": "Standard authentication implementation using familiar patterns and libraries. Well-understood security requirements.",
+          "confidenceLevel": "high",
+          "riskFactors": [
+            "Integration with existing user system"
+          ]
+        },
+        "mixed-team": {
+          "points": 5,
+          "reasoning": "Some team members familiar with auth patterns, others need guidance. Moderate complexity with knowledge sharing.",
+          "confidenceLevel": "medium",
+          "riskFactors": [
+            "Knowledge transfer between team members",
+            "Ensuring consistent security practices"
+          ]
+        }
+      },
+      "keyLearning": "Same story can vary significantly based on team experience. Junior teams need more time for learning and validation, while experienced teams can leverage existing knowledge."
+    },
+    {
+      "id": "api-integration",
+      "title": "Third-Party Payment API Integration",
+      "description": "As a user, I want to pay for services using a credit card so that I can complete my purchase.",
+      "acceptanceCriteria": [
+        "Integrate with Stripe payment API",
+        "Handle payment success and failure scenarios",
+        "Store transaction records securely",
+        "Display appropriate user feedback"
+      ],
+      "estimationsByTeam": {
+        "junior-team": {
+          "points": 13,
+          "reasoning": "Complex external integration with security implications. Requires spike to understand API, then careful implementation with extensive testing.",
+          "confidenceLevel": "low",
+          "riskFactors": [
+            "External API complexity",
+            "Security and PCI compliance requirements",
+            "Error handling for network issues",
+            "Testing with sandbox environments"
+          ],
+          "recommendedApproach": "Break down into spike + smaller implementation stories"
+        },
+        "experienced-team": {
+          "points": 5,
+          "reasoning": "Team has integrated similar payment APIs before. Known patterns for error handling and security.",
+          "confidenceLevel": "high",
+          "riskFactors": [
+            "Stripe API changes since last integration"
+          ]
+        },
+        "mixed-team": {
+          "points": 8,
+          "reasoning": "Senior members can guide integration approach, but junior members need time to understand payment processing concepts.",
+          "confidenceLevel": "medium",
+          "riskFactors": [
+            "Knowledge transfer for payment processing",
+            "Ensuring all team members understand security requirements"
+          ]
+        }
+      },
+      "keyLearning": "External integrations show the largest estimation variance between teams. Experience with similar integrations dramatically reduces uncertainty and effort."
+    },
+    {
+      "id": "data-visualization",
+      "title": "Sales Dashboard with Charts",
+      "description": "As a sales manager, I want to see sales data in interactive charts so that I can track performance trends.",
+      "acceptanceCriteria": [
+        "Display sales data in bar and line charts",
+        "Filter by date range and sales rep",
+        "Interactive hover details",
+        "Responsive design for mobile viewing"
+      ],
+      "estimationsByTeam": {
+        "junior-team": {
+          "points": 13,
+          "reasoning": "New charting library, complex data aggregation, and responsive design challenges. Needs breakdown into smaller stories.",
+          "confidenceLevel": "low",
+          "riskFactors": [
+            "Learning charting library",
+            "Data aggregation complexity",
+            "Responsive chart design",
+            "Performance with large datasets"
+          ],
+          "recommendedApproach": "Spike charting options, then break into basic charts + advanced features"
+        },
+        "experienced-team": {
+          "points": 8,
+          "reasoning": "Complex feature but team has experience with data visualization. Known performance considerations and library choices.",
+          "confidenceLevel": "medium",
+          "riskFactors": [
+            "Data query performance optimization",
+            "Chart responsiveness on mobile"
+          ]
+        },
+        "mixed-team": {
+          "points": 8,
+          "reasoning": "Senior members can architect data flow, junior members can implement individual chart components with guidance.",
+          "confidenceLevel": "medium",
+          "riskFactors": [
+            "Coordinating parallel development of chart components",
+            "Ensuring consistent user experience across charts"
+          ]
+        }
+      },
+      "keyLearning": "Complex UI features benefit from team experience but still require significant effort. Breaking down by chart type or functionality can help all teams."
+    }
+  ],
+  "estimationPrinciples": {
+    "teamContextMatters": "The same story will have different estimates based on team capabilities, experience, and familiarity with the technology stack.",
+    "velocityNotComparable": "Teams with different contexts will have different velocities. Comparing velocity between teams is meaningless and counterproductive.",
+    "uncertaintyHandling": "Less experienced teams should use spikes and research stories to reduce uncertainty before estimating implementation work.",
+    "breakdownStrategy": "Junior teams benefit more from smaller stories, while experienced teams can handle larger, more complex stories.",
+    "learningTime": "Factor in learning time for new technologies, domains, or team members. This is legitimate development work.",
+    "riskMitigation": "Teams with less experience should identify and plan for more risk factors in their estimates."
+  }
+}

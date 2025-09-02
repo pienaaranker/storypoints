@@ -1,0 +1,320 @@
+{
+  "metadata": {
+    "type": "comprehensive_realistic_dataset",
+    "version": "2.0.0",
+    "description": "Comprehensive realistic story point examples with proper size distribution, team context, and breakdown guidance"
+  },
+  "stories": [
+    {
+      "id": "fix-button-alignment",
+      "title": "Fix Submit Button Alignment",
+      "description": "As a user, I want the submit button properly aligned so that the form looks professional.",
+      "acceptanceCriteria": [
+        "Center submit button in form container",
+        "Maintain consistent spacing with other elements",
+        "Ensure alignment works on mobile devices"
+      ],
+      "teamContext": {
+        "experienceLevel": "junior",
+        "domainKnowledge": "high",
+        "technicalStack": "familiar",
+        "teamSize": 4,
+        "workingAgreements": ["All changes require code review"]
+      },
+      "estimationVariance": {
+        "juniorTeam": {
+          "points": 1,
+          "reasoning": "Simple CSS change, well-understood requirement",
+          "confidenceLevel": "high"
+        },
+        "seniorTeam": {
+          "points": 1,
+          "reasoning": "Trivial styling fix",
+          "confidenceLevel": "high"
+        }
+      },
+      "breakdownRequired": false,
+      "breakdownSuggestions": [],
+      "complexityFactors": {
+        "technical": "low",
+        "business": "low",
+        "integration": "low",
+        "uncertainty": "low"
+      },
+      "correctPoints": 1
+    },
+    {
+      "id": "add-loading-spinner",
+      "title": "Add Loading Spinner to Forms",
+      "description": "As a user, I want to see a loading indicator when submitting forms so that I know the system is processing my request.",
+      "acceptanceCriteria": [
+        "Show spinner when form is submitted",
+        "Disable form inputs during loading",
+        "Hide spinner when response received",
+        "Handle both success and error cases"
+      ],
+      "teamContext": {
+        "experienceLevel": "intermediate",
+        "domainKnowledge": "medium",
+        "technicalStack": "familiar",
+        "teamSize": 5,
+        "workingAgreements": ["Unit tests required for UI components"]
+      },
+      "estimationVariance": {
+        "experiencedTeam": {
+          "points": 2,
+          "reasoning": "Standard UI pattern with known implementation",
+          "confidenceLevel": "high"
+        },
+        "juniorTeam": {
+          "points": 3,
+          "reasoning": "Need to understand async state management",
+          "confidenceLevel": "medium"
+        }
+      },
+      "breakdownRequired": false,
+      "breakdownSuggestions": [],
+      "complexityFactors": {
+        "technical": "low",
+        "business": "low",
+        "integration": "medium",
+        "uncertainty": "low"
+      },
+      "correctPoints": 2
+    },
+    {
+      "id": "implement-form-validation",
+      "title": "Client-Side Form Validation",
+      "description": "As a user, I want immediate feedback on form errors so that I can correct them before submission.",
+      "acceptanceCriteria": [
+        "Validate required fields on blur",
+        "Show field-specific error messages",
+        "Prevent submission with validation errors",
+        "Clear errors when fields are corrected"
+      ],
+      "teamContext": {
+        "experienceLevel": "intermediate",
+        "domainKnowledge": "high",
+        "technicalStack": "familiar",
+        "teamSize": 5,
+        "workingAgreements": ["Unit tests required for UI components"]
+      },
+      "estimationVariance": {
+        "experiencedTeam": {
+          "points": 3,
+          "reasoning": "Standard validation patterns with good domain knowledge",
+          "confidenceLevel": "high"
+        },
+        "juniorTeam": {
+          "points": 5,
+          "reasoning": "Need to learn validation library and error handling patterns",
+          "confidenceLevel": "medium"
+        }
+      },
+      "breakdownRequired": false,
+      "breakdownSuggestions": [],
+      "complexityFactors": {
+        "technical": "medium",
+        "business": "medium",
+        "integration": "low",
+        "uncertainty": "low"
+      },
+      "correctPoints": 3
+    },
+    {
+      "id": "user-profile-page",
+      "title": "User Profile Display Page",
+      "description": "As a user, I want to view my complete profile information so that I can see all my account details in one place.",
+      "acceptanceCriteria": [
+        "Display user personal information (name, email, phone)",
+        "Show account settings and preferences",
+        "Display account activity summary",
+        "Provide edit links for modifiable sections",
+        "Handle missing or incomplete profile data gracefully"
+      ],
+      "teamContext": {
+        "experienceLevel": "intermediate",
+        "domainKnowledge": "high",
+        "technicalStack": "familiar",
+        "teamSize": 5,
+        "workingAgreements": ["Unit tests required for UI components"]
+      },
+      "estimationVariance": {
+        "experiencedTeam": {
+          "points": 5,
+          "reasoning": "Multiple data sources and UI sections, moderate complexity",
+          "confidenceLevel": "high"
+        },
+        "juniorTeam": {
+          "points": 8,
+          "reasoning": "Complex page layout with multiple data integrations",
+          "confidenceLevel": "medium"
+        }
+      },
+      "breakdownRequired": false,
+      "breakdownSuggestions": [],
+      "complexityFactors": {
+        "technical": "medium",
+        "business": "medium",
+        "integration": "medium",
+        "uncertainty": "low"
+      },
+      "correctPoints": 5
+    },
+    {
+      "id": "advanced-search-filters",
+      "title": "Advanced Search with Multiple Filters",
+      "description": "As a user, I want to search content using multiple criteria so that I can find exactly what I'm looking for.",
+      "acceptanceCriteria": [
+        "Text search across multiple fields",
+        "Date range filtering",
+        "Category and tag filtering",
+        "Sort by relevance, date, or popularity",
+        "Save and load search preferences",
+        "Export search results"
+      ],
+      "teamContext": {
+        "experienceLevel": "senior",
+        "domainKnowledge": "medium",
+        "technicalStack": "familiar",
+        "teamSize": 6,
+        "workingAgreements": ["Performance testing required for search features"]
+      },
+      "estimationVariance": {
+        "experiencedTeam": {
+          "points": 8,
+          "reasoning": "Complex search logic with multiple filter combinations",
+          "confidenceLevel": "medium"
+        },
+        "juniorTeam": {
+          "points": 13,
+          "reasoning": "Multiple complex features, should be broken down",
+          "confidenceLevel": "low"
+        }
+      },
+      "breakdownRequired": true,
+      "breakdownSuggestions": [
+        {
+          "technique": "by-workflow",
+          "description": "Break down by user search workflow",
+          "resultingStories": [
+            {
+              "id": "basic-text-search",
+              "title": "Basic Text Search Implementation",
+              "description": "Implement core text search functionality",
+              "acceptanceCriteria": ["Search input field", "Text matching across fields", "Basic result display"],
+              "teamContext": {
+                "experienceLevel": "senior",
+                "domainKnowledge": "medium",
+                "technicalStack": "familiar",
+                "teamSize": 6,
+                "workingAgreements": ["Performance testing required for search features"]
+              },
+              "estimationVariance": {
+                "experiencedTeam": {
+                  "points": 3,
+                  "reasoning": "Core search functionality",
+                  "confidenceLevel": "high"
+                }
+              },
+              "breakdownRequired": false,
+              "complexityFactors": {
+                "technical": "medium",
+                "business": "medium",
+                "integration": "medium",
+                "uncertainty": "low"
+              }
+            },
+            {
+              "id": "search-filters-ui",
+              "title": "Search Filters Interface",
+              "description": "Add filtering controls and UI",
+              "acceptanceCriteria": ["Date range picker", "Category checkboxes", "Filter application logic"],
+              "teamContext": {
+                "experienceLevel": "senior",
+                "domainKnowledge": "medium",
+                "technicalStack": "familiar",
+                "teamSize": 6,
+                "workingAgreements": ["Performance testing required for search features"]
+              },
+              "estimationVariance": {
+                "experiencedTeam": {
+                  "points": 5,
+                  "reasoning": "Complex UI with multiple filter types",
+                  "confidenceLevel": "medium"
+                }
+              },
+              "breakdownRequired": false,
+              "complexityFactors": {
+                "technical": "medium",
+                "business": "medium",
+                "integration": "low",
+                "uncertainty": "low"
+              }
+            }
+          ],
+          "benefits": ["Incremental delivery of search capabilities", "Parallel development possible", "Easier testing and debugging"]
+        }
+      ],
+      "complexityFactors": {
+        "technical": "high",
+        "business": "medium",
+        "integration": "high",
+        "uncertainty": "medium"
+      },
+      "correctPoints": 8
+    }
+  ],
+  "nonEstimableWork": [
+    {
+      "type": "spike",
+      "title": "Evaluate Search Engine Options",
+      "timeBox": "6 hours",
+      "learningObjective": "Compare Elasticsearch vs database full-text search for our use case",
+      "acceptanceCriteria": [
+        "Test both approaches with sample data",
+        "Measure performance with expected data volumes",
+        "Assess maintenance and operational complexity",
+        "Document recommendation with trade-offs"
+      ],
+      "transitionToStories": [
+        "Implement chosen search backend",
+        "Add search indexing pipeline",
+        "Create search result ranking algorithm"
+      ],
+      "reasoning": "High uncertainty about performance and complexity of different search approaches. Spike will provide data needed to estimate implementation stories accurately."
+    },
+    {
+      "type": "research",
+      "title": "User Experience Research for Search Interface",
+      "timeBox": "8 hours",
+      "learningObjective": "Understand user search patterns and preferences to inform interface design",
+      "acceptanceCriteria": [
+        "Interview 5 current users about search behavior",
+        "Analyze existing search query patterns",
+        "Research industry best practices for search UI",
+        "Document design recommendations"
+      ],
+      "transitionToStories": [
+        "Implement recommended search interface design",
+        "Add suggested search functionality",
+        "Create search help and guidance features"
+      ],
+      "reasoning": "User research is needed to inform design decisions. The research will guide specific interface implementation stories but is not itself estimable development work."
+    }
+  ],
+  "sizeDistributionGuidance": {
+    "recommended": {
+      "1-3 points": "60-70% of stories (simple, well-understood work)",
+      "5 points": "20-25% of stories (moderate complexity)",
+      "8 points": "10-15% of stories (complex but manageable)",
+      "13+ points": "0-5% of stories (should be broken down)"
+    },
+    "breakdownTriggers": {
+      "size": "Stories larger than 8 points should be broken down",
+      "uncertainty": "High uncertainty stories should be spiked first",
+      "dependencies": "Stories with external dependencies need risk mitigation",
+      "teamCapability": "Consider team context when estimating"
+    }
+  }
+}
