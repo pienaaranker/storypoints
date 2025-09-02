@@ -1,0 +1,246 @@
+.consistency-feedback {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 16px 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.feedback-placeholder {
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  padding: 20px;
+}
+
+/* Consistency Score */
+.consistency-score {
+  margin-bottom: 20px;
+}
+
+.score-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.score-header h3 {
+  margin: 0;
+  color: #343a40;
+  font-size: 1.1em;
+}
+
+.score-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+
+.score-badge.good {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.score-badge.warning {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeaa7;
+}
+
+.score-badge.poor {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.score-explanation {
+  font-size: 0.9em;
+  color: #6c757d;
+  margin-top: 8px;
+}
+
+/* Warnings and Suggestions */
+.feedback-warnings,
+.feedback-suggestions {
+  margin-bottom: 16px;
+}
+
+.feedback-warnings h4,
+.feedback-suggestions h4 {
+  margin: 0 0 8px 0;
+  font-size: 1em;
+  color: #343a40;
+}
+
+.feedback-warnings ul,
+.feedback-suggestions ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.warning-item {
+  color: #856404;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.suggestion-item {
+  color: #0c5460;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+/* Detailed Issues */
+.consistency-issues {
+  margin-bottom: 20px;
+}
+
+.consistency-issues h4 {
+  margin: 0 0 12px 0;
+  color: #343a40;
+  font-size: 1em;
+}
+
+.issue-item {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 8px;
+}
+
+.issue-type {
+  font-weight: bold;
+  color: #495057;
+  text-transform: capitalize;
+  margin-bottom: 4px;
+}
+
+.issue-stories {
+  font-size: 0.9em;
+  color: #6c757d;
+  margin-bottom: 6px;
+}
+
+.issue-feedback {
+  color: #343a40;
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+
+.issue-score {
+  font-size: 0.85em;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+/* Cross-Domain Analysis */
+.cross-domain-analysis {
+  margin-bottom: 20px;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 16px;
+}
+
+.cross-domain-analysis h4 {
+  margin: 0 0 12px 0;
+  color: #343a40;
+  font-size: 1em;
+}
+
+.cross-domain-issue {
+  border-left: 3px solid #ffc107;
+  padding-left: 12px;
+  margin-bottom: 12px;
+}
+
+.issue-description {
+  font-weight: 500;
+  color: #495057;
+  margin-bottom: 4px;
+}
+
+.story-comparison {
+  font-size: 0.9em;
+  color: #6c757d;
+  margin-bottom: 6px;
+}
+
+.issue-suggestion {
+  font-size: 0.9em;
+  color: #0c5460;
+  font-style: italic;
+}
+
+/* Recommendations */
+.consistency-recommendations,
+.cross-domain-recommendations {
+  margin-bottom: 16px;
+}
+
+.consistency-recommendations h4,
+.cross-domain-recommendations h4 {
+  margin: 0 0 8px 0;
+  color: #343a40;
+  font-size: 1em;
+}
+
+.consistency-recommendations ul,
+.cross-domain-recommendations ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.recommendation-item {
+  color: #495057;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .consistency-feedback {
+    padding: 16px;
+    margin: 12px 0;
+  }
+  
+  .score-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .issue-item {
+    padding: 10px;
+  }
+  
+  .cross-domain-analysis {
+    padding: 12px;
+  }
+}
+
+/* Animation for real-time updates */
+.consistency-feedback {
+  transition: all 0.3s ease;
+}
+
+.issue-item,
+.cross-domain-issue {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "crossDomainExamples": {
+    "description": "Examples demonstrating consistency across technical and business story domains",
+    "technicalStories": [
+      {
+        "id": "tech-001",
+        "title": "Implement user authentication API",
+        "description": "Create REST API endpoints for user login, logout, and token refresh",
+        "domain": "technical",
+        "points": 5,
+        "complexityFactors": {
+          "technical": "medium",
+          "business": "low",
+          "integration": "medium",
+          "uncertainty": "low"
+        },
+        "acceptanceCriteria": [
+          "API endpoints return proper HTTP status codes",
+          "JWT tokens are generated and validated correctly",
+          "Rate limiting is implemented for login attempts"
+        ]
+      },
+      {
+        "id": "tech-002", 
+        "title": "Add database indexing for search performance",
+        "description": "Optimize database queries by adding appropriate indexes",
+        "domain": "technical",
+        "points": 3,
+        "complexityFactors": {
+          "technical": "medium",
+          "business": "low",
+          "integration": "low",
+          "uncertainty": "low"
+        },
+        "acceptanceCriteria": [
+          "Search queries execute under 200ms",
+          "Database migration scripts are created",
+          "Performance tests validate improvement"
+        ]
+      },
+      {
+        "id": "tech-003",
+        "title": "Integrate with third-party payment processor",
+        "description": "Connect application to external payment API for transaction processing",
+        "domain": "technical", 
+        "points": 8,
+        "complexityFactors": {
+          "technical": "high",
+          "business": "medium",
+          "integration": "high",
+          "uncertainty": "medium"
+        },
+        "acceptanceCriteria": [
+          "Payment transactions are processed successfully",
+          "Error handling covers all API failure scenarios",
+          "Webhook endpoints handle payment status updates"
+        ]
+      },
+      {
+        "id": "tech-004",
+        "title": "Refactor legacy code module",
+        "description": "Clean up and modernize outdated codebase section",
+        "domain": "technical",
+        "points": 13,
+        "complexityFactors": {
+          "technical": "high",
+          "business": "low", 
+          "integration": "high",
+          "uncertainty": "high"
+        },
+        "breakdownRequired": true,
+        "acceptanceCriteria": [
+          "Code follows current architectural patterns",
+          "All existing functionality is preserved",
+          "Test coverage is maintained or improved"
+        ]
+      }
+    ],
+    "businessStories": [
+      {
+        "id": "biz-001",
+        "title": "Add product filtering by category",
+        "description": "Allow customers to filter product listings by category to find items faster",
+        "domain": "business",
+        "points": 5,
+        "complexityFactors": {
+          "technical": "low",
+          "business": "medium",
+          "integration": "medium",
+          "uncertainty": "low"
+        },
+        "acceptanceCriteria": [
+          "Filter dropdown shows all available categories",
+          "Product list updates immediately when filter is applied",
+          "Filter state persists during user session"
+        ]
+      },
+      {
+        "id": "biz-002",
+        "title": "Update contact form validation messages",
+        "description": "Improve error messages to be more user-friendly and helpful",
+        "domain": "business",
+        "points": 2,
+        "complexityFactors": {
+          "technical": "low",
+          "business": "medium",
+          "integration": "low",
+          "uncertainty": "low"
+        },
+        "acceptanceCriteria": [
+          "Error messages are clear and actionable",
+          "Messages appear immediately when validation fails",
+          "Success message confirms form submission"
+        ]
+      },
+      {
+        "id": "biz-003",
+        "title": "Implement customer loyalty program",
+        "description": "Create a points-based system where customers earn rewards for purchases",
+        "domain": "business",
+        "points": 8,
+        "complexityFactors": {
+          "technical": "medium",
+          "business": "high",
+          "integration": "medium",
+          "uncertainty": "medium"
+        },
+        "acceptanceCriteria": [
+          "Customers earn points for each purchase",
+          "Points can be redeemed for discounts",
+          "Loyalty status is displayed in user account"
+        ]
+      },
+      {
+        "id": "biz-004",
+        "title": "Redesign entire checkout process",
+        "description": "Overhaul the multi-step checkout to improve conversion rates",
+        "domain": "business",
+        "points": 13,
+        "complexityFactors": {
+          "technical": "medium",
+          "business": "high",
+          "integration": "high", 
+          "uncertainty": "high"
+        },
+        "breakdownRequired": true,
+        "acceptanceCriteria": [
+          "Checkout completion rate improves by 15%",
+          "Process works on all supported devices",
+          "Payment and shipping options are clearly presented"
+        ]
+      }
+    ],
+    "consistencyScenarios": [
+      {
+        "id": "scenario-001",
+        "title": "Similar Complexity, Different Domains",
+        "description": "Compare stories with similar overall complexity but different domain focus",
+        "storyPairs": [
+          {
+            "technicalStory": "tech-001",
+            "businessStory": "biz-001", 
+            "expectedConsistency": "high",
+            "reasoning": "Both have medium complexity with some integration requirements"
+          },
+          {
+            "technicalStory": "tech-003",
+            "businessStory": "biz-003",
+            "expectedConsistency": "high", 
+            "reasoning": "Both are complex features requiring significant integration work"
+          }
+        ]
+      },
+      {
+        "id": "scenario-002",
+        "title": "Cross-Domain Reference Points",
+        "description": "Use stories from one domain as reference points for the other",
+        "exercises": [
+          {
+            "instruction": "Use the 'Add database indexing' (3 points) as a reference. How would you estimate 'Update contact form validation messages'?",
+            "expectedAnswer": "2-3 points",
+            "reasoning": "Both are straightforward improvements with clear scope, but form validation has slightly less technical complexity"
+          },
+          {
+            "instruction": "If 'Implement customer loyalty program' is 8 points, how would you estimate 'Integrate with third-party payment processor'?",
+            "expectedAnswer": "8 points",
+            "reasoning": "Similar complexity levels - loyalty program has high business complexity, payment integration has high technical complexity"
+          }
+        ]
+      }
+    ],
+    "commonInconsistencies": [
+      {
+        "type": "domain_bias",
+        "description": "Over-estimating technical stories relative to business stories of similar complexity",
+        "example": "Estimating a simple API endpoint at 8 points while estimating a complex user workflow at 5 points",
+        "solution": "Focus on overall complexity factors rather than story type"
+      },
+      {
+        "type": "uncertainty_confusion",
+        "description": "Conflating uncertainty with complexity when comparing across domains",
+        "example": "Technical stories with unknown libraries estimated higher than business stories with unclear requirements",
+        "solution": "Separate uncertainty handling (spikes) from complexity estimation"
+      },
+      {
+        "type": "integration_inconsistency", 
+        "description": "Inconsistent treatment of integration complexity across domains",
+        "example": "Technical API integration weighted differently than business process integration",
+        "solution": "Apply consistent complexity weighting regardless of integration type"
+      }
+    ]
+  }
+}
