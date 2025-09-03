@@ -1,0 +1,352 @@
+.learning-progress-tracker {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid #e9ecef;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  gap: 20px;
+}
+
+.progress-overview h3 {
+  margin: 0 0 16px 0;
+  color: #2c3e50;
+  font-size: 1.25rem;
+}
+
+.progress-stats {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.overall-progress {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-circle {
+  width: 60px;
+  height: 60px;
+}
+
+.circular-chart {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #e9ecef;
+  stroke-width: 2.8;
+}
+
+.circle {
+  fill: none;
+  stroke: #28a745;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  animation: progress 1s ease-in-out forwards;
+}
+
+.percentage {
+  fill: #2c3e50;
+  font-family: sans-serif;
+  font-size: 0.4em;
+  text-anchor: middle;
+  font-weight: bold;
+}
+
+.progress-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.completed-count {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #28a745;
+}
+
+.total-count {
+  font-size: 1.2rem;
+  color: #6c757d;
+  margin-left: 2px;
+}
+
+.progress-label {
+  font-size: 0.875rem;
+  color: #6c757d;
+  margin-top: 2px;
+}
+
+.current-level {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.level-label {
+  font-size: 0.875rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.level-badge {
+  padding: 4px 12px;
+  border-radius: 16px;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.next-checkpoint {
+  background: white;
+  padding: 16px;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+  min-width: 250px;
+}
+
+.next-checkpoint h4 {
+  margin: 0 0 8px 0;
+  color: #2c3e50;
+  font-size: 1rem;
+}
+
+.next-checkpoint-info .checkpoint-name {
+  font-weight: 600;
+  color: #495057;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.next-checkpoint-info .checkpoint-description {
+  margin: 0;
+  font-size: 0.875rem;
+  color: #6c757d;
+  line-height: 1.4;
+}
+
+.checkpoints-section h4 {
+  margin: 0 0 16px 0;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.checkpoints-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkpoint-item {
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.checkpoint-item:hover {
+  border-color: #007bff;
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+}
+
+.checkpoint-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.checkpoint-icon {
+  font-size: 1.2rem;
+  width: 24px;
+  text-align: center;
+}
+
+.checkpoint-item.completed .checkpoint-icon {
+  color: #28a745;
+}
+
+.checkpoint-item.in-progress .checkpoint-icon {
+  color: #ffc107;
+}
+
+.checkpoint-item.needs-work .checkpoint-icon {
+  color: #dc3545;
+}
+
+.checkpoint-name {
+  font-weight: 600;
+  color: #2c3e50;
+  flex: 1;
+}
+
+.checkpoint-status-text {
+  font-size: 0.875rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.checkpoint-item.completed .checkpoint-status-text {
+  color: #28a745;
+}
+
+.checkpoint-item.in-progress .checkpoint-status-text {
+  color: #ffc107;
+}
+
+.checkpoint-item.needs-work .checkpoint-status-text {
+  color: #dc3545;
+}
+
+.checkpoint-details {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e9ecef;
+}
+
+.checkpoint-description {
+  margin: 0 0 12px 0;
+  font-size: 0.875rem;
+  color: #6c757d;
+  line-height: 1.4;
+}
+
+.checkpoint-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.875rem;
+}
+
+.metric-label {
+  color: #6c757d;
+  min-width: 70px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background: #e9ecef;
+  border-radius: 3px;
+  overflow: hidden;
+  max-width: 100px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #28a745;
+  transition: width 0.3s ease;
+}
+
+.metric-value {
+  color: #2c3e50;
+  font-weight: 500;
+  min-width: 40px;
+  text-align: right;
+}
+
+.adaptive-settings {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #dee2e6;
+}
+
+.adaptive-settings h4 {
+  margin: 0 0 12px 0;
+  color: #2c3e50;
+  font-size: 1rem;
+}
+
+.settings-grid {
+  display: flex;
+  gap: 16px;
+}
+
+.setting-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px;
+  border-radius: 6px;
+  min-width: 80px;
+  transition: all 0.2s ease;
+}
+
+.setting-item.enabled {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+}
+
+.setting-item.disabled {
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+}
+
+.setting-icon {
+  font-size: 1.2rem;
+}
+
+.setting-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.setting-item.enabled .setting-label {
+  color: #155724;
+}
+
+.setting-item.disabled .setting-label {
+  color: #721c24;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+@media (max-width: 768px) {
+  .progress-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .progress-stats {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  
+  .next-checkpoint {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .settings-grid {
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,338 @@
+.progressive-exercise-selector {
+    padding: 20px;
+}
+
+.recommendation-panel {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 32px;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.recommendation-header h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.recommendation-subtitle {
+    margin: 0 0 20px 0;
+    opacity: 0.9;
+    font-size: 1rem;
+}
+
+.recommended-exercise-preview {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.preview-content {
+    flex: 1;
+}
+
+.preview-content h4 {
+    margin: 0 0 8px 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.preview-content p {
+    margin: 0 0 12px 0;
+    opacity: 0.9;
+    line-height: 1.5;
+}
+
+.checkpoint-focus {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.checkpoint-label {
+    opacity: 0.8;
+}
+
+.checkpoint-name {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.start-recommended-btn {
+    background: white;
+    color: #667eea;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.start-recommended-btn:hover {
+    background: #f8f9fa;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.exercises-section {
+    margin-top: 32px;
+}
+
+.section-header {
+    margin-bottom: 24px;
+}
+
+.section-header h3 {
+    margin: 0 0 8px 0;
+    color: #2c3e50;
+    font-size: 1.5rem;
+}
+
+.section-subtitle {
+    margin: 0;
+    color: #6c757d;
+    font-size: 1rem;
+}
+
+.exercises-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.exercise-card {
+    background: white;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.exercise-card:hover {
+    border-color: #007bff;
+    box-shadow: 0 4px 16px rgba(0, 123, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+.exercise-card.recommended {
+    border-color: #28a745;
+    background: linear-gradient(135deg, #f8fff9 0%, #e8f5e8 100%);
+}
+
+.exercise-card.recommended:hover {
+    border-color: #20c997;
+    box-shadow: 0 4px 16px rgba(40, 167, 69, 0.2);
+}
+
+.exercise-card.locked {
+    background: #f8f9fa;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.exercise-card.locked:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #dee2e6;
+}
+
+.exercise-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    gap: 16px;
+}
+
+.exercise-title-section {
+    flex: 1;
+}
+
+.exercise-title {
+    margin: 0 0 8px 0;
+    color: #2c3e50;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.recommended-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: #28a745;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    width: fit-content;
+}
+
+.recommended-icon {
+    font-size: 0.8rem;
+}
+
+.exercise-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.complexity-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.complexity-icon {
+    font-size: 0.8rem;
+}
+
+.locked-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: #6c757d;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.locked-icon {
+    font-size: 0.8rem;
+}
+
+.exercise-description {
+    margin: 0 0 8px 0;
+    color: #495057;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.exercise-details {
+    margin: 0 0 16px 0;
+    color: #6c757d;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.exercise-stats {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.875rem;
+}
+
+.stat-label {
+    color: #6c757d;
+    font-weight: 500;
+}
+
+.stat-value {
+    color: #2c3e50;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.unlock-requirements {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 6px;
+    padding: 12px;
+    margin-top: 12px;
+}
+
+.unlock-text {
+    margin: 0;
+    color: #856404;
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .progressive-exercise-selector {
+        padding: 16px;
+    }
+
+    .recommendation-panel {
+        padding: 20px;
+    }
+
+    .recommended-exercise-preview {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .start-recommended-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .exercises-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .exercise-header {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .exercise-badges {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .exercise-stats {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .recommendation-panel {
+        padding: 16px;
+    }
+
+    .exercise-card {
+        padding: 20px;
+    }
+
+    .checkpoint-focus {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+}

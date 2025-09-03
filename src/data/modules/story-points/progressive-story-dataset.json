@@ -1,0 +1,288 @@
+{
+  "metadata": {
+    "version": "1.0.0",
+    "description": "Progressive story dataset with complexity levels for adaptive learning",
+    "lastUpdated": "2025-01-14"
+  },
+  "foundation": [
+    {
+      "id": "f001",
+      "title": "Add a logout button to the header",
+      "description": "As a user, I want a logout button in the header so I can securely end my session",
+      "acceptanceCriteria": [
+        "Button is visible in the header when logged in",
+        "Clicking button logs out user and redirects to login page",
+        "Button shows appropriate icon and text"
+      ],
+      "suggestedPoints": 2,
+      "complexityFactors": {
+        "technical": "low",
+        "business": "low",
+        "uncertainty": "low"
+      },
+      "reasoning": "Simple UI change with clear requirements and standard implementation",
+      "learningFocus": ["basic_sizing", "clear_requirements"]
+    },
+    {
+      "id": "f002", 
+      "title": "Display user's full name in profile section",
+      "description": "As a user, I want to see my full name displayed in my profile so I can verify my account information",
+      "acceptanceCriteria": [
+        "Full name appears in profile section",
+        "Name is formatted as 'First Last'",
+        "Name updates when profile is edited"
+      ],
+      "suggestedPoints": 1,
+      "complexityFactors": {
+        "technical": "low",
+        "business": "low", 
+        "uncertainty": "low"
+      },
+      "reasoning": "Very simple display logic with existing data",
+      "learningFocus": ["basic_sizing", "relative_comparison"]
+    },
+    {
+      "id": "f003",
+      "title": "Add confirmation dialog for delete actions",
+      "description": "As a user, I want a confirmation dialog when deleting items so I can prevent accidental deletions",
+      "acceptanceCriteria": [
+        "Dialog appears before any delete action",
+        "Dialog shows item being deleted",
+        "User can confirm or cancel the action"
+      ],
+      "suggestedPoints": 3,
+      "complexityFactors": {
+        "technical": "low",
+        "business": "low",
+        "uncertainty": "low"
+      },
+      "reasoning": "Standard confirmation pattern, slightly more complex than basic display",
+      "learningFocus": ["basic_sizing", "relative_comparison"]
+    },
+    {
+      "id": "f004",
+      "title": "Show loading spinner during API calls",
+      "description": "As a user, I want to see a loading indicator during API calls so I know the system is working",
+      "acceptanceCriteria": [
+        "Spinner appears when API call starts",
+        "Spinner disappears when call completes",
+        "Spinner is visually centered and appropriate size"
+      ],
+      "suggestedPoints": 2,
+      "complexityFactors": {
+        "technical": "low",
+        "business": "low",
+        "uncertainty": "low"
+      },
+      "reasoning": "Simple UI state management with clear implementation path",
+      "learningFocus": ["basic_sizing", "relative_comparison"]
+    }
+  ],
+  "intermediate": [
+    {
+      "id": "i001",
+      "title": "Implement user search with filters",
+      "description": "As an admin, I want to search users with multiple filters so I can quickly find specific users",
+      "acceptanceCriteria": [
+        "Search by name, email, or role",
+        "Multiple filters can be applied simultaneously", 
+        "Results update in real-time as filters change",
+        "Clear all filters option available"
+      ],
+      "suggestedPoints": 5,
+      "complexityFactors": {
+        "technical": "medium",
+        "business": "medium",
+        "uncertainty": "low"
+      },
+      "reasoning": "Multiple interconnected components with moderate complexity",
+      "learningFocus": ["relative_comparison", "complexity_factors"],
+      "estimationVariance": {
+        "junior_dev": 8,
+        "senior_dev": 3,
+        "team_average": 5
+      }
+    },
+    {
+      "id": "i002",
+      "title": "Add email notification preferences",
+      "description": "As a user, I want to configure my email notification preferences so I can control what emails I receive",
+      "acceptanceCriteria": [
+        "Settings page shows all notification types",
+        "User can enable/disable each type individually",
+        "Changes are saved immediately",
+        "Default preferences are applied for new users"
+      ],
+      "suggestedPoints": 8,
+      "complexityFactors": {
+        "technical": "medium",
+        "business": "medium",
+        "uncertainty": "medium"
+      },
+      "reasoning": "Involves backend integration, user preferences, and email system coordination",
+      "learningFocus": ["relative_comparison", "uncertainty_handling"],
+      "estimationVariance": {
+        "frontend_focused": 5,
+        "fullstack_team": 8,
+        "backend_heavy": 13
+      }
+    },
+    {
+      "id": "i003",
+      "title": "Implement data export functionality",
+      "description": "As a user, I want to export my data in multiple formats so I can use it in other applications",
+      "acceptanceCriteria": [
+        "Support CSV and JSON export formats",
+        "User can select date range for export",
+        "Large exports are processed asynchronously",
+        "User receives email when export is ready"
+      ],
+      "suggestedPoints": 13,
+      "complexityFactors": {
+        "technical": "high",
+        "business": "medium",
+        "uncertainty": "medium"
+      },
+      "reasoning": "Complex feature involving async processing, file generation, and email integration",
+      "learningFocus": ["relative_comparison", "complexity_factors", "uncertainty_handling"]
+    }
+  ],
+  "advanced": [
+    {
+      "id": "a001",
+      "title": "Implement real-time collaborative editing",
+      "description": "As a user, I want to collaborate on documents in real-time so multiple people can work together simultaneously",
+      "acceptanceCriteria": [
+        "Multiple users can edit the same document",
+        "Changes are synchronized in real-time",
+        "Conflict resolution handles simultaneous edits",
+        "User cursors and selections are visible to others",
+        "Offline changes are merged when reconnected"
+      ],
+      "suggestedPoints": 21,
+      "complexityFactors": {
+        "technical": "high",
+        "business": "high", 
+        "uncertainty": "high"
+      },
+      "reasoning": "Highly complex feature requiring WebSocket infrastructure, conflict resolution algorithms, and sophisticated state management",
+      "learningFocus": ["story_breakdown", "uncertainty_handling", "team_estimation"],
+      "breakdownRequired": true,
+      "suggestedBreakdown": [
+        "Basic real-time connection setup (5 points)",
+        "Simple text synchronization (8 points)", 
+        "Conflict resolution system (8 points)",
+        "User presence indicators (3 points)",
+        "Offline sync capability (8 points)"
+      ],
+      "estimationVariance": {
+        "experienced_team": 21,
+        "new_to_realtime": 34,
+        "has_existing_infrastructure": 13
+      }
+    },
+    {
+      "id": "a002",
+      "title": "Build advanced analytics dashboard",
+      "description": "As a business user, I want comprehensive analytics with custom reporting so I can make data-driven decisions",
+      "acceptanceCriteria": [
+        "Multiple chart types (line, bar, pie, scatter)",
+        "Custom date range selection",
+        "Drill-down capabilities for detailed views",
+        "Export reports as PDF or Excel",
+        "Save and share custom dashboard configurations",
+        "Real-time data updates"
+      ],
+      "suggestedPoints": 34,
+      "complexityFactors": {
+        "technical": "high",
+        "business": "high",
+        "uncertainty": "high"
+      },
+      "reasoning": "Large feature with multiple complex components, data processing requirements, and various integration points",
+      "learningFocus": ["story_breakdown", "team_estimation"],
+      "breakdownRequired": true,
+      "suggestedBreakdown": [
+        "Basic chart rendering system (8 points)",
+        "Data aggregation and processing (13 points)",
+        "Interactive drill-down functionality (8 points)",
+        "Export functionality (5 points)",
+        "Dashboard configuration system (8 points)",
+        "Real-time updates (5 points)"
+      ]
+    }
+  ],
+  "expert": [
+    {
+      "id": "e001",
+      "title": "Implement machine learning recommendation engine",
+      "description": "As a user, I want personalized recommendations based on my behavior so I can discover relevant content more easily",
+      "acceptanceCriteria": [
+        "Analyze user behavior patterns",
+        "Generate personalized recommendations",
+        "A/B test different recommendation algorithms",
+        "Handle cold start problem for new users",
+        "Provide explanation for why items were recommended",
+        "Scale to handle millions of users and items"
+      ],
+      "suggestedPoints": 55,
+      "complexityFactors": {
+        "technical": "high",
+        "business": "high",
+        "uncertainty": "high"
+      },
+      "reasoning": "Extremely complex feature involving ML algorithms, big data processing, A/B testing infrastructure, and scalability challenges",
+      "learningFocus": ["story_breakdown", "uncertainty_handling", "team_estimation"],
+      "breakdownRequired": true,
+      "requiresSpike": true,
+      "spikeEstimate": "2-3 sprints for research and prototyping",
+      "estimationVariance": {
+        "ml_experienced_team": 55,
+        "learning_ml": 89,
+        "has_ml_infrastructure": 34,
+        "greenfield_ml": 144
+      },
+      "riskFactors": [
+        "Team ML expertise level unknown",
+        "Data quality and availability uncertain", 
+        "Performance requirements not fully defined",
+        "Integration with existing systems complex"
+      ]
+    },
+    {
+      "id": "e002",
+      "title": "Build multi-tenant SaaS architecture",
+      "description": "As a product owner, I want to convert our single-tenant application to multi-tenant SaaS so we can serve multiple customers efficiently",
+      "acceptanceCriteria": [
+        "Complete data isolation between tenants",
+        "Tenant-specific customization capabilities",
+        "Scalable infrastructure that grows with tenant count",
+        "Billing and subscription management",
+        "Tenant onboarding and provisioning automation",
+        "Monitoring and analytics per tenant"
+      ],
+      "suggestedPoints": 89,
+      "complexityFactors": {
+        "technical": "high",
+        "business": "high",
+        "uncertainty": "high"
+      },
+      "reasoning": "Massive architectural change affecting every part of the system with significant technical and business complexity",
+      "learningFocus": ["story_breakdown", "uncertainty_handling", "team_estimation"],
+      "breakdownRequired": true,
+      "requiresSpike": true,
+      "spikeEstimate": "4-6 sprints for architecture design and proof of concept",
+      "estimationVariance": {
+        "experienced_saas_team": 89,
+        "first_time_saas": 233,
+        "has_existing_patterns": 55
+      },
+      "riskFactors": [
+        "Database migration strategy unclear",
+        "Performance impact on existing customers",
+        "Security model needs complete redesign",
+        "Billing system integration complexity unknown"
+      ]
+    }
+  ]
+}

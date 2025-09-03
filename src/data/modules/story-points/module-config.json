@@ -20,8 +20,10 @@
         "title": "Abstract Comparisons",
         "description": "Learn relative sizing with abstract items",
         "details": "Start with simple abstract concepts to understand relative effort without real-world bias.",
-        "type": "sorting_and_pointing",
+        "type": "abstract_comparison",
         "dataFile": "exercise1-items.json",
+        "complexityLevel": "foundation",
+        "targetCheckpoints": ["basic_sizing"],
         "config": {
           "allowShuffle": true,
           "showMindsetReminder": true,
@@ -37,11 +39,14 @@
       },
       {
         "id": 2,
-        "title": "User Stories",
-        "description": "Apply sizing to real user stories",
-        "details": "Practice with realistic user stories from a typical web application development scenario.",
-        "type": "sorting_and_pointing",
-        "dataFile": "exercise2-stories.json",
+        "title": "Foundation Stories",
+        "description": "Apply sizing to clear, simple user stories",
+        "details": "Practice with straightforward user stories that have clear requirements and low complexity.",
+        "type": "basic_stories",
+        "dataFile": "progressive-story-dataset.json",
+        "dataSection": "foundation",
+        "complexityLevel": "foundation",
+        "targetCheckpoints": ["basic_sizing", "relative_comparison"],
         "config": {
           "allowShuffle": true,
           "showMindsetReminder": false,
@@ -49,34 +54,125 @@
         },
         "ui": {
           "startScreen": {
-            "instructions": "You'll work with realistic user stories from a typical web application. First arrange them by relative complexity, then assign story points (1, 2, 3, 5, 8, 13) based on complexity, effort, and uncertainty.",
-            "buttonText": "Start Exercise"
+            "instructions": "Work with clear, simple user stories to build your foundation in story point estimation. Focus on relative sizing and consistent point assignment.",
+            "buttonText": "Start Foundation Exercise"
           }
         }
       },
       {
         "id": 3,
-        "title": "Core Principles",
-        "description": "Review and reinforce key concepts",
-        "details": "Test your knowledge with an interactive quiz covering fundamental story point principles.",
-        "type": "quiz",
-        "dataFile": "exercise3-questions.json",
+        "title": "Intermediate Stories",
+        "description": "Handle moderate complexity scenarios",
+        "details": "Practice with stories that have some complexity factors and team estimation variance.",
+        "type": "realistic_stories",
+        "dataFile": "progressive-story-dataset.json",
+        "dataSection": "intermediate",
+        "complexityLevel": "intermediate",
+        "targetCheckpoints": ["relative_comparison", "uncertainty_handling"],
         "config": {
-          "showProgress": true,
-          "allowReview": true
+          "allowShuffle": true,
+          "showMindsetReminder": false,
+          "pointScale": [1, 2, 3, 5, 8, 13, 21]
         },
         "ui": {
           "startScreen": {
-            "instructions": "Complete an interactive quiz covering the fundamental principles of story point estimation, then review a comprehensive summary of everything you've learned.",
-            "buttonText": "Start Final Quiz",
+            "instructions": "Work with moderately complex user stories that include some uncertainty and team variance. Practice handling estimation challenges.",
+            "buttonText": "Start Intermediate Exercise"
+          }
+        }
+      },
+      {
+        "id": 4,
+        "title": "Story Breakdown Workshop",
+        "description": "Learn when and how to break down large stories",
+        "details": "Practice identifying stories that need breakdown and applying decomposition techniques.",
+        "type": "story_breakdown",
+        "dataFile": "progressive-story-dataset.json",
+        "dataSection": "advanced",
+        "complexityLevel": "advanced",
+        "targetCheckpoints": ["story_breakdown"],
+        "config": {
+          "allowShuffle": false,
+          "showBreakdownGuidance": true,
+          "pointScale": [1, 2, 3, 5, 8, 13, 21, 34]
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "Learn to identify when stories are too large and practice breaking them down into smaller, estimable pieces.",
+            "buttonText": "Start Breakdown Workshop"
+          }
+        }
+      },
+      {
+        "id": 5,
+        "title": "Team Estimation Dynamics",
+        "description": "Understand collaborative estimation challenges",
+        "details": "Explore how different team contexts and perspectives affect story point estimation.",
+        "type": "team_estimation",
+        "dataFile": "progressive-story-dataset.json",
+        "dataSection": "advanced",
+        "complexityLevel": "advanced",
+        "targetCheckpoints": ["team_estimation"],
+        "config": {
+          "showTeamVariance": true,
+          "allowDiscussion": true,
+          "pointScale": [1, 2, 3, 5, 8, 13, 21, 34]
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "Explore how team composition, experience, and context affect estimation. Practice collaborative estimation techniques.",
+            "buttonText": "Start Team Exercise"
+          }
+        }
+      },
+      {
+        "id": 6,
+        "title": "Expert Scenarios",
+        "description": "Handle high-uncertainty and complex estimation challenges",
+        "details": "Work with the most challenging estimation scenarios involving multiple complexity factors.",
+        "type": "uncertainty_scenarios",
+        "dataFile": "progressive-story-dataset.json",
+        "dataSection": "expert",
+        "complexityLevel": "expert",
+        "targetCheckpoints": ["uncertainty_handling", "team_estimation"],
+        "config": {
+          "showRiskFactors": true,
+          "allowSpikes": true,
+          "pointScale": [1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "Master the most challenging estimation scenarios with high uncertainty, multiple complexity factors, and significant risk considerations.",
+            "buttonText": "Start Expert Challenge"
+          }
+        }
+      },
+      {
+        "id": 7,
+        "title": "Knowledge Assessment",
+        "description": "Validate your story point estimation mastery",
+        "details": "Comprehensive assessment covering all aspects of story point estimation.",
+        "type": "quiz",
+        "dataFile": "exercise3-questions.json",
+        "complexityLevel": "expert",
+        "targetCheckpoints": ["basic_sizing", "relative_comparison", "story_breakdown", "team_estimation", "uncertainty_handling"],
+        "config": {
+          "showProgress": true,
+          "allowReview": true,
+          "adaptiveQuestions": true
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "Complete a comprehensive assessment of your story point estimation skills across all complexity levels and scenarios.",
+            "buttonText": "Start Assessment",
             "preview": {
-              "title": "What You'll Cover:",
+              "title": "Assessment Areas:",
               "items": [
-                "✓ Relative sizing vs. time estimation",
-                "✓ The three factors: complexity, effort, uncertainty",
-                "✓ Fibonacci sequence and scaling",
-                "✓ Team velocity and planning",
-                "✓ Common mistakes to avoid"
+                "✓ Relative sizing fundamentals",
+                "✓ Complexity factor analysis",
+                "✓ Story breakdown techniques",
+                "✓ Team estimation dynamics",
+                "✓ Uncertainty and risk handling"
               ]
             }
           }
