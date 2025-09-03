@@ -1,0 +1,387 @@
+.realistic-estimation-challenges {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.challenge-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.challenge-header h2 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.challenge-header p {
+  color: #7f8c8d;
+  font-size: 16px;
+}
+
+.challenge-controls {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.challenge-type-selector,
+.scenario-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.challenge-type-selector label,
+.scenario-selector label {
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.challenge-type-selector select,
+.scenario-selector select {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  min-width: 200px;
+}
+
+.challenge-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .challenge-content {
+    grid-template-columns: 1fr;
+  }
+}
+
+.story-details {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.story-details h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.story-description {
+  font-style: italic;
+  color: #34495e;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #ecf0f1;
+  border-radius: 4px;
+}
+
+.acceptance-criteria h4,
+.uncertainty-factors h4,
+.dependencies h4,
+.technical-debt h4,
+.spike-info h4 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.acceptance-criteria ul,
+.uncertainty-factors ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.acceptance-criteria li,
+.uncertainty-factors li {
+  margin-bottom: 8px;
+  color: #34495e;
+}
+
+.uncertainty-factors {
+  margin-top: 20px;
+  padding: 15px;
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
+  border-radius: 4px;
+}
+
+.dependencies {
+  margin-top: 20px;
+}
+
+.dependency {
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 4px;
+  border-left: 4px solid #6c757d;
+}
+
+.dependency.low-risk {
+  background: #d4edda;
+  border-left-color: #28a745;
+}
+
+.dependency.medium-risk {
+  background: #fff3cd;
+  border-left-color: #ffc107;
+}
+
+.dependency.high-risk {
+  background: #f8d7da;
+  border-left-color: #dc3545;
+}
+
+.dependency-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dependency-type {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.dependency-risk {
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.dependency.low-risk .dependency-risk {
+  background: #28a745;
+  color: white;
+}
+
+.dependency.medium-risk .dependency-risk {
+  background: #ffc107;
+  color: #212529;
+}
+
+.dependency.high-risk .dependency-risk {
+  background: #dc3545;
+  color: white;
+}
+
+.dependency p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.technical-debt {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f8d7da;
+  border-left: 4px solid #dc3545;
+  border-radius: 4px;
+}
+
+.debt-impact {
+  margin-top: 15px;
+}
+
+.debt-impact h5 {
+  color: #721c24;
+  margin-bottom: 8px;
+}
+
+.debt-impact ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.debt-impact li {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.spike-info {
+  padding: 15px;
+  background: #d1ecf1;
+  border-left: 4px solid #17a2b8;
+  border-radius: 4px;
+}
+
+.spike-criteria,
+.uncertainty-factors {
+  margin-top: 15px;
+}
+
+.spike-criteria h5,
+.uncertainty-factors h5 {
+  color: #0c5460;
+  margin-bottom: 8px;
+}
+
+.estimation-section {
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.estimation-input {
+  margin-bottom: 25px;
+}
+
+.estimation-input label {
+  display: block;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.estimation-input input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.submit-estimate {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-estimate:hover:not(:disabled) {
+  background: #0056b3;
+}
+
+.submit-estimate:disabled {
+  background: #6c757d;
+  cursor: not-allowed;
+}
+
+.estimation-guidance {
+  border-top: 1px solid #dee2e6;
+  padding-top: 20px;
+}
+
+.estimation-guidance h4 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.handling-techniques,
+.dependency-impact,
+.implementation-options,
+.resulting-stories {
+  margin-bottom: 20px;
+}
+
+.handling-techniques h5,
+.dependency-impact h5,
+.implementation-options h5,
+.resulting-stories h5 {
+  color: #495057;
+  margin-bottom: 12px;
+}
+
+.technique,
+.impact-option,
+.option,
+.resulting-story {
+  margin-bottom: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 4px;
+  border-left: 3px solid #007bff;
+}
+
+.technique h6,
+.impact-option h6,
+.option h6,
+.resulting-story h6 {
+  color: #2c3e50;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.technique p,
+.impact-option p,
+.option p,
+.resulting-story p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.risks {
+  margin-top: 10px;
+}
+
+.risks ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+.risks li {
+  font-size: 13px;
+  color: #dc3545;
+}
+
+.spike-value {
+  margin-top: 20px;
+  padding: 15px;
+  background: #d4edda;
+  border-radius: 4px;
+}
+
+.spike-value h6 {
+  color: #155724;
+  margin-bottom: 10px;
+}
+
+.spike-value ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.spike-value li {
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #155724;
+}
+
+.progress-indicator {
+  text-align: center;
+  padding: 20px;
+  background: #e9ecef;
+  border-radius: 8px;
+}
+
+.progress-indicator p {
+  font-weight: 600;
+  color: #495057;
+  margin: 0;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  font-size: 18px;
+  color: #6c757d;
+}
