@@ -81,6 +81,46 @@
             }
           }
         }
+      },
+      {
+        "id": 4,
+        "title": "Story Readiness Assessment",
+        "description": "Learn when and how to handle stories that aren't ready for sizing",
+        "details": "Master the critical skill of identifying stories that need more work before they can be estimated. Learn to recognize stories that are too vague, too large, or too small.",
+        "type": "story_categorization",
+        "dataFile": "exercise4-readiness.json",
+        "config": {
+          "allowShuffle": true,
+          "showHints": true,
+          "categories": [
+            {
+              "id": "ready-to-size",
+              "title": "Ready to Size",
+              "description": "Stories with clear requirements and appropriate scope"
+            },
+            {
+              "id": "too-vague",
+              "title": "Too Vague - Need More Info",
+              "description": "Stories lacking sufficient detail or with unclear requirements"
+            },
+            {
+              "id": "too-large",
+              "title": "Too Large - Break Down",
+              "description": "Stories that are too complex and need decomposition"
+            },
+            {
+              "id": "too-small",
+              "title": "Too Small - Combine",
+              "description": "Stories that are over-decomposed and should be merged"
+            }
+          ]
+        },
+        "ui": {
+          "startScreen": {
+            "instructions": "In this advanced exercise, you'll practice the critical skill of story readiness assessment.\n\n1. DRAG each story from the list on the right into the appropriate category bucket on the left.\n\n2. CONSIDER whether each story has enough detail to estimate, is appropriately sized, or needs additional work.\n\n3. THINK about the three key factors: Is it clear what needs to be done? Is the scope appropriate? Are there any blockers?\n\nYour goal is to identify which stories are ready for estimation and what needs to happen to prepare the others.",
+            "buttonText": "Start Readiness Assessment"
+          }
+        }
       }
     ]
   }

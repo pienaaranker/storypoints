@@ -39,7 +39,8 @@ function Navigation({
           setExercises([
             { id: 1, title: 'Abstract Comparisons', description: 'Learn relative sizing with abstract items' },
             { id: 2, title: 'User Stories', description: 'Apply sizing to real user stories' },
-            { id: 3, title: 'Core Principles', description: 'Review and reinforce key concepts' }
+            { id: 3, title: 'Core Principles', description: 'Review and reinforce key concepts' },
+            { id: 4, title: 'Story Readiness Assessment', description: 'Learn when and how to handle stories that aren\'t ready for sizing' }
           ])
         }
       } finally {
@@ -58,21 +59,13 @@ function Navigation({
     if (progress?.completed) return 'completed'
     if (progress?.started || exerciseId === currentExercise) return 'active'
 
-    // Check if exercise is available (first exercise or previous completed)
-    const exerciseIndex = exercises.findIndex(ex => ex.id === exerciseId)
-    if (exerciseIndex === 0) return 'available'
-
-    const previousExercise = exercises[exerciseIndex - 1]
-    if (previousExercise && currentModuleProgress.exercises[previousExercise.id]?.completed) {
-      return 'available'
-    }
-
-    return 'locked'
+    // All exercises are always available - no locking mechanism
+    return 'available'
   }
 
   const canNavigateToExercise = (exerciseId) => {
-    const status = getExerciseStatus(exerciseId)
-    return status === 'available' || status === 'active' || status === 'completed'
+    // All exercises are always accessible
+    return true
   }
 
   const getCompletedCount = () => {

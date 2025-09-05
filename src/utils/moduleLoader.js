@@ -15,7 +15,8 @@ const exerciseDataLoaders = {
   'story-points': {
     1: () => import('../data/modules/story-points/exercise1-items.json'),
     2: () => import('../data/modules/story-points/exercise2-stories.json'),
-    3: () => import('../data/modules/story-points/exercise3-questions.json')
+    3: () => import('../data/modules/story-points/exercise3-questions.json'),
+    4: () => import('../data/modules/story-points/exercise4-readiness.json')
   },
   'definition-of-done': {
     1: () => import('../data/modules/definition-of-done/dod-scenarios.json'),

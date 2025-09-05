@@ -7,6 +7,7 @@ import './ModuleRouter.css'
 const StoryPointsExercise1 = lazy(() => import('../modules/story-points/Exercise1'))
 const StoryPointsExercise2 = lazy(() => import('../modules/story-points/Exercise2'))
 const StoryPointsExercise3 = lazy(() => import('../modules/story-points/Exercise3'))
+const StoryPointsExercise4 = lazy(() => import('../modules/story-points/Exercise4'))
 
 const StoryHierarchyExercise1 = lazy(() => import('../modules/story-hierarchy/Exercise1'))
 const StoryHierarchyExercise2 = lazy(() => import('../modules/story-hierarchy/Exercise2'))
@@ -168,6 +169,12 @@ function ModuleRouter({
           return (
             <Suspense fallback={<div className="exercise-loading">Loading exercise...</div>}>
               <StoryPointsExercise3 {...exerciseProps} />
+            </Suspense>
+          )
+        case 4:
+          return (
+            <Suspense fallback={<div className="exercise-loading">Loading exercise...</div>}>
+              <StoryPointsExercise4 {...exerciseProps} />
             </Suspense>
           )
         default:

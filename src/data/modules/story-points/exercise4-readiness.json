@@ -1,0 +1,195 @@
+{
+  "metadata": {
+    "exerciseId": 4,
+    "type": "story_readiness",
+    "version": "1.0.0",
+    "description": "Story readiness assessment scenarios for categorization exercise"
+  },
+  "stories": [
+    {
+      "id": "user-login",
+      "title": "User Login",
+      "description": "As a user, I want to log into the system so that I can access my account.",
+      "acceptanceCriteria": [
+        "User can enter email and password",
+        "System validates credentials against database",
+        "Successful login redirects to dashboard",
+        "Failed login shows error message",
+        "Password field is masked",
+        "Remember me option available"
+      ],
+      "correctCategory": "ready-to-size",
+      "explanation": "This story has clear requirements, well-defined acceptance criteria, and appropriate scope. It's a standard feature that most teams understand well.",
+      "reasoning": "Clear what needs to be built, appropriate size for a single sprint, no major unknowns or dependencies.",
+      "techniques": []
+    },
+    {
+      "id": "improve-performance",
+      "title": "Improve System Performance",
+      "description": "As a user, I want the system to be faster so that I can work more efficiently.",
+      "acceptanceCriteria": [
+        "System should be faster"
+      ],
+      "correctCategory": "too-vague",
+      "explanation": "This story lacks specific, measurable criteria. 'Faster' is subjective and there's no clear definition of what needs to be improved or by how much.",
+      "reasoning": "No specific performance targets, unclear scope, no definition of 'faster', missing technical details.",
+      "techniques": [
+        "Define specific performance metrics (e.g., page load time < 2 seconds)",
+        "Identify which parts of the system need improvement",
+        "Set measurable acceptance criteria",
+        "Break down into specific performance improvements"
+      ]
+    },
+    {
+      "id": "complete-ecommerce",
+      "title": "Complete E-commerce Platform",
+      "description": "As a business owner, I want a complete e-commerce platform so that I can sell products online.",
+      "acceptanceCriteria": [
+        "Product catalog management",
+        "Shopping cart functionality",
+        "Payment processing",
+        "Order management",
+        "Customer accounts",
+        "Inventory tracking",
+        "Reporting and analytics",
+        "Mobile responsive design",
+        "SEO optimization",
+        "Security compliance"
+      ],
+      "correctCategory": "too-large",
+      "explanation": "This is an epic-sized story that would take multiple sprints to complete. It contains many separate features that should be broken down into individual stories.",
+      "reasoning": "Contains multiple major features, would take months to complete, too complex for a single story.",
+      "techniques": [
+        "Break into separate epics (Product Management, Order Processing, Customer Management)",
+        "Create individual stories for each major feature",
+        "Prioritize features by business value",
+        "Start with MVP features and iterate"
+      ]
+    },
+    {
+      "id": "fix-typo",
+      "title": "Fix Typo in Button Text",
+      "description": "As a user, I want the 'Sumbit' button to say 'Submit' so that it looks professional.",
+      "acceptanceCriteria": [
+        "Change 'Sumbit' to 'Submit' on the contact form"
+      ],
+      "correctCategory": "too-small",
+      "explanation": "This is a trivial change that takes minutes to complete. It should be combined with other small UI fixes or included as part of a larger story.",
+      "reasoning": "Too small to warrant its own story, minimal effort required, could be part of a larger UI improvement story.",
+      "techniques": [
+        "Combine with other small UI fixes",
+        "Include as part of a larger form improvement story",
+        "Group with other text/copy updates",
+        "Add to a 'UI Polish' story"
+      ]
+    },
+    {
+      "id": "password-reset",
+      "title": "Password Reset Functionality",
+      "description": "As a user, I want to reset my password when I forget it so that I can regain access to my account.",
+      "acceptanceCriteria": [
+        "User can request password reset via email",
+        "System sends secure reset link to user's email",
+        "Reset link expires after 24 hours",
+        "User can set new password using valid link",
+        "Old password is invalidated after reset",
+        "User receives confirmation email after successful reset"
+      ],
+      "correctCategory": "ready-to-size",
+      "explanation": "Well-defined story with clear acceptance criteria, appropriate scope, and no major unknowns. Ready for estimation.",
+      "reasoning": "Clear requirements, standard functionality, appropriate size, well-understood by most teams.",
+      "techniques": []
+    },
+    {
+      "id": "integrate-ai",
+      "title": "AI Integration",
+      "description": "As a user, I want AI features so that the app is more intelligent.",
+      "acceptanceCriteria": [
+        "Add AI to the application"
+      ],
+      "correctCategory": "too-vague",
+      "explanation": "Extremely vague requirements with no specific AI features defined, no clear use cases, and no measurable outcomes.",
+      "reasoning": "No specific AI features defined, unclear what 'intelligent' means, missing technical requirements and constraints.",
+      "techniques": [
+        "Define specific AI use cases (chatbot, recommendations, etc.)",
+        "Identify which user problems AI should solve",
+        "Research technical feasibility and requirements",
+        "Create specific stories for each AI feature"
+      ]
+    },
+    {
+      "id": "update-color",
+      "title": "Update Button Color",
+      "description": "As a user, I want the submit button to be blue instead of green so that it matches the brand colors.",
+      "acceptanceCriteria": [
+        "Change submit button color from green (#00FF00) to blue (#0066CC)"
+      ],
+      "correctCategory": "too-small",
+      "explanation": "Simple CSS change that takes minutes. Should be combined with other styling updates or included in a broader UI consistency story.",
+      "reasoning": "Trivial change, minimal effort, better combined with other styling improvements.",
+      "techniques": [
+        "Combine with other color/branding updates",
+        "Include in a broader UI consistency story",
+        "Group with other small styling changes",
+        "Add to a design system implementation story"
+      ]
+    },
+    {
+      "id": "search-functionality",
+      "title": "Product Search",
+      "description": "As a customer, I want to search for products so that I can find what I'm looking for quickly.",
+      "acceptanceCriteria": [
+        "Search box visible on all product pages",
+        "Search returns relevant results based on product name and description",
+        "Results display product image, name, and price",
+        "No results message when search finds nothing",
+        "Search is case-insensitive",
+        "Results are paginated (20 per page)"
+      ],
+      "correctCategory": "ready-to-size",
+      "explanation": "Clear requirements with specific acceptance criteria, appropriate scope for a single story, and well-understood functionality.",
+      "reasoning": "Well-defined scope, clear acceptance criteria, standard e-commerce feature, appropriate complexity.",
+      "techniques": []
+    },
+    {
+      "id": "mobile-app",
+      "title": "Mobile Application",
+      "description": "As a user, I want a mobile app so that I can use the service on my phone.",
+      "acceptanceCriteria": [
+        "iOS app",
+        "Android app",
+        "All web features available",
+        "Push notifications",
+        "Offline functionality",
+        "App store deployment"
+      ],
+      "correctCategory": "too-large",
+      "explanation": "This is an epic that would require months of development. It should be broken down into platform-specific stories and feature-specific stories.",
+      "reasoning": "Multiple platforms, complex features, months of work, should be broken into smaller deliverable pieces.",
+      "techniques": [
+        "Separate iOS and Android development",
+        "Create MVP with core features first",
+        "Break down by feature (login, search, etc.)",
+        "Consider progressive web app as alternative"
+      ]
+    },
+    {
+      "id": "unknown-integration",
+      "title": "Third-party Integration",
+      "description": "As a business, I want to integrate with external services so that we can provide better functionality.",
+      "acceptanceCriteria": [
+        "Integrate with some external service",
+        "Data should sync properly"
+      ],
+      "correctCategory": "too-vague",
+      "explanation": "No specific external service identified, unclear what data needs to sync, missing technical details and requirements.",
+      "reasoning": "No specific service identified, unclear requirements, missing technical specifications and API details.",
+      "techniques": [
+        "Identify specific external service to integrate with",
+        "Define what data needs to be synchronized",
+        "Research API documentation and requirements",
+        "Define error handling and fallback scenarios"
+      ]
+    }
+  ]
+}
