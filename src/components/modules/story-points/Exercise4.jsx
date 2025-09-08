@@ -57,7 +57,7 @@ function DraggableStory({ story }) {
 }
 
 // Droppable Category Component
-function DroppableCategory({ category, stories }) {
+function DroppableCategory({ category, stories, onReturnStory }) {
   const { isOver, setNodeRef } = useDroppable({
     id: category.id,
   })
@@ -76,8 +76,18 @@ function DroppableCategory({ category, stories }) {
       <div className="category-stories">
         {stories.map(story => (
           <div key={story.id} className="categorized-story">
-            <strong>{story.title}</strong>
-            <p>{story.description}</p>
+            <div className="story-content">
+              <strong>{story.title}</strong>
+              <p>{story.description}</p>
+            </div>
+            <button
+              className="return-story-button"
+              onClick={() => onReturnStory(story.id)}
+              title="Return to uncategorized stories"
+              aria-label={`Return ${story.title} to uncategorized stories`}
+            >
+              ↩️
+            </button>
           </div>
         ))}
       </div>
@@ -197,6 +207,32 @@ function Exercise4({ onComplete, onStart, isStarted }) {
     }))
   }
 
+  const handleReturnStory = (storyId) => {
+    // Find the story in the categorized stories
+    const storyToReturn = stories.find(story => story.id === storyId)
+    if (!storyToReturn) return
+
+    // Find which category the story is currently in
+    let currentCategory = null
+    for (const [categoryId, categoryStories] of Object.entries(categorizedStories)) {
+      if (categoryStories.some(story => story.id === storyId)) {
+        currentCategory = categoryId
+        break
+      }
+    }
+
+    if (!currentCategory) return
+
+    // Remove story from current category
+    setCategorizedStories(prev => ({
+      ...prev,
+      [currentCategory]: prev[currentCategory].filter(story => story.id !== storyId)
+    }))
+
+    // Add story back to uncategorized stories
+    setUncategorizedStories(prev => [...prev, storyToReturn])
+  }
+
   const handleSubmit = () => {
     setCurrentStep('feedback')
   }
@@ -268,6 +304,7 @@ function Exercise4({ onComplete, onStart, isStarted }) {
                 key={category.id}
                 category={category}
                 stories={categorizedStories[category.id] || []}
+                onReturnStory={handleReturnStory}
               />
             ))}
           </div>

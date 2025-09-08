@@ -156,6 +156,15 @@
   border-radius: 6px;
   padding: 10px;
   font-size: 0.9em;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+}
+
+.exercise-4 .categorized-story .story-content {
+  flex: 1;
+  margin-right: 10px;
 }
 
 .exercise-4 .categorized-story strong {
@@ -168,6 +177,33 @@
   margin: 0;
   color: #666;
   font-size: 0.85em;
+}
+
+.exercise-4 .return-story-button {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  height: fit-content;
+}
+
+.exercise-4 .return-story-button:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+  transform: scale(1.05);
+}
+
+.exercise-4 .return-story-button:active {
+  transform: scale(0.95);
+}
+
+.exercise-4 .return-story-button:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
 }
 
 /* Stories Section */
